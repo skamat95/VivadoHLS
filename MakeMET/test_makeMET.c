@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "MakeHT.h"
+#include "makeMET.h"
 
 #define NCrts 18
 #define NCrds 7
@@ -10,8 +10,11 @@
 
 int main(int argc, char **argv) {
 	uint16_t rgnET[NCrts*NCrds*NRgns];
+	uint16_t rgnPhi[NCrts*NCrds*NRgns];
 	uint16_t hfET[NCrts*NHFRgns];
-
+	uint16_t hfPhi[NCrts*NHFRgns];
+	uint16_t MET[2];
+	uint64_t MET_theta[1];
 	// Test data; Construct it using indices for the fun of it
 
 	int iCrt;
@@ -23,44 +26,25 @@ int main(int argc, char **argv) {
 		for(iCrd = 0; iCrd < NCrds; iCrd++) {
 			for(iRgn = 0; iRgn < NRgns; iRgn++) {
 				i = iCrt * NCrds * NRgns + iCrd * NRgns + iRgn;
-				rgnET[i] = i;
+				rgnET[i] = 1;
+				rgnPhi[i] = 0;
 			}
 		}
 		for(iHFRgn = 0; iHFRgn < NHFRgns; iHFRgn++) {
 			i = iCrt * NHFRgns + iHFRgn;
-			hfET[i] = i;
+			hfET[i] = 1;
+			hfPhi[i] = 0;
 		}
 	}
 
-	// Determine HT using software
 
-	uint16_t HT = 0;
-	for(iCrt = 0; iCrt < NCrts; iCrt++) {
-		for(iCrd = 0; iCrd < NCrds; iCrd++) {
-			for(iRgn = 0; iRgn < NRgns; iRgn++) {
-				i = iCrt * NCrds * NRgns + iCrd * NRgns + iRgn;
-				if(rgnET[i] > MinETCutForHT) HT += rgnET[i];
-			}
-		}
-		for(iHFRgn = 0; iHFRgn < NHFRgns; iHFRgn++) {
-			i = iCrt * NHFRgns + iHFRgn;
-			if(hfET[i] > MinHFETCutForHT) HT += hfET[i];
-		}
-	}
+	//Test code
+	MakeMET(rgnET,rgnPhi,hfET,hfPhi,MET,MET_theta);
 
-	// Determine HT using hardware simulation
+	printf("METx = %d\n",MET[0]);
+	printf("METy = %d\n",MET[1]);
+	printf("Theta_U = %lld\n",MET_theta[0]);
 
-	uint16_t hlsHT = 0;
-	MakeHT(rgnET, hfET, &hlsHT);
-
-	// Compare
-
-	printf("C says: HT = %d; HLS says: HT = %d\n", HT, hlsHT);;
-	if(HT != hlsHT) {
-		printf("Test failed\n");
-		return 1;
-	}
-	else printf("Test succeeded\n");
 
 	return 0;
 
