@@ -6,8 +6,6 @@
 #define NRgns 2
 #define NHFRgns 8
 
-#define MinETCutForHT 10
-#define MinHFETCutForHT 10
 
 #include <stdint.h>
 #include <math.h>

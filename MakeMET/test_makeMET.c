@@ -27,13 +27,13 @@ int main(int argc, char **argv) {
 			for(iRgn = 0; iRgn < NRgns; iRgn++) {
 				i = iCrt * NCrds * NRgns + iCrd * NRgns + iRgn;
 				rgnET[i] = 1;
-				rgnPhi[i] = 0;
+				rgnPhi[i] = 1;
 			}
 		}
 		for(iHFRgn = 0; iHFRgn < NHFRgns; iHFRgn++) {
 			i = iCrt * NHFRgns + iHFRgn;
 			hfET[i] = 1;
-			hfPhi[i] = 0;
+			hfPhi[i] = 1;
 		}
 	}
 
