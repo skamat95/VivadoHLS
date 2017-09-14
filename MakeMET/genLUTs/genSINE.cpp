@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
   for(int i = 0; i <= size; i += resolution) 
   {
   uint8_t value = sin(i); 
-  
+  cout << showbase << internal << setw(6) << setfill('0') << hex << value << ", ";
   }
     
   cout << endl << "};" << endl;
