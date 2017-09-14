@@ -15,12 +15,12 @@ int main(int argc, char** argv) {
   cout << "#ifndef sineLUTs_h" << endl;
   cout << "#define sineLUTs_h" << endl;
   cout << "#include <stdint.h>" << endl;
-  cout << "// SINE LUT" << endl;
-  cout << "static const uint8_t sineLUT[size+1] = {" << endl;
+  cout << "// COS LUT" << endl;
+  cout << "static const uint8_t sineLUT[size+1][size+1] = {" << endl;
   for(int i = 0; i <= size; i ++) 
   {
 	
-  	value = sin(angle*(pi/180)); //converting angle(in deg) to sin() input in radians
+  	value = atan(angle*(pi/180)); //converting angle(in deg) to sin() input in radians
 	angle += resolution;
   	cout << showbase << internal << setw(6) << setfill('0') << hex << value << ", ";
 	
@@ -29,4 +29,3 @@ int main(int argc, char** argv) {
   cout << endl << "};" << endl;
   cout << "#endif" << endl;
 }
-

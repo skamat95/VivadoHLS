@@ -4,9 +4,6 @@
 #include <iomanip>
 #include <math.h>
 using namespace std;
-#define NCrds 7
-#define NRgns 2
-#define NHFRgns 8
 #define resolution 2
 float pi = acos(-1.0);
 //printf("%d\n",pi);
