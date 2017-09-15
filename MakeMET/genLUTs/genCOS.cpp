@@ -12,11 +12,11 @@ float value;
 int angle = 0;
 
 int main(int argc, char** argv) {
-  cout << "#ifndef sineLUTs_h" << endl;
-  cout << "#define sineLUTs_h" << endl;
+  cout << "#ifndef cosLUTs_h" << endl;
+  cout << "#define cosLUTs_h" << endl;
   cout << "#include <stdint.h>" << endl;
   cout << "// COS LUT" << endl;
-  cout << "static const uint8_t sineLUT[size+1] = {" << endl;
+  cout << "static const uint8_t cosLUT[size+1] = {" << endl;
   for(int i = 0; i <= size; i ++) 
   {
 	
