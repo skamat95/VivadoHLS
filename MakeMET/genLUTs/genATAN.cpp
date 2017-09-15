@@ -23,6 +23,7 @@ int main(int argc, char** argv) {
 	
   	value = atan(input); 
 	input += resolution;
+	value
   	if(i!=size) 
 	{
 		cout << showbase << internal << setw(6) << setfill('0') << hex << value << ", ";
