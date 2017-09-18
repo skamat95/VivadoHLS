@@ -1,7 +1,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "makeMET.h"
+#include "Make_LUT_MET.h"
+
 
 #define NCrts 18
 #define NCrds 7
@@ -9,6 +10,13 @@
 #define NHFRgns 8
 
 int main(int argc, char **argv) {
+
+	int in = 0;
+	float out[1];
+	Make_LUT_MET(in,out);
+	printf("ans = %d\n",out[0]);
+
+	/*
 	uint16_t rgnET[NCrts*NCrds*NRgns];
 	uint16_t rgnPhi[NCrts*NCrds*NRgns];
 	uint16_t hfET[NCrts*NHFRgns];
@@ -44,6 +52,9 @@ int main(int argc, char **argv) {
 	printf("METx = %d\n",MET[0]);
 	printf("METy = %d\n",MET[1]);
 	printf("Theta_U = %lld\n",MET_theta[0]);
+
+
+*/
 
 
 	return 0;
