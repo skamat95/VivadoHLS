@@ -11,11 +11,11 @@
 
 int main(int argc, char **argv) {
 
-	int in = 0;
-	float out[1];
+	int in = 360;
+	float out[2];
 	Make_LUT_MET(in,out);
-	printf("ans = %d\n",out[0]);
-
+	printf("ans_sine = %f\n",out[0]);
+	printf("an_cos = %f\n",out[1]);
 	/*
 	uint16_t rgnET[NCrts*NCrds*NRgns];
 	uint16_t rgnPhi[NCrts*NCrds*NRgns];

@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
   cout << "#ifndef sineLUTs_h" << endl;
   cout << "#define sineLUTs_h" << endl;
   cout << "#include <stdint.h>" << endl;
-  cout << "#define resolution 2.0" << endl;
+  cout << "#define resolution 2" << endl;
   cout << "int size = 360/resolution;" << endl;
   cout << "// SINE LUT" << endl;
   cout << "static const float sineLUT[size+1] = {" << endl;

@@ -7,9 +7,10 @@ void Make_LUT_MET(int in,float out[1])
 {
 
 	//convert deg to the value
-	int read;
-	read = in/resolution;
-	out[0] = sineLUT[read];
+	int read_val;
+	read_val = in/resolution;
+	out[0] = sineLUT[read_val];
+	out[1] = cosLUT[read_val];
 
 	/*
 	  uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts*NCrds*NRgns],

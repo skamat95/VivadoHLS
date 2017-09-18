@@ -10,8 +10,9 @@
 #include <stdint.h>
 #include <math.h>
 #include "sine.h"
+#include "cos.h"
 
-void Make_LUT_MET(int in,float out[1]);
+void Make_LUT_MET(int in,float out[2]);
 
 
 
