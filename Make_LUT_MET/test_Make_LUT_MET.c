@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
 	uint16_t rgnPhi[NCrts*NCrds*NRgns];
 	uint16_t hfET[NCrts*NHFRgns];
 	uint16_t hfPhi[NCrts*NHFRgns];
-	float MET[2];
+	float MET[3];
 	
 	// Test data; Construct it using indices for the fun of it
 
@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
 
 
 	//Test code
-	MakeMET(rgnET,rgnPhi,hfET,hfPhi,MET);
+	Make_LUT_MET(rgnET,rgnPhi,hfET,hfPhi,MET);
 
 	printf("METx = %f\n",MET[0]);
 	printf("METy = %f\n",MET[1]);

@@ -17,6 +17,8 @@
 #include "atan2.h"
 
 
-void Make_LUT_MET(int in,float out[3]);
+void Make_LUT_MET(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts*NCrds*NRgns],
+		uint16_t hfET[NCrts*NHFRgns], uint16_t hfPhi[NCrts*NHFRgns],
+		float MET[3]);
 
 #endif

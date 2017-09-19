@@ -11,37 +11,38 @@ void Make_LUT_MET(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts*NCrds
 
 #pragma HLS PIPELINE II=6
 #pragma HLS ARRAY_PARTITION variable=MET complete dim=1
-#pragma HLS ARRAY_PARTITION variable=MET_theta complete dim=1
 #pragma HLS ARRAY_PARTITION variable=hfPhi complete dim=1
 #pragma HLS ARRAY_PARTITION variable=hfET complete dim=1
 #pragma HLS ARRAY_PARTITION variable=rgnPhi complete dim=1
 #pragma HLS ARRAY_PARTITION variable=rgnET complete dim=1
-	uint16_t rgnMETx = 0;
-	uint16_t hfMETx = 0;
-	uint16_t rgnMETy = 0;
-	uint16_t hfMETy = 0;
-	uint16_t ratio;
+	float rgnMETx = 0;
+	float hfMETx = 0;
+	float rgnMETy = 0;
+	float hfMETy = 0;
 
 iRgn:
 	for(int iRgn = 0; iRgn < NCrts*NCrds*NRgns; iRgn++)
 	{
 #pragma HLS UNROLL
-		rgnMETx += rgnET[iRgn] * cosLUT((rgnPhi[iRgn]/resolution));
-		rgnMETy += rgnET[iRgn] * sineLUT((rgnPhi[iRgn]/resolution));
+		int rgn_read = rgnPhi[iRgn]/resolution;
+		rgnMETx += rgnET[iRgn] * cosLUT[rgn_read];
+		rgnMETy += rgnET[iRgn] * sineLUT[rgn_read];
 	}
 
 iHFRgn:
  	for(int iHFRgn = 0; iHFRgn < NCrts * NHFRgns; iHFRgn++)
  	{
 #pragma HLS UNROLL
- 		hfMETx += hfET[iHFRgn] * cosLUT((hfPhi[iHFRgn]/resolution));
- 		hfMETy += hfET[iHFRgn] * sineLUT((hfPhi[iHFRgn]/resolution));
+ 		int hf_read = rgnPhi[iHFRgn]/resolution;
+ 		hfMETx += hfET[iHFRgn] * cosLUT[hf_read];
+ 		hfMETy += hfET[iHFRgn] * sineLUT[hf_read];
  	}
 
  	MET[0] = rgnMETx + hfMETx;
  	MET[1] = rgnMETy + hfMETy;
-	int inr_x = MET[0];
-	int inr_y = MET[1];
+	int in_x = MET[0];
+	int in_y = MET[1];
+	int inr_x, inr_y;
 	if (in_x < 0) inr_x = (max_val_x/resolution_x) - abs(in_x/resolution_x);
 	else if (in_x > 0) inr_x = (max_val_x/resolution_x) + abs(in_x/resolution_x);
 	else if (in_x == 0) inr_x = (max_val_x/resolution_x) ;
