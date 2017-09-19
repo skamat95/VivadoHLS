@@ -43,12 +43,12 @@ iHFRgn:
 	int in_x = MET[0];
 	int in_y = MET[1];
 	int inr_x, inr_y;
-	if (in_x < 0) inr_x = (max_val_x/resolution_x) + (in_x/resolution_x);
-	else if (in_x > 0) inr_x = (max_val_x/resolution_x) + (in_x/resolution_x);
+	if (in_x < 0) inr_x = (max_val_x/resolution_x) - abs(in_x/resolution_x);
+	else if (in_x > 0) inr_x = (max_val_x/resolution_x) + abs(in_x/resolution_x);
 	else if (in_x == 0) inr_x = (max_val_x/resolution_x) ;
 
-	if (in_y < 0) inr_y = (max_val_y/resolution_y) + (in_y/resolution_y);
-	else if (in_y > 0) inr_y = (max_val_y/resolution_y) + (in_y/resolution_y);
+	if (in_y < 0) inr_y = (max_val_y/resolution_y) - abs((in_y/resolution_y));
+	else if (in_y > 0) inr_y = (max_val_y/resolution_y) + abs(in_y/resolution_y);
 	else if (in_y == 0) inr_y = (max_val_y/resolution_y);
  	MET[2] = atan2LUT[inr_x][inr_y];
 
