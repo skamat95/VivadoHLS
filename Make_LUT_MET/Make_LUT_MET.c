@@ -37,12 +37,15 @@ iHFRgn:
  		hfMETx += hfET[iHFRgn] * cosLUT[hf_read];
  		hfMETy += hfET[iHFRgn] * sineLUT[hf_read];
  	}
-
+	//MET vector magnitude in X(MET[0]) and Y(MET[1]) direction separately
  	MET[0] = rgnMETx + hfMETx;
  	MET[1] = rgnMETy + hfMETy;
+	//logic to get tan_inverse(theta,MET[2]) from the MET magnitudes
+	//See the header file and also genLUT codes to understand
 	int in_x = MET[0];
 	int in_y = MET[1];
 	int inr_x, inr_y;
+	//This is the calculation to reach the appropriate element number in the atan2LUT
 	if (in_x < 0) inr_x = (max_val_x/resolution_x) + (in_x/resolution_x);
 	else if (in_x > 0) inr_x = (max_val_x/resolution_x) + (in_x/resolution_x);
 	else if (in_x == 0) inr_x = (max_val_x/resolution_x) ;
@@ -50,6 +53,7 @@ iHFRgn:
 	if (in_y < 0) inr_y = (max_val_y/resolution_y) + (in_y/resolution_y);
 	else if (in_y > 0) inr_y = (max_val_y/resolution_y) + (in_y/resolution_y);
 	else if (in_y == 0) inr_y = (max_val_y/resolution_y);
+	//This is the MET angle
  	MET[2] = atan2LUT[inr_x][inr_y];
 
 }
