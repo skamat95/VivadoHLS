@@ -1,9 +1,10 @@
 #include <stdint.h>
+#include <math.h>
 #include "Make_LUT_MET.h"
 
 
 
-void Make_LUT_MET(int in,float out[1])
+void Make_LUT_MET(int in,float out[3])
 {
 
 	//convert deg to the value
@@ -11,6 +12,20 @@ void Make_LUT_MET(int in,float out[1])
 	read_val = in/resolution;
 	out[0] = sineLUT[read_val];
 	out[1] = cosLUT[read_val];
+	float in_x = -10.0;
+	float in_y = 10.0;
+	//logic to read atan2LUT
+	int inr_x,inr_y;
+	if (in_x < 0) inr_x = (max_val_x/resolution_x) - abs((in_x/resolution_x));
+	else if (in_x > 0) inr_x = (max_val_x/resolution_x) + 1 + abs((in_x/resolution_x));
+	else if (in_x = 0) inr_x = (max_val_x/resolution_x) + 1;
+
+	if (in_y < 0) inr_y = (max_val_y/resolution_y) - abs((in_y/resolution_y));
+	else if (in_y > 0) inr_y = (max_val_y/resolution_y) + 1 + abs((in_y/resolution_y));
+	else if (in_y = 0) inr_y = (max_val_y/resolution_y) + 1;
+
+
+	out[2] = atan2LUT[inr_x][inr_y];
 
 	/*
 	  uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts*NCrds*NRgns],

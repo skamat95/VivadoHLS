@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
   cout << "#define cosLUTs_h" << endl;
   cout << "#include <stdint.h>" << endl;
   cout << "// COS LUT" << endl;
-  cout << "static const uint8_t cosLUT[181] = {" << endl;
+  cout << "static const float cosLUT[181] = {" << endl;
   for(int i = 0; i <= size; i ++) 
   {
 	
