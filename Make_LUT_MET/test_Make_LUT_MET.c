@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv) {
 
-	int in = 360;
+	int in = 270;
 	float out[2];
 	Make_LUT_MET(in,out);
 	printf("ans_sine = %f\n",out[0]);
