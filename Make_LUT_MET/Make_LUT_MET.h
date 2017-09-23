@@ -1,6 +1,11 @@
 #ifndef MakeMET_h
 #define MakeMET_h
 
+#define sin1 1
+#define cos1 1
+#define sin2 1
+#define cos2 1
+
 #define NCrts 18
 #define NCrds 7
 #define NRgns 2
@@ -14,8 +19,8 @@
 #include <math.h>
 #include "sine.h"
 #include "cos.h"
-#include "atan2.h"
-
+//#include "atan2.h"
+#include "atan2_trial.h"
 
 void Make_LUT_MET(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts*NCrds*NRgns],
 		uint16_t hfET[NCrts*NHFRgns], uint16_t hfPhi[NCrts*NHFRgns],
