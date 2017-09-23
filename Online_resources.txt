@@ -1,0 +1,10 @@
+cout syntax
+http://www-numi.fnal.gov/offline_software/srt_public_context/WebDocs/Companion/cxx_crib/input_output.html
+
+sridhara git
+https://github.com/SridharaDasu/VivadoHLSProjects
+
+Trigger Workshops
+#1	https://indico.cern.ch/event/622633/
+#2	https://indico.cern.ch/event/622635/timetable/?view=standard
+
