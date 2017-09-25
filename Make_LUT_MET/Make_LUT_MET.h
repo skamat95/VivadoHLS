@@ -6,11 +6,11 @@
 #define NRgns 2
 #define NHFRgns 8
 
-#define resolution 2.0 //sin and cos LUTs
-#define resolution_x 5.0 //atan2 LUT
-#define resolution_y 5.0 //atan2 LUT
-#define max_val_x 50.0
-#define max_val_y 50.0
+#define resolution 2 //sin and cos LUTs
+#define resolution_x 5 //atan2 LUT
+#define resolution_y 5 //atan2 LUT
+#define max_val_x 50
+#define max_val_y 50
 
 #include <stdint.h>
 #include <math.h>

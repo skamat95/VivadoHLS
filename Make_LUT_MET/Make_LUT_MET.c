@@ -26,7 +26,7 @@ void Make_LUT_MET(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts*NCrds
 	int hf_read =0;
 
 iRgn:
-	for(int iRgn = 0; iRgn < NCrts*NCrds*NRgns; iRgn++) //NCrts*NCrds*NRgns
+	for(int iRgn = 0; iRgn < NCrts*NCrds*NRgns; iRgn++)
 	{
 #pragma HLS UNROLL
 		rgn_read = rgnPhi[iRgn]/resolution;
@@ -35,7 +35,7 @@ iRgn:
 	}
 
 iHFRgn:
- 	for(int iHFRgn = 0; iHFRgn < NCrts * NHFRgns; iHFRgn++)	//NCrts * NHFRgns
+ 	for(int iHFRgn = 0; iHFRgn < NCrts * NHFRgns; iHFRgn++)
  	{
 #pragma HLS UNROLL
  		hf_read = hfPhi[iHFRgn]/resolution;
@@ -49,8 +49,8 @@ iHFRgn:
 
 	//This is the calculation to reach the appropriate element number in the atan2LUT
 
-	inr_x = 10 + (in_x/resolution_x);
-	inr_y = 10 + (in_y/resolution_y);
+	inr_x = (max_val_x/resolution_x) + (in_x/resolution_x);
+	inr_y = (max_val_y/resolution_y) + (in_y/resolution_y);
 
 	//This is the MET angle
 	MET[0] = in_x;
