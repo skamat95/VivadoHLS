@@ -16,8 +16,8 @@
 #include <math.h>
 #include "sine.h"
 #include "cos.h"
-//#include "atan2.h"
-#include "atan2_trial.h"
+#include "atan2.h"
+
 
 void Make_LUT_MET(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts*NCrds*NRgns],
 		uint16_t hfET[NCrts*NHFRgns], uint16_t hfPhi[NCrts*NHFRgns],
