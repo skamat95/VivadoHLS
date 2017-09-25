@@ -26,7 +26,7 @@ void Make_LUT_MET(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts*NCrds
 	int hf_read =0;
 
 iRgn:
-	for(int iRgn = 0; iRgn < NCrts*NCrds*NRgns; iRgn++) //NCrts*NCrds*NRgns
+	for(int iRgn = 0; iRgn < NCrts*NCrds*NRgns; iRgn++) 
 	{
 #pragma HLS UNROLL
 		rgn_read = rgnPhi[iRgn]/resolution;
@@ -35,7 +35,7 @@ iRgn:
 	}
 
 iHFRgn:
- 	for(int iHFRgn = 0; iHFRgn < NCrts * NHFRgns; iHFRgn++)	//NCrts * NHFRgns
+ 	for(int iHFRgn = 0; iHFRgn < NCrts * NHFRgns; iHFRgn++)	
  	{
 #pragma HLS UNROLL
  		hf_read = hfPhi[iHFRgn]/resolution;
