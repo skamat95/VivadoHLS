@@ -8,3 +8,5 @@ Trigger Workshops
 #1	https://indico.cern.ch/event/622633/
 #2	https://indico.cern.ch/event/622635/timetable/?view=standard
 
+ZEDBOARD
+http://svenand.blogdrive.com/archive/172.html#.WctN94-CwdU
