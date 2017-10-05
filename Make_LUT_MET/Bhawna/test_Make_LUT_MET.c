@@ -11,9 +11,9 @@
 int main(int argc, char **argv) {
 
 	uint16_t rgnET[NCrts*NCrds*NRgns];
-	uint16_t rgnPhi[NCrts*NCrds*NRgns];
-	float MET[2];
-	
+	uint16_t rgnPhi[NCrts];
+	float MET[3];
+
 	// Test data; Construct it using indices for the fun of it
 
 	int iCrt;
@@ -25,22 +25,23 @@ int main(int argc, char **argv) {
 			for(iRgn = 0; iRgn < NRgns; iRgn++) {
 				i = iCrt * NCrds * NRgns + iCrd * NRgns + iRgn;
 				rgnET[i] = 1;
-				rgnPhi[i] = 90;
 			}
 		}
+		//rgnPhi[i] = 90;
 	}
 
+	for(int k = 0;k<18;k++)
+	{
+		rgnPhi[k] = 90;
+	}
 
 	//Test code
 	Make_LUT_MET(rgnET,rgnPhi,MET);
 
 	printf("METx = %f\n",MET[0]);
 	printf("METy = %f\n",MET[1]);
-	//printf("Theta = %f\n",MET[2]);
+	printf("Theta = %f\n",MET[2]);
 
-	//Calculating using math libraries
-	//float real_t = atan2(MET[1],MET[0]);
-	//printf("Test bench Theta = %f\n",real_t);
 	return 0;
 
 }
