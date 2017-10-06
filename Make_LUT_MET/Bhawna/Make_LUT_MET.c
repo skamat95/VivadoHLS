@@ -4,7 +4,7 @@
 
 
 
-void Make_LUT_MET(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts],float MET[3])
+void Make_LUT_MET(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts],uint16_t MET[3])
 {
 
 #pragma HLS PIPELINE II=6
@@ -19,8 +19,8 @@ void Make_LUT_MET(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts],floa
 #pragma HLS ARRAY_PARTITION variable=rgn_tmp complete dim=0  
 
 
-  float rgnMETx[NCrts];
-  float rgnMETy[NCrts];
+  uint16_t rgnMETx[NCrts];
+  uint16_t rgnMETy[NCrts];
 	//int rgn_read = 0;
 
 	float pi = acos(-1.0);
@@ -45,13 +45,13 @@ iRgn:
 	  //rgn_read = rgnPhi[iRgn]/resolution;
 	  //rgnMETx[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * cosLUT[rgn_read]);
 	  //rgnMETy[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * sineLUT[rgn_read]);
-	  rgnMETx[iRgn] = (Comp_rgn_et_14(rgn_tmp[iRgn])) * cos(rgnPhi[iRgn]*ratio);
-	  rgnMETy[iRgn] = (Comp_rgn_et_14(rgn_tmp[iRgn])) * sin(rgnPhi[iRgn]*ratio);
+	  rgnMETx[iRgn] = (int)((Comp_rgn_et_14(rgn_tmp[iRgn])) * cos(rgnPhi[iRgn]*ratio));
+	  rgnMETy[iRgn] = (int)((Comp_rgn_et_14(rgn_tmp[iRgn])) * sin(rgnPhi[iRgn]*ratio));
 	}
 
 	//MET vector magnitude in X(MET[0]) and Y(MET[1]) direction separately
-	float in_x = Comp_rgn_et(rgnMETx);
-	float in_y = Comp_rgn_et(rgnMETy);
+	uint16_t in_x = Comp_rgn_et(rgnMETx);
+	uint16_t in_y = Comp_rgn_et(rgnMETy);
 
 
 	MET[0] = in_x;
@@ -63,7 +63,7 @@ iRgn:
 
 	//This is the MET angle
 
-	//MET[2] = atan2[inr_x][inr_y];
+	//MET[2] = (int)(atan2[in_x][in_y]);
 
 }
 
@@ -88,18 +88,18 @@ uint16_t Comp_rgn_et_14(uint16_t arr_i[NCrds*NRgns])
   return tmp;
 }
 
-float Comp_rgn_et(float arr_i[NCrts])
+uint16_t Comp_rgn_et(uint16_t arr_i[NCrts])
 {
 #pragma HLS PIPELINE II=6
 
 #pragma HLS ARRAY_PARTITION variable=arr_i complete dim=1
 
-	float tmp = 0;
+	uint16_t tmp = 0;
 
  adder_tree: for (int i = 0; i < NCrts; i++)
     {
 #pragma HLS UNROLL
-	 float et_reg = arr_i[i];
+	 uint16_t et_reg = arr_i[i];
 
       tmp += et_reg;
     }

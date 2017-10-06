@@ -10,18 +10,16 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
-#include <pthread.h>
-#include <limits.h>
-#include <errno.h>
-#include <sys/stat.h>
-#include <map>
 
-std::string lut_file_path;
 
-void download_inputs(CTP7AlgoClient &card, int phi)
+
+
+
+
+int main(int argc, char *argv[])
 {
-
-	std::map<int, std::vector<uint32_t> > input_link_data;
+	
+std::map<int, std::vector<uint32_t> > input_link_data;
 
 		for (int link = 0; link <= 66; link++)
 		{
@@ -58,37 +56,6 @@ void download_inputs(CTP7AlgoClient &card, int phi)
 		fprintf(fd, "================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================ \n");
 
 		fclose(fd);
-	
-}
-
-int main(int argc, char *argv[])
-{
-	std::vector<CTP7AlgoClient*> cards;
-
-	mkdir(argv[2], 0777); // if it fails, it fails.
-	char *realpattern = realpath(argv[2], NULL);
-	if (!realpattern)
-	{
-		printf("Unable to access pattern output directory.\n");
-		return 1;
-	}
-	lut_file_path = realpattern;
-	free(realpattern);
-
-	int phi = atoi(argv[1]);
-
-CTP7AlgoClient * card;
-
-	try
-	{
-		card = new CTP7AlgoClient(phi, "CTP7Map.xml");
-	}
-	catch (std::runtime_error &e)
-	{
-		printf("Couldnt connect to phi %d: %s\n", phi, e.what());
-	}
-
-	download_inputs(*card, phi);
 
 	return 0;
 }

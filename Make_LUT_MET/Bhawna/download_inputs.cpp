@@ -1,16 +1,9 @@
-#include <stdexcept>
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-
-
-
-#include <stdexcept>
+#include <stdint.h>
 #include <stdio.h>
 #include <iostream>
-#include <fstream>
-#include <stdlib.h>
+#include <iomanip>
 
+using namespace std;
 
 
 
