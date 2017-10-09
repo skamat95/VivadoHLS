@@ -298,8 +298,8 @@ bool makeTestData(int argc, char** argv, uint16_t rgnET[NCrts*NCrds*NRgns], uint
 int main(int argc, char **argv) {
 
 	uint16_t rgnET[NCrts*NCrds*NRgns];
-		uint16_t rgnPhi[NCrts];
-		uint16_t MET[3];
+	uint16_t rgnPhi[NCrts];
+	uint16_t MET[3];
 
 		// Test data; Construct it using indices for the fun of it
 
@@ -347,6 +347,7 @@ int main(int argc, char **argv) {
 		printf("METy = %d\n",MET[1]);
 		printf("Theta = %d\n",MET[2]);
 
+		//writeLinkMapHT(rgnET, rgnPhi, MET);
 		return 0;
 
 }
