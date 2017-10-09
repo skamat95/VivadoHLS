@@ -1,10 +1,10 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
--- Date        : Sun Jul 23 00:26:39 2017
--- Host        : moonraker.cern.ch running 64-bit Scientific Linux CERN SLC release 6.9 (Carbon)
+-- Date        : Mon Oct  9 12:08:28 2017
+-- Host        : uwlogin.cern.ch running 64-bit Scientific Linux CERN SLC release 6.9 (Carbon)
 -- Command     : write_vhdl -force -mode synth_stub
---               /data/alex/hls_ventures/ctp7_hls_demo/ctp7_hls_demo.srcs/sources_1/ip/pattern_bram/pattern_bram_stub.vhdl
+--               /data/skamat/Github/VivadoHLS/Make_LUT_MET/Bhawna/Vivado/ctp7_hls_demo/ctp7_hls_demo.srcs/sources_1/ip/pattern_bram/pattern_bram_stub.vhdl
 -- Design      : pattern_bram
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7vx690tffg1927-2

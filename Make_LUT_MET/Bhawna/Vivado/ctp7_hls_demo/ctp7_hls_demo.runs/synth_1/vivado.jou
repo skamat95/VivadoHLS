@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Mon Oct  9 12:13:53 2017
+# Process ID: 3140132
+# Current directory: /data/skamat/Github/VivadoHLS/Make_LUT_MET/Bhawna/Vivado/ctp7_hls_demo/ctp7_hls_demo.runs/synth_1
+# Command line: vivado -log ctp7_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source ctp7_top.tcl
+# Log file: /data/skamat/Github/VivadoHLS/Make_LUT_MET/Bhawna/Vivado/ctp7_hls_demo/ctp7_hls_demo.runs/synth_1/ctp7_top.vds
+# Journal file: /data/skamat/Github/VivadoHLS/Make_LUT_MET/Bhawna/Vivado/ctp7_hls_demo/ctp7_hls_demo.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source ctp7_top.tcl -notrace

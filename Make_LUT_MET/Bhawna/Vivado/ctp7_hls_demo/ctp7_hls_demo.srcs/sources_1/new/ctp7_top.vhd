@@ -471,8 +471,8 @@ COMPONENT ila_hls
       rgnPhi_16 : IN STD_LOGIC_VECTOR (15 downto 0);
       rgnPhi_17 : IN STD_LOGIC_VECTOR (15 downto 0);
       MET_0 : OUT STD_LOGIC_VECTOR (15 downto 0);
-      MET_1 : OUT STD_LOGIC_VECTOR (15 downto 0);
-      MET_2 : OUT STD_LOGIC_VECTOR (15 downto 0)
+      MET_1 : OUT STD_LOGIC_VECTOR (15 downto 0)
+     -- MET_2 : OUT STD_LOGIC_VECTOR (15 downto 0)
 
     );
   END COMPONENT;  
@@ -757,7 +757,7 @@ COMPONENT ila_hls
       signal rgnPhi_17 : STD_LOGIC_VECTOR(15 DOWNTO 0);
       signal MET_0 : STD_LOGIC_VECTOR (15 downto 0);
       signal MET_1 : STD_LOGIC_VECTOR (15 downto 0);
-      signal MET_2 : STD_LOGIC_VECTOR (15 downto 0);
+      --signal MET_2 : STD_LOGIC_VECTOR (15 downto 0);
 
 -----------------------------------------------------------------------------
 -- End User_Code
@@ -1214,8 +1214,8 @@ i_pattern_io_engine : entity work.pattern_io_engine
          rgnPhi_16 => rgnPhi_16,
          rgnPhi_17 => rgnPhi_17,
          MET_0 => MET_0,
-         MET_1 => MET_1,
-         MET_2 => MET_2
+         MET_1 => MET_1
+         --MET_2 => MET_2
 
        );
 
@@ -1501,7 +1501,7 @@ rgnPhi_17 <= s_INPUT_LINK_ARR( 22 )(95 downto 80);
 -- Output Links   
 s_OUTPUT_LINK_ARR( 0 )(15 downto 0) <= MET_0;
 s_OUTPUT_LINK_ARR( 0 )(31 downto 16) <= MET_1;
-s_OUTPUT_LINK_ARR( 0 )(47 downto 32) <= MET_2;
+--s_OUTPUT_LINK_ARR( 0 )(47 downto 32) <= MET_2;
 -----------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------
