@@ -347,7 +347,7 @@ int main(int argc, char **argv) {
 		printf("METy = %d\n",MET[1]);
 		printf("Theta = %d\n",MET[2]);
 
-		//writeLinkMapHT(rgnET, rgnPhi, MET);
+
 		return 0;
 
 }

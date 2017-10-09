@@ -1,0 +1,13 @@
+#
+# An unexpected error has occurred (11)
+#
+Stack:
+/lib64/libc.so.6() [0x33c9a32510]
+/lib64/libc.so.6(exit+0x35) [0x33c9a358e5]
+/opt/Xilinx/Vivado/2016.4/lib/lnx64.o/libgomp.so.1(+0x4d16) [0x7f634386ad16]
+/opt/Xilinx/Vivado/2016.4/lib/lnx64.o/libgomp.so.1(+0x8b88) [0x7f634386eb88]
+/opt/Xilinx/Vivado/2016.4/lib/lnx64.o/librdi_common.so(HCNSparseSolver::solveCG(HCNSparseSolver::PrecondType, HSTVector<HSTVector<double, std::allocator<double> >*, std::allocator<HSTVector<double, std::allocator<double> >*> >&, HSTVector<HSTVector<double, std::allocator<double> >*, std::allocator<HSTVector<double, std::allocator<double> >*> >&, HSTVector<unsigned int, std::allocator<unsigned int> >&, HSTVector<double, std::allocator<double> >&, unsigned int, unsigned int, double, double)+0x570) [0x7f63486b56b0]
+/opt/Xilinx/Vivado/2016.4/lib/lnx64.o/librdi_place.so(+0x142c119) [0x7f6321a33119]
+/opt/Xilinx/Vivado/2016.4/lib/lnx64.o/libgomp.so.1(+0x83d6) [0x7f634386e3d6]
+/lib64/libpthread.so.0() [0x33ca607aa1]
+/lib64/libc.so.6(clone+0x6d) [0x33c9ae8bcd]

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="hls_demo" xd:componentRef="hls_demo" xd:initiationInterval="6" xd:clockPeriod="4.160000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
+  <xd:arg xd:name="algo_config.cfg0" xd:originalName="algo_config" xd:direction="in" xd:interfaceRef="algo_config_cfg0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="32"/>
+  <xd:arg xd:name="algo_config.cfg1" xd:originalName="algo_config" xd:direction="in" xd:interfaceRef="algo_config_cfg1_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="16"/>
+  <xd:arg xd:name="algo_config.cfg2" xd:originalName="algo_config" xd:direction="in" xd:interfaceRef="algo_config_cfg2_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="algo_in.a" xd:originalName="algo_in" xd:direction="in" xd:interfaceRef="algo_in_a_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="5"/>
+  <xd:arg xd:name="algo_in.b" xd:originalName="algo_in" xd:direction="in" xd:interfaceRef="algo_in_b_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="20"/>
+  <xd:arg xd:name="algo_in.c" xd:originalName="algo_in" xd:direction="in" xd:interfaceRef="algo_in_c_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="31"/>
+  <xd:arg xd:name="algo_in.d" xd:originalName="algo_in" xd:direction="in" xd:interfaceRef="algo_in_d_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="19"/>
+  <xd:arg xd:name="algo_out.w" xd:originalName="algo_out" xd:direction="out" xd:interfaceRef="algo_out_w_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="25"/>
+  <xd:arg xd:name="algo_out.x" xd:originalName="algo_out" xd:direction="out" xd:interfaceRef="algo_out_x_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="18"/>
+  <xd:arg xd:name="algo_out.y" xd:originalName="algo_out" xd:direction="out" xd:interfaceRef="algo_out_y_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="32"/>
+  <xd:arg xd:name="algo_out.z" xd:originalName="algo_out" xd:direction="out" xd:interfaceRef="algo_out_z_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="9"/>
+  <xd:latencyEstimates xd:best-case="24" xd:worst-case="24" xd:average-case="24"/>
+  <xd:resourceEstimates xd:LUT="1151" xd:FF="1100" xd:BRAM="0" xd:DSP="2"/>
+</xd:acceleratorMap>
