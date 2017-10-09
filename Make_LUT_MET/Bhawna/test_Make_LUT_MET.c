@@ -71,7 +71,7 @@ bool writeLinkMapHT(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts], u
   return true;
 }
 
-bool writeInputFile(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts], bool last = false) {
+bool writeInputFile(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts], bool last) {
   static bool first = true;
   static int count = 0;
   static FILE *f1;
@@ -126,7 +126,7 @@ bool writeInputFile(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts], b
   return true;
 }
 
-bool writeOutputFile(uint16_t MET[3], bool last = false) {
+bool writeOutputFile(uint16_t MET[3], bool last) {
 
   static bool first = true;
   static int count = 0;
@@ -307,6 +307,7 @@ int main(int argc, char **argv) {
 		int iCrd;
 		int iRgn;
 		int i;
+		int event = 0;
 		for(iCrt = 0; iCrt < NCrts; iCrt++) {
 			for(iCrd = 0; iCrd < NCrds; iCrd++) {
 				for(iRgn = 0; iRgn < NRgns; iRgn++) {
@@ -318,8 +319,29 @@ int main(int argc, char **argv) {
 		}
 
 
+		bool last = false;
+		// Event loop - 170 events maximum can be written out
+
+		 for(event = 0; event < 170; event++) {
+
+		    // Mark last event
+		    if(event == 169) last = true;
+
+		    // Make test data
+
+		    if(!makeTestData(argc, argv, rgnET, rgnPhi)) return 999;
+
 		//Test code
 		Make_LUT_MET(rgnET,rgnPhi,MET);
+
+		// Save input and output
+		    if(!writeInputFile(rgnET, rgnPhi, last)) return 2;
+		    if(!writeOutputFile(MET, last)) return 3;
+		 }
+
+		 if(!writeLinkMapHT(rgnET, rgnPhi, MET)) return 4;
+
+		   printf("Test succeeded\n");
 
 		printf("METx = %d\n",MET[0]);
 		printf("METy = %d\n",MET[1]);
