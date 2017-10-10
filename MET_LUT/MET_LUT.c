@@ -33,13 +33,13 @@ iRgn:
 	{
 #pragma HLS UNROLL
 	iRgn1:
-	  for(int iRgn1 =0; iRgn1<NCrds*NRgns; iRgn1++)
+	  for(int iRgn1 =0; iRgn1 < (NCrds*NRgns); iRgn1++)
 	    {
 #pragma HLS UNROLL
 	      rgn_tmp[iRgn][iRgn1] = rgnET[iRgn * (NCrds*NRgns) + iRgn1];
 
 	    }
-	  rgn_read = rgnPhi[iRgn]*resolution;
+	  rgn_read = rgnPhi[iRgn]/resolution;
 	  rgnMETx[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * cosLUT[rgn_read]);
 	  rgnMETy[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * sineLUT[rgn_read]);
 	}
@@ -50,13 +50,13 @@ iRgn:
 
 	//This is the calculation to reach the appropriate element number in the atan2LUT
 
-	//	inr_x = (max_val_x/resolution_x) + (in_x/resolution_x);
-	//	inr_y = (max_val_y/resolution_y) + (in_y/resolution_y);
+	inr_x = (max_val_x/resolution_x) + (in_x/resolution_x);
+	inr_y = (max_val_y/resolution_y) + (in_y/resolution_y);
 
 	//This is the MET angle
 	MET[0] = in_x;
 	MET[1] = in_y;
-	// 	MET[2] = atan2LUT[inr_x][inr_y];
+	MET[2] = atan2LUT[inr_x][inr_y];
 
 }
 

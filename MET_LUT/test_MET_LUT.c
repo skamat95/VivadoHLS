@@ -176,7 +176,7 @@ bool writeOutputFile(uint16_t MET[3], bool last) {
   return true;
 
 }
-
+/*
 bool makeTestData(int argc, char** argv, uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts]) {
   static FILE *f1;
   static bool first = true;
@@ -294,7 +294,7 @@ bool makeTestData(int argc, char** argv, uint16_t rgnET[NCrts*NCrds*NRgns], uint
   }
   return true;
 }
-
+*/
 int main(int argc, char **argv) {
 
 	uint16_t rgnET[NCrts*NCrds*NRgns];
@@ -315,7 +315,7 @@ int main(int argc, char **argv) {
 					rgnET[i] = 1;
 				}
 			}
-			rgnPhi[iCrt] = 90;
+			rgnPhi[iCrt] = 46;
 		}
 
 
@@ -329,7 +329,7 @@ int main(int argc, char **argv) {
 
 		    // Make test data
 
-		    if(!makeTestData(argc, argv, rgnET, rgnPhi)) return 999;
+		    //if(!makeTestData(argc, argv, rgnET, rgnPhi)) return 999;
 
 		//Test code
 		MET_LUT(rgnET,rgnPhi,MET);

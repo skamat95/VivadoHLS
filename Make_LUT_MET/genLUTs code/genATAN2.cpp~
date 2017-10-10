@@ -32,15 +32,15 @@ int main(int argc, char** argv) {
 	    in_y += resolution_y;
 	      if(j == 0) 
 	    {
-		cout << "{" << showbase << internal << setw(6) << setfill('0') << hex << value << ",";
+		cout << "{" << showbase << internal << setw(6) << hex << value << ",";
 	    }
 	      else if(j!=size_y) 
 	    {
-		cout << showbase << internal << setw(6) << setfill('0') << hex << value << ",";
+		cout << showbase << internal << setw(6) << hex << value << ",";
 	    }
 	      else if(j=size_y) 
 	    {
-		cout << showbase << internal << setw(6) << setfill('0') << hex << value << "}";
+		cout << showbase << internal << setw(6) << hex << value << "}";
 	    }
 	}
 	in_x += resolution_x;
