@@ -1,0 +1,163 @@
+
+
+================================================================
+== Vivado HLS Report for 'Comp_rgn_et_14'
+================================================================
+* Date:           Tue Oct 10 16:00:47 2017
+
+* Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
+* Project:        MET_LUT
+* Solution:       solution1
+* Product family: virtex7
+* Target device:  xc7vx690tffg1927-2
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   4.16|      2.65|        0.52|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+----------+
+    |  Latency  |  Interval | Pipeline |
+    | min | max | min | max |   Type   |
+    +-----+-----+-----+-----+----------+
+    |    2|    2|    3|    3| function |
+    +-----+-----+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      -|       -|       -|
+|Expression       |        -|      -|       0|     128|
+|FIFO             |        -|      -|       -|       -|
+|Instance         |        -|      -|       -|       -|
+|Memory           |        -|      -|       -|       -|
+|Multiplexer      |        -|      -|       -|       1|
+|Register         |        -|      -|     211|       -|
++-----------------+---------+-------+--------+--------+
+|Total            |        0|      0|     211|     129|
++-----------------+---------+-------+--------+--------+
+|Available        |     2940|   3600|  866400|  433200|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |        0|      0|   ~0   |   ~0   |
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+-------+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |ap_return        |     +    |      0|  0|   8|          16|          16|
+    |tmp10_fu_130_p2  |     +    |      0|  0|   8|          16|          16|
+    |tmp11_fu_136_p2  |     +    |      0|  0|  16|          16|          16|
+    |tmp12_fu_142_p2  |     +    |      0|  0|   8|          16|          16|
+    |tmp13_fu_183_p2  |     +    |      0|  0|   8|          16|          16|
+    |tmp3_fu_148_p2   |     +    |      0|  0|   8|          16|          16|
+    |tmp4_fu_154_p2   |     +    |      0|  0|   8|          16|          16|
+    |tmp5_fu_160_p2   |     +    |      0|  0|   8|          16|          16|
+    |tmp6_fu_166_p2   |     +    |      0|  0|  16|          16|          16|
+    |tmp7_fu_172_p2   |     +    |      0|  0|   8|          16|          16|
+    |tmp8_fu_124_p2   |     +    |      0|  0|  16|          16|          16|
+    |tmp9_fu_178_p2   |     +    |      0|  0|   8|          16|          16|
+    |tmp_fu_188_p2    |     +    |      0|  0|   8|          16|          16|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |Total            |          |      0|  0| 128|         208|         208|
+    +-----------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------+----+-----------+-----+-----------+
+    |    Name   | LUT| Input Size| Bits| Total Bits|
+    +-----------+----+-----------+-----+-----------+
+    |ap_NS_fsm  |   1|          4|    1|          4|
+    +-----------+----+-----------+-----+-----------+
+    |Total      |   1|          4|    1|          4|
+    +-----------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------+----+----+-----+-----------+
+    |         Name        | FF | LUT| Bits| Const Bits|
+    +---------------------+----+----+-----+-----------+
+    |ap_CS_fsm            |   3|   0|    3|          0|
+    |ap_port_reg_p_read   |  16|   0|   16|          0|
+    |ap_port_reg_p_read1  |  16|   0|   16|          0|
+    |ap_port_reg_p_read2  |  16|   0|   16|          0|
+    |ap_port_reg_p_read3  |  16|   0|   16|          0|
+    |ap_port_reg_p_read4  |  16|   0|   16|          0|
+    |ap_port_reg_p_read5  |  16|   0|   16|          0|
+    |ap_port_reg_p_read6  |  16|   0|   16|          0|
+    |ap_port_reg_p_read7  |  16|   0|   16|          0|
+    |tmp12_reg_202        |  16|   0|   16|          0|
+    |tmp13_reg_217        |  16|   0|   16|          0|
+    |tmp4_reg_207         |  16|   0|   16|          0|
+    |tmp7_reg_212         |  16|   0|   16|          0|
+    |tmp8_reg_197         |  16|   0|   16|          0|
+    +---------------------+----+----+-----+-----------+
+    |Total                | 211|   0|  211|          0|
+    +---------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------+-----+-----+------------+----------------+--------------+
+| RTL Ports | Dir | Bits|  Protocol  |  Source Object |    C Type    |
++-----------+-----+-----+------------+----------------+--------------+
+|ap_clk     |  in |    1| ap_ctrl_hs | Comp_rgn_et_14 | return value |
+|ap_rst     |  in |    1| ap_ctrl_hs | Comp_rgn_et_14 | return value |
+|ap_start   |  in |    1| ap_ctrl_hs | Comp_rgn_et_14 | return value |
+|ap_done    | out |    1| ap_ctrl_hs | Comp_rgn_et_14 | return value |
+|ap_idle    | out |    1| ap_ctrl_hs | Comp_rgn_et_14 | return value |
+|ap_ready   | out |    1| ap_ctrl_hs | Comp_rgn_et_14 | return value |
+|ap_return  | out |   16| ap_ctrl_hs | Comp_rgn_et_14 | return value |
+|ap_ce      |  in |    1| ap_ctrl_hs | Comp_rgn_et_14 | return value |
+|p_read     |  in |   16|   ap_none  |     p_read     |    scalar    |
+|p_read1    |  in |   16|   ap_none  |     p_read1    |    scalar    |
+|p_read2    |  in |   16|   ap_none  |     p_read2    |    scalar    |
+|p_read3    |  in |   16|   ap_none  |     p_read3    |    scalar    |
+|p_read4    |  in |   16|   ap_none  |     p_read4    |    scalar    |
+|p_read5    |  in |   16|   ap_none  |     p_read5    |    scalar    |
+|p_read6    |  in |   16|   ap_none  |     p_read6    |    scalar    |
+|p_read7    |  in |   16|   ap_none  |     p_read7    |    scalar    |
+|p_read8    |  in |   16|   ap_none  |     p_read8    |    scalar    |
+|p_read9    |  in |   16|   ap_none  |     p_read9    |    scalar    |
+|p_read10   |  in |   16|   ap_none  |    p_read10    |    scalar    |
+|p_read11   |  in |   16|   ap_none  |    p_read11    |    scalar    |
+|p_read12   |  in |   16|   ap_none  |    p_read12    |    scalar    |
+|p_read13   |  in |   16|   ap_none  |    p_read13    |    scalar    |
++-----------+-----+-----+------------+----------------+--------------+
+
