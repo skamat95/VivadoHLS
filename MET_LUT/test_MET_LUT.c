@@ -105,7 +105,7 @@ bool writeInputFile(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts], b
 	  item1 = rgnET[iRgn + 1];
 	}
       }
-      else if(i < 33) {
+      else if(i < 23) {
 	iRgn1 = i * 12 + j * 2;
 	if(iRgn1 < NCrts) {
 	  item0 = rgnPhi[iRgn1];
@@ -176,7 +176,7 @@ bool writeOutputFile(uint16_t MET[3], bool last) {
   return true;
 
 }
-/*
+
 bool makeTestData(int argc, char** argv, uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts]) {
   static FILE *f1;
   static bool first = true;
@@ -188,113 +188,20 @@ bool makeTestData(int argc, char** argv, uint16_t rgnET[NCrts*NCrds*NRgns], uint
   uint32_t value = 0;
   char junk[1024];
   char pattern[64];
-  if(argc >= 2) {
-    strncpy(pattern, argv[1], 64);
-  }
-  else {
-    strcpy(pattern, "--default");
-  }
-  if(strncmp(pattern, "--random", strlen(pattern)) == 0) {
+
+
+
+    // Default test data; Construct it using indices for the fun of it!
     for(iRgn = 0; iRgn < NCrts * NCrds * NRgns; iRgn++) {
-      rgnET[iRgn] = 0x01;
+      rgnET[iRgn] = 1;
     }
     for(iRgn1 = 0; iRgn1 < NCrts; iRgn1++) {
       rgnPhi[iRgn1] = 90;
     }
-  }
-  else if(strncmp(pattern, "--increasing", strlen(pattern)) == 0) {
-    value = 0;
-    for(iRgn = 0; iRgn < NCrts * NCrds * NRgns; iRgn++) {
-      rgnET[iRgn] = value++;
-    }
-    value = 0;
-    for(iRgn1 = 0; iRgn1 < NCrts ; iRgn1++) {
-      rgnPhi[iRgn1] = value++;
-    }
-  }
-  else if(strncmp(pattern, "--decreasing", strlen(pattern)) == 0) {
-    value = NCrts * NCrds * NRgns;
-    for(iRgn = 0; iRgn < NCrts * NCrds * NRgns; iRgn++) {
-      rgnET[iRgn] = value--;
-    }
-    value = NCrts;
-    for(iRgn1 = 0; iRgn1 < NCrts; iRgn1++) {
-      rgnPhi[iRgn1] = value--;
-    }
-  }
-  else if(strncmp(pattern, "--constant", strlen(pattern)) == 0) {
-    value = 0;
-    if(argc == 3) value = atoi(argv[2]);
-    for(iRgn = 0; iRgn < NCrts * NCrds * NRgns; iRgn++) {
-      rgnET[iRgn] = value;
-    }
-    for(iRgn1 = 0; iRgn1 < NCrts; iRgn1++) {
-      rgnPhi[iRgn1] = value;
-    }
-  }
-  else if(strncmp(pattern, "--fileinput", strlen(pattern)) == 0) {
-    if(first) {
-      first = false;
-      // Open file
-      if(argc == 3) f1 = fopen(argv[2], "r");
-      else f1 = fopen("fileinput.txt", "r");
-      // Skip three header lines
-      for(i = 0; i < 3; i++) {
-	if(fgets(junk, sizeof(junk), f1) == NULL) {
-	  fprintf(stderr, "Aborting due to bad format of the input file header\n");
-	  return false;
-	}
-      }
-    }
-    for(j = 0; j < 6; j++) {
-      if(fscanf(f1, "%X", &count) == 1) {
-	if(j != (count % 6)) {
-	  fprintf(stderr, "Read error~?!\n");
-	  return false;
-	}
-	for(i = 0; i < 67; i++) {
-	  if(fscanf(f1, "%X", &value) == 1) {
-	    item0 = value & 0xFFFF;
-	    item1 = value >> 16;
-	    if(i < 21) {
-	      iRgn = i * 12 + j * 2;
-	      if(iRgn < NCrts * NCrds * NRgns) {
-		rgnET[iRgn] = item0;
-		rgnET[iRgn + 1] = item1;
-	      }
-	    }
-	    else if(i < 33) {
-	      iRgn1 = i * 12 + j * 2;
-	      if(iRgn1 < NCrts) {
-		rgnPhi[iRgn1] = item0;
-		rgnPhi[iRgn1 + 1] = item1;
-	      }
-	    }
-	  }
-	  else {
-	    fprintf(stderr, "Error reading value\n");
-	    return false;
-	  }
-	}
-      }
-      else {
-	fprintf(stderr, "Error reading count\n");
-	return false;
-      }
-    }
-  }
-  else {
-    // Default test data; Construct it using indices for the fun of it!
-    for(iRgn = 0; iRgn < NCrts * NCrds * NRgns; iRgn++) {
-      rgnET[iRgn] = iRgn / 2;
-    }
-    for(iRgn1 = 0; iRgn1 < NCrts; iRgn1++) {
-      rgnPhi[iRgn1] = iRgn1;
-    }
-  }
+
   return true;
 }
-*/
+
 int main(int argc, char **argv) {
 
 	uint16_t rgnET[NCrts*NCrds*NRgns];
@@ -308,6 +215,7 @@ int main(int argc, char **argv) {
 		int iRgn;
 		int i;
 		int event = 0;
+		/*
 		for(iCrt = 0; iCrt < NCrts; iCrt++) {
 			for(iCrd = 0; iCrd < NCrds; iCrd++) {
 				for(iRgn = 0; iRgn < NRgns; iRgn++) {
@@ -317,7 +225,7 @@ int main(int argc, char **argv) {
 			}
 			rgnPhi[iCrt] = 46;
 		}
-
+	*/
 
 		bool last = false;
 		// Event loop - 170 events maximum can be written out
@@ -329,7 +237,7 @@ int main(int argc, char **argv) {
 
 		    // Make test data
 
-		    //if(!makeTestData(argc, argv, rgnET, rgnPhi)) return 999;
+		    if(!makeTestData(argc, argv, rgnET, rgnPhi)) return 999;
 
 		//Test code
 		MET_LUT(rgnET,rgnPhi,MET);
