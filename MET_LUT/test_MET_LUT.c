@@ -76,7 +76,7 @@ bool writeInputFile(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts], b
   static int count = 0;
   static FILE *f1;
   int i,j;
-  int iRgn, iRgn1;
+  int iRgn = 0, iRgn1 = 0;
   uint16_t item0 = 0;
   uint16_t item1 = 0;
   if(first) {
@@ -93,6 +93,7 @@ bool writeInputFile(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts], b
     fprintf(f1,"\n");
     for (i=0; i < 945; i++) fprintf(f1,"=");
   }
+
   for(j = 0; j < 6 && count < 1024; j++, count++) {
     fprintf(f1,"\n0x%05X", count);
     for(i=0; i< 67; i++) {
@@ -106,10 +107,12 @@ bool writeInputFile(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts], b
 	}
       }
       else if(i < 23) {
-	iRgn1 = i * 12 + j * 2;
+	if (i == 21) iRgn1 = j * 2;
+	if (i == 22) iRgn1 = 12 + j * 2;
 	if(iRgn1 < NCrts) {
 	  item0 = rgnPhi[iRgn1];
 	  item1 = rgnPhi[iRgn1 + 1];
+
 	}
       }
       fprintf(f1,"    0x%04X%04X", item1, item0);
@@ -193,7 +196,7 @@ bool makeTestData(int argc, char** argv, uint16_t rgnET[NCrts*NCrds*NRgns], uint
 
     // Default test data; Construct it using indices for the fun of it!
     for(iRgn = 0; iRgn < NCrts * NCrds * NRgns; iRgn++) {
-      rgnET[iRgn] = 1;
+      rgnET[iRgn] = 6;
     }
     for(iRgn1 = 0; iRgn1 < NCrts; iRgn1++) {
       rgnPhi[iRgn1] = 90;
