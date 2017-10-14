@@ -1,6 +1,6 @@
 #include <stdint.h>
-#include <math.h>
-#include "Make_LUT_MET.h"
+#include "hls_math.h"
+#include "Make_LUT_MET.hh"
 
 
 

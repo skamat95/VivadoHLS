@@ -14,6 +14,9 @@
 #define resolution_x 5
 #define resolution_y 5
 
+#include "ap_int.h"
+#define uint12_t ap_uint<12>
+
 #include <stdint.h>
 #include <math.h>
 #include "sine.h"
@@ -21,9 +24,9 @@
 //#include "atan2.h"
 #include "atan2_head.h"
 
-void MET_O(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t rgnPhi[NCrts],uint16_t MET[3]);
+void MET_O(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t MET[3]);
 
-uint16_t Comp_rgn_et_14(uint16_t arr_i[NCrds*NRgns]);
+uint16_t Comp_rgn_et_14(uint12_t arr_i[NCrds*NRgns]);
 int Comp_rgn_et(uint16_t arr_i[NCrts]);
 
 #endif

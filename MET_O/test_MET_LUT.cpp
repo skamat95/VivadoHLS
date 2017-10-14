@@ -196,11 +196,9 @@ bool makeTestData(int argc, char** argv, uint16_t rgnET[NCrts*NCrds*NRgns], uint
 
     // Default test data; Construct it using indices for the fun of it!
     for(iRgn = 0; iRgn < NCrts * NCrds * NRgns; iRgn++) {
-      rgnET[iRgn] = 6;
+      rgnET[iRgn] = 01;;
     }
-    for(iRgn1 = 0; iRgn1 < NCrts; iRgn1++) {
-      rgnPhi[iRgn1] = 90;
-    }
+
 
   return true;
 }
@@ -243,7 +241,7 @@ int main(int argc, char **argv) {
 		    if(!makeTestData(argc, argv, rgnET, rgnPhi)) return 999;
 
 		//Test code
-		MET_O(rgnET,rgnPhi,MET);
+		MET_O(rgnET, MET);
 
 		// Save input and output
 		    if(!writeInputFile(rgnET, rgnPhi, last)) return 2;

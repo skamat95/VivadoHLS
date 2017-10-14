@@ -1,16 +1,15 @@
 #include <stdint.h>
 #include <math.h>
 #include "MET_LUT.h"
+#include "ap_int.h"
 
-
-
-void MET_O(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t towerPhi[NCrts*NTwrs],uint16_t MET[3])
+void MET_O(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t MET[3])
 {
 
 #pragma HLS PIPELINE II=6
 
 #pragma HLS ARRAY_PARTITION variable=MET complete dim=0
-#pragma HLS ARRAY_PARTITION variable=rgnPhi complete dim=0
+#pragma HLS ARRAY_PARTITION variable=towerPhi complete dim=0
 #pragma HLS ARRAY_PARTITION variable=rgnET complete dim=0
 
 
@@ -36,12 +35,12 @@ iRgn:
 	  for(int iRgn1 =0; iRgn1 < (NCrds*NRgns); iRgn1++)
 	    {
 #pragma HLS UNROLL
-	      rgn_tmp[iRgn][iRgn1] = rgnET[iRgn * (NCrds*NRgns) + iRgn1];
+	      rgn_tmp[iRgn][iRgn1] = rgnET[iRgn * (NCrds*NRgns) + iRgn1] && 0x0FFF;
 
 	    }
-	  rgn_read = rgnPhi[iRgn]/resolution;
-	  rgnMETx[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * cosLUT[rgn_read]);
-	  rgnMETy[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * sineLUT[rgn_read]);
+	  rgn_read = rgnET[iRgn] && 0xC000;
+	  rgnMETx[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * cosLUT[NCrts][rgn_read]);
+	  rgnMETy[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * sineLUT[NCrts][rgn_read]);
 	}
 
 	//MET vector magnitude in X(MET[0]) and Y(MET[1]) direction separately

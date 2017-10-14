@@ -7,7 +7,7 @@
 
 
 #include <stdint.h>
-#include <math.h>
+//#include <hls_math.h>
 //#include "sine.h"
 //#include "cos.h"
 //#include "atan2.h"

@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <math.h>
-#include "Make_LUT_MET.h"
+#include "Make_LUT_MET.hh"
 
 
 #define NCrts 18
@@ -329,7 +329,7 @@ int main(int argc, char **argv) {
 
 		    // Make test data
 
-		    if(!makeTestData(argc, argv, rgnET, rgnPhi)) return 999;
+		    //if(!makeTestData(argc, argv, rgnET, rgnPhi)) return 999;
 
 		//Test code
 		Make_LUT_MET(rgnET,rgnPhi,MET);
