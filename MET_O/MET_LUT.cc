@@ -39,8 +39,8 @@ iRgn:
 
 	    }
 	  rgn_read = rgnET[iRgn] && 0xC000;
-	  rgnMETx[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * cosLUT[NCrts][rgn_read]);
-	  rgnMETy[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * sineLUT[NCrts][rgn_read]);
+	  //rgnMETx[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * cosLUT[NCrts][rgn_read]);
+	 // rgnMETy[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * sineLUT[NCrts][rgn_read]);
 	}
 
 	//MET vector magnitude in X(MET[0]) and Y(MET[1]) direction separately
@@ -55,7 +55,7 @@ iRgn:
 	//This is the MET angle
 	MET[0] = in_x;
 	MET[1] = in_y;
-	MET[2] = atan2LUT[inr_x][inr_y];
+	//MET[2] = atan2LUT[inr_x][inr_y];
 
 }
 
