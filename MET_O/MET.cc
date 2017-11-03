@@ -3,24 +3,18 @@
 #include "MET_LUT.h"
 //#include "ap_int.h"
 
-void MET_O(uint16_t rgnET[NCrts*NCrds*NRgns], uint16_t MET[3])
+void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], uint16_t MET[3])
 {
 
 #pragma HLS PIPELINE II=6
-
 #pragma HLS ARRAY_PARTITION variable=MET complete dim=0
-#pragma HLS ARRAY_PARTITION variable=towerPhi complete dim=0
-#pragma HLS ARRAY_PARTITION variable=rgnET complete dim=0
+#pragma HLS ARRAY_PARTITION variable=rgn_in complete dim=0
 
-
-  uint16_t rgn_tmp[NCrts][NCrds*NRgns];
-
-#pragma HLS ARRAY_PARTITION variable=rgn_tmp complete dim=0
-
+	uint16_t rgn_ET, tower_phi, rgn_tmp;
 	int inr_x, inr_y;
-	uint16_t rgnMETx[NCrts];
-	uint16_t rgnMETy[NCrts];
-	int rgn_read = 0;
+	uint16_t rgnMETx = 0;
+	uint16_t rgnMETy = 0;
+	
 
 #pragma HLS ARRAY_PARTITION variable=rgnMETx complete dim=1
 #pragma HLS ARRAY_PARTITION variable=rgnMETy complete dim=1
@@ -32,69 +26,39 @@ iRgn:
 	{
 #pragma HLS UNROLL
 	iRgn1:
+		uint16_t rgn_sum[4] = 0;
+		#pragma HLS ARRAY_PARTITION variable=rgn_sum complete dim=1
 	  for(int iRgn1 =0; iRgn1 < (NCrds*NRgns); iRgn1++)
 	    {
 #pragma HLS UNROLL
-	      rgn_tmp[iRgn][iRgn1] = rgnET[iRgn * (NCrds*NRgns) + iRgn1] && 0x0FFF;
-
+	      rgn_tmp = rgnET[iRgn * (NCrds*NRgns) + iRgn1] && 0x0FFF;
+		  tower_phi = rgnET[iRgn * (NCrds*NRgns) + iRgn1] && 0xC000;
+		  if(tower_phi == 0) rgn_sum[0] += rgn_tmp;
+		  else if(tower_phi == 1) rgn_sum[1] += rgn_tmp;
+		  else if(tower_phi == 2) rgn_sum[2] += rgn_tmp;
+		  else if(tower_phi == 3) rgn_sum[3] += rgn_tmp;
 	    }
-	  rgn_read = rgnET[iRgn] && 0xC000;
-	  rgnMETx[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * cosLUT[NCrts][rgn_read]);
-	  rgnMETy[iRgn] = ((Comp_rgn_et_14(rgn_tmp[iRgn])) * sineLUT[NCrts][rgn_read]);
+		for(int itwr = 0; itwr < NTwrs; itwr++)
+		{
+			rgnMETx += rgn_sum[itwr] * cosLUT[NCrts][itwr];
+			rgnMETy += rgn_sum[itwr] * sinLUT[NCrts][itwr];
+		}
+
 	}
 
-	//MET vector magnitude in X(MET[0]) and Y(MET[1]) direction separately
-	int in_x = Comp_rgn_et(rgnMETx);
-	int in_y = Comp_rgn_et(rgnMETy);
+	
 
 	//This is the calculation to reach the appropriate element number in the atan2LUT
 
-	inr_x = (max_val_x/resolution_x) + (in_x/resolution_x);
-	inr_y = (max_val_y/resolution_y) + (in_y/resolution_y);
+	inr_x = (max_val_x/resolution_x) + (rgnMETx/resolution_x);
+	inr_y = (max_val_y/resolution_y) + (rgnMETy/resolution_y);
 
 	//This is the MET angle
-	MET[0] = in_x;
-	MET[1] = in_y;
+	MET[0] = rgnMETx;
+	MET[1] = rgnMETy;
 	MET[2] = atan2LUT[inr_x][inr_y];
 
 }
 
 
 
-uint16_t Comp_rgn_et_14(uint16_t arr_i[NCrds*NRgns])
-{
-#pragma HLS PIPELINE II=6
-
-#pragma HLS ARRAY_PARTITION variable=arr_i complete dim=1
-
-  uint16_t tmp = 0;
-
- add: for (int i = 0; i < (NCrds*NRgns); i++)
-    {
-#pragma HLS UNROLL
-      uint16_t et_reg = arr_i[i];
-
-      tmp += et_reg;
-    }
-
-  return tmp;
-}
-
-int Comp_rgn_et(uint16_t arr_i[NCrts])
-{
-#pragma HLS PIPELINE II=6
-
-#pragma HLS ARRAY_PARTITION variable=arr_i complete dim=1
-
-  int tmp = 0;
-
- add1: for (int i = 0; i < NCrts; i++)
-    {
-#pragma HLS UNROLL
-      uint16_t et_reg = arr_i[i];
-
-      tmp += et_reg;
-    }
-
-  return tmp;
-}
