@@ -14,10 +14,7 @@ void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], uint16_t MET[3])
 	int inr_x, inr_y;
 	uint16_t rgnMETx = 0;
 	uint16_t rgnMETy = 0;
-	
 
-#pragma HLS ARRAY_PARTITION variable=rgnMETx complete dim=1
-#pragma HLS ARRAY_PARTITION variable=rgnMETy complete dim=1
 
 
 
@@ -26,8 +23,8 @@ iRgn:
 	{
 #pragma HLS UNROLL
 	iRgn1:
-		uint16_t rgn_sum[4] = 0;
-		#pragma HLS ARRAY_PARTITION variable=rgn_sum complete dim=1
+		uint16_t rgn_sum[4] = {0,0,0,0};
+#pragma HLS ARRAY_PARTITION variable=rgn_sum complete dim=0
 	  for(int iRgn1 =0; iRgn1 < (NCrds*NRgns); iRgn1++)
 	    {
 #pragma HLS UNROLL
@@ -40,8 +37,9 @@ iRgn:
 	    }
 		for(int itwr = 0; itwr < NTwrs; itwr++)
 		{
-			rgnMETx += rgn_sum[itwr] * cosLUT[NCrts][itwr];
-			rgnMETy += rgn_sum[itwr] * sinLUT[NCrts][itwr];
+#pragma HLS UNROLL
+			rgnMETx += (int)(rgn_sum[itwr] * cosLUT[NCrts][itwr]);
+			rgnMETy += (int)(rgn_sum[itwr] * sineLUT[NCrts][itwr]);
 		}
 
 	}
@@ -50,13 +48,13 @@ iRgn:
 
 	//This is the calculation to reach the appropriate element number in the atan2LUT
 
-	inr_x = (max_val_x/resolution_x) + (rgnMETx/resolution_x);
-	inr_y = (max_val_y/resolution_y) + (rgnMETy/resolution_y);
+	//inr_x = (max_val_x/resolution_x) + (rgnMETx/resolution_x);
+	//inr_y = (max_val_y/resolution_y) + (rgnMETy/resolution_y);
 
 	//This is the MET angle
 	MET[0] = rgnMETx;
 	MET[1] = rgnMETy;
-	MET[2] = atan2LUT[inr_x][inr_y];
+	MET[2] = cosLUT[0][3];//atan2LUT[inr_x][inr_y];
 
 }
 

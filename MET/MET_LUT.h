@@ -19,10 +19,10 @@
 
 #include <stdint.h>
 #include <math.h>
-#include "sine.h"
-#include "cos.h"
+#include "sinee.h"
+#include "coss.h"
 //#include "atan2.h"
-#include "atan2_head.h"
+//#include "atan2_head.h"
 
 void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], uint16_t MET[3]);
 
