@@ -40,23 +40,16 @@ iRgn:
 		{
 #pragma HLS UNROLL
 			uint16_t phi_read = (NCrts * 20) + ((NTwrs+1) * 2.5);
-			rgnMETx += (int)(rgn_sum[itwr] * cos(phi_read*(pi/180)));
-			rgnMETy += (int)(rgn_sum[itwr] * sin(phi_read*(pi/180)));
+			rgnMETx += (rgn_sum[itwr] * cos(phi_read*(pi/180)));
+			rgnMETy += (rgn_sum[itwr] * sin(phi_read*(pi/180)));
 		}
 
 	}
 
 	
-
-	//This is the calculation to reach the appropriate element number in the atan2LUT
-
-	//inr_x = (max_val_x/resolution_x) + (rgnMETx/resolution_x);
-	//inr_y = (max_val_y/resolution_y) + (rgnMETy/resolution_y);
-
-	//This is the MET angle
 	MET[0] = rgnMETx;
 	MET[1] = rgnMETy;
-	//MET[2] = cosLUT[0][3];//atan2LUT[inr_x][inr_y];
+	//MET[2] = atan2(rgnMETy,rgnMETx);
 
 }
 

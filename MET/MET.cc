@@ -12,11 +12,7 @@ void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], uint16_t MET[3])
 
 	uint16_t rgn_ET, tower_phi, rgn_tmp;
 	int inr_x, inr_y;
-	uint16_t rgnMETx = 0;
-	uint16_t rgnMETy = 0;
-
-
-
+	uint16_t rgnMET_out[2] = {0,0};
 
 iRgn:
 	for(int iRgn = 0; iRgn < NCrts; iRgn++)
@@ -35,26 +31,20 @@ iRgn:
 		  else if(tower_phi == 2) rgn_sum[2] += rgn_tmp;
 		  else if(tower_phi == 3) rgn_sum[3] += rgn_tmp;
 	    }
-		for(int itwr = 0; itwr < NTwrs; itwr++)
-		{
-#pragma HLS UNROLL
-			rgnMETx += (int)(rgn_sum[itwr] * cosLUT[NCrts][itwr]);
-			rgnMETy += (int)(rgn_sum[itwr] * sineLUT[NCrts][itwr]);
-		}
+	  for(int itwr = 0; itwr < NTwrs; itwr++)
+	  	{
+	  #pragma HLS UNROLL
+	  		rgnMET_out[0] += (rgn_sum[itwr] * cosLUT[NCrts][itwr]);
+	  		rgnMET_out[1] += (rgn_sum[itwr] * sineLUT[NCrts][itwr]);
+	  	}
+
 
 	}
 
-	
 
-	//This is the calculation to reach the appropriate element number in the atan2LUT
-
-	//inr_x = (max_val_x/resolution_x) + (rgnMETx/resolution_x);
-	//inr_y = (max_val_y/resolution_y) + (rgnMETy/resolution_y);
-
-	//This is the MET angle
-	MET[0] = rgnMETx;
-	MET[1] = rgnMETy;
-	MET[2] = cosLUT[0][3];//atan2LUT[inr_x][inr_y];
+	MET[0] = rgnMET_out[0];
+	MET[1] = rgnMET_out[1];
+	//MET[2] = atan2LUT[inr_x][inr_y];
 
 }
 

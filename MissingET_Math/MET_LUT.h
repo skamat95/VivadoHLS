@@ -19,8 +19,8 @@
 
 #include <stdint.h>
 #include <hls_math.h>
-#include "sinee.h"
-#include "coss.h"
+//#include "sinee.h"
+//#include "coss.h"
 //#include "atan2.h"
 //#include "atan2_head.h"
 
