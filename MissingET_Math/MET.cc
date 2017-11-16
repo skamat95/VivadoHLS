@@ -1,8 +1,10 @@
 #include <stdint.h>
-#include <hls_math.h>
+#include <ap_fixed.h>
+#include <ap_int.h>
+#include "hls_math.h"
 #include "MET_LUT.h"
 #define pi acos(-1)
-//#include "ap_int.h"
+
 
 void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], uint16_t MET[2])
 {
@@ -16,6 +18,7 @@ void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], uint16_t MET[2])
 	uint16_t rgnMETx = 0;
 	uint16_t rgnMETy = 0;
 
+	float conversion_factor = pi/180.0;
 
 
 
@@ -39,9 +42,9 @@ iRgn:
 		for(int itwr = 0; itwr < NTwrs; itwr++)
 		{
 #pragma HLS UNROLL
-			uint16_t phi_read = (NCrts * 20) + ((NTwrs+1) * 2.5);
-			rgnMETx += (rgn_sum[itwr] * cos(phi_read*(pi/180)));
-			rgnMETy += (rgn_sum[itwr] * sin(phi_read*(pi/180)));
+			float phi_read = (NCrts * 20) + ((NTwrs+1) * 2.5);
+			rgnMETx += (int)(rgn_sum[itwr] * hls::cos(phi_read*conversion_factor));
+			rgnMETy += (int)(rgn_sum[itwr] * hls::sin(phi_read*conversion_factor));
 		}
 
 	}

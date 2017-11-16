@@ -6,19 +6,11 @@
 #define NRgns 2
 #define NTwrs 4
 
-
-
-//ATAN2 LUT
-#define max_val_x 300
-#define max_val_y 300
-#define resolution_x 5
-#define resolution_y 5
-//#define pi acos(-1)
 //#include "ap_int.h"
-//#define uint12_t ap_uint<12>
+//#define uint16_t ap_uint<16>
 
 #include <stdint.h>
-#include <hls_math.h>
+//#include <hls_math.h>
 //#include "sinee.h"
 //#include "coss.h"
 //#include "atan2.h"
