@@ -7,6 +7,7 @@
 #include "MET_LUT.h"
 #include <ap_fixed.h>
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 using namespace std;
 
@@ -24,14 +25,15 @@ bool write_genSINE() {
 	float conversion_factor = pi/180.0;
 
 
-	static FILE *f1;
-	f1 = fopen("sine1.h","w");
-	std::cout << "output" ;
+	ofstream f1;
+	f1.open("sine1.h");
 
-	fprintf(f1, "#ifndef sineLUTs_h\n");
-	fprintf(f1, "#define sineLUTs_h\n");
-	fprintf(f1, "#include <stdint.h>\n");
-	fprintf(f1, "static const ap_fixed<10,9> sineLUT[18][4]\n");
+
+	f1 << "#ifndef sineLUTs_h\n";
+	f1 << "#define sineLUTs_h\n";
+	f1 << "#include <stdint.h>\n";
+	f1 << "static const ap_fixed<10,9> sineLUT[18][4]{\n";
+
 	for(int i = 1; i <= NCrts; i ++)
 	{
 		for(int j = 1; j <= NTwrs; j++)
@@ -39,34 +41,34 @@ bool write_genSINE() {
 
 			angle += 2.5;
 			value = sin(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
-			//printf("%.1f",value);
+
 			if(j == 1)
 			{
-				std::cout << "{" << showbase << internal << setw(6) << hex << value << ",";
-				//fprintf(f1, "{");
-				//fprintf(f1, "%.1f,",value);
+				f1 << "{" << showbase << internal << setw(6) << hex << value << ",";
+
 			}
 			  else if(j != NTwrs)
 			{
-				  cout << showbase << internal << setw(6) << hex << value << ",";
-				  //fprintf(f1, "%.1f,",value);
+				  f1 << showbase << internal << setw(6) << hex << value << ",";
+
 			}
 			  else if(j == NTwrs)
 			{
-				  cout << showbase << internal << setw(6) << hex << value << "}";
-				  //fprintf(f1, "%.1f}",value);
+				  f1 << showbase << internal << setw(6) << hex << value << "}";
+
 			}
 
 		}
 		if(i != NCrts)
 		{
-			fprintf(f1, ",");
+			f1 << ",";
 		}
 
 	}
 
-	fprintf(f1, "};\n");
-	fprintf(f1, "#endif");
+	f1 << "};\n";
+	f1 << "#endif";
+	f1.close();
 	return true;
 
 }
