@@ -6,11 +6,130 @@
 #include <math.h>
 #include "MET_LUT.h"
 
+#include <ap_fixed.h>
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+using namespace std;
 
 #define NCrts 18
 #define NCrds 7
 #define NRgns 2
+#define NTwrs 4
 
+bool write_genSINE() {
+	//To generate sin LUT
+	float pi = acos(-1.0);
+	ap_fixed<5,1> value;
+	double angle = 2.5;
+	float conversion_factor = pi/180.0;
+
+
+	ofstream f1;
+	f1.open("sine1.h");
+
+
+	f1 << "#ifndef sineLUTs_h\n";
+	f1 << "#define sineLUTs_h\n";
+	f1 << "#include <stdint.h>\n";
+	f1 << "static const ap_fixed<5,1> sineLUT[18][4]{\n";
+
+	for(int i = 1; i <= NCrts; i ++)
+	{
+		for(int j = 1; j <= NTwrs; j++)
+		{
+
+			angle += 5;
+			value = (ap_fixed<5,1>)sin(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
+
+			//printf("%f\n",value);
+			if(j == 1)
+			{
+				f1 << "{" << showbase << internal << setw(8) << setprecision(4) << hex << value << ",";
+
+			}
+			  else if(j != NTwrs)
+			{
+				  f1 << showbase << internal << setw(8) << setprecision(4) << hex << value << ",";
+
+			}
+			  else if(j == NTwrs)
+			{
+				  f1 << showbase << internal << setw(8) << setprecision(4) << hex << value << "}";
+
+			}
+
+		}
+		if(i != NCrts)
+		{
+			f1 << ",";
+		}
+
+	}
+
+	f1 << "};\n";
+	f1 << "#endif";
+	f1.close();
+	return true;
+
+}
+
+bool write_genCOS() {
+	//To generate cos LUT
+	float pi = acos(-1.0);
+	ap_fixed<5,1> value;
+	double angle = 0;
+	float conversion_factor = pi/180.0;
+
+
+	ofstream f1;
+	f1.open("cos1.h");
+
+
+	f1 << "#ifndef cosLUTs_h\n";
+	f1 << "#define cosLUTs_h\n";
+	f1 << "#include <stdint.h>\n";
+	f1 << "static const ap_fixed<5,1> cosLUT[18][4]{\n";
+
+	for(int i = 1; i <= NCrts; i ++)
+	{
+		for(int j = 1; j <= NTwrs; j++)
+		{
+
+			angle += 2.5;
+			value = (ap_fixed<5,1>)cos(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
+
+			//printf("%f\n",value);
+			if(j == 1)
+			{
+				f1 << "{" << showbase << internal << setw(8) << setprecision(4) << hex << value << ",";
+
+			}
+			  else if(j != NTwrs)
+			{
+				  f1 << showbase << internal << setw(8) << setprecision(4) << hex << value << ",";
+
+			}
+			  else if(j == NTwrs)
+			{
+				  f1 << showbase << internal << setw(8) << setprecision(4) << hex << value << "}";
+
+			}
+
+		}
+		if(i != NCrts)
+		{
+			f1 << ",";
+		}
+
+	}
+
+	f1 << "};\n";
+	f1 << "#endif";
+	f1.close();
+	return true;
+
+}
 
 bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], uint16_t MET[3]) {
   // This code is to write suitable mapping of inputs to signals in the CTP7_HLS project from Ales
@@ -201,6 +320,8 @@ int main(int argc, char **argv) {
 	uint16_t rgnPhi[NCrts];
 	uint16_t MET[3];
 
+	bool success_sin = write_genSINE();
+	bool success_cos = write_genCOS();
 		// Test data; Construct it using indices for the fun of it
 
 		int iCrt;
