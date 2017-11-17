@@ -20,7 +20,7 @@ using namespace std;
 bool write_genSINE() {
 	//To generate sin LUT
 	float pi = acos(-1.0);
-	ap_fixed<5,1> value;
+	ap_fixed<3,1> value;
 	double angle = 2.5;
 	float conversion_factor = pi/180.0;
 
@@ -40,22 +40,22 @@ bool write_genSINE() {
 		{
 
 			angle += 5;
-			value = (ap_fixed<5,1>)sin(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
+			value = (ap_fixed<3,1>)sin(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
 
 			//printf("%f\n",value);
 			if(j == 1)
 			{
-				f1 << "{" << showbase << internal << setw(8) << setprecision(4) << hex << value << ",";
+				f1 << "{" << showbase << internal << setw(4) << setprecision(1) << hex << value << ",";
 
 			}
 			  else if(j != NTwrs)
 			{
-				  f1 << showbase << internal << setw(8) << setprecision(4) << hex << value << ",";
+				  f1 << showbase << internal << setw(4) << setprecision(1) << hex << value << ",";
 
 			}
 			  else if(j == NTwrs)
 			{
-				  f1 << showbase << internal << setw(8) << setprecision(4) << hex << value << "}";
+				  f1 << showbase << internal << setw(4) << setprecision(1) << hex << value << "}";
 
 			}
 
@@ -77,7 +77,7 @@ bool write_genSINE() {
 bool write_genCOS() {
 	//To generate cos LUT
 	float pi = acos(-1.0);
-	ap_fixed<5,1> value;
+	ap_fixed<3,1> value;
 	double angle = 0;
 	float conversion_factor = pi/180.0;
 
@@ -97,22 +97,22 @@ bool write_genCOS() {
 		{
 
 			angle += 2.5;
-			value = (ap_fixed<5,1>)cos(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
+			value = (ap_fixed<3,1>)cos(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
 
 			//printf("%f\n",value);
 			if(j == 1)
 			{
-				f1 << "{" << showbase << internal << setw(8) << setprecision(4) << hex << value << ",";
+				f1 << "{" << showbase << internal << setw(4) << setprecision(1) << hex << value << ",";
 
 			}
 			  else if(j != NTwrs)
 			{
-				  f1 << showbase << internal << setw(8) << setprecision(4) << hex << value << ",";
+				  f1 << showbase << internal << setw(4) << setprecision(1) << hex << value << ",";
 
 			}
 			  else if(j == NTwrs)
 			{
-				  f1 << showbase << internal << setw(8) << setprecision(4) << hex << value << "}";
+				  f1 << showbase << internal << setw(4) << setprecision(1) << hex << value << "}";
 
 			}
 
