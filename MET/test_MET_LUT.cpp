@@ -32,7 +32,7 @@ bool write_genSINE() {
 	f1 << "#ifndef sineLUTs_h\n";
 	f1 << "#define sineLUTs_h\n";
 	f1 << "#include <stdint.h>\n";
-	f1 << "static const ap_fixed<5,1> sineLUT[18][4]{\n";
+	f1 << "static const ap_fixed<3,1> sineLUT[18][4]{\n";
 
 	for(int i = 1; i <= NCrts; i ++)
 	{
@@ -89,7 +89,7 @@ bool write_genCOS() {
 	f1 << "#ifndef cosLUTs_h\n";
 	f1 << "#define cosLUTs_h\n";
 	f1 << "#include <stdint.h>\n";
-	f1 << "static const ap_fixed<5,1> cosLUT[18][4]{\n";
+	f1 << "static const ap_fixed<3,1> cosLUT[18][4]{\n";
 
 	for(int i = 1; i <= NCrts; i ++)
 	{
