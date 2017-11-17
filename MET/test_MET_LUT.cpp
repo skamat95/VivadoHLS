@@ -20,7 +20,7 @@ using namespace std;
 bool write_genSINE() {
 	//To generate sin LUT
 	float pi = acos(-1.0);
-	ap_fixed<3,1> value;
+	ap_fixed<4,1> value;
 	double angle = 2.5;
 	float conversion_factor = pi/180.0;
 
@@ -32,7 +32,7 @@ bool write_genSINE() {
 	f1 << "#ifndef sineLUTs_h\n";
 	f1 << "#define sineLUTs_h\n";
 	f1 << "#include <stdint.h>\n";
-	f1 << "static const ap_fixed<3,1> sineLUT[18][4]{\n";
+	f1 << "static const ap_fixed<4,1> sineLUT[18][4]{\n";
 
 	for(int i = 1; i <= NCrts; i ++)
 	{
@@ -40,7 +40,7 @@ bool write_genSINE() {
 		{
 
 			angle += 5;
-			value = (ap_fixed<3,1>)sin(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
+			value = (ap_fixed<4,1>)sin(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
 
 			//printf("%f\n",value);
 			if(j == 1)
@@ -77,7 +77,7 @@ bool write_genSINE() {
 bool write_genCOS() {
 	//To generate cos LUT
 	float pi = acos(-1.0);
-	ap_fixed<3,1> value;
+	ap_fixed<4,1> value;
 	double angle = 0;
 	float conversion_factor = pi/180.0;
 
@@ -89,7 +89,7 @@ bool write_genCOS() {
 	f1 << "#ifndef cosLUTs_h\n";
 	f1 << "#define cosLUTs_h\n";
 	f1 << "#include <stdint.h>\n";
-	f1 << "static const ap_fixed<3,1> cosLUT[18][4]{\n";
+	f1 << "static const ap_fixed<4,1> cosLUT[18][4]{\n";
 
 	for(int i = 1; i <= NCrts; i ++)
 	{
@@ -97,7 +97,7 @@ bool write_genCOS() {
 		{
 
 			angle += 2.5;
-			value = (ap_fixed<3,1>)cos(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
+			value = (ap_fixed<4,1>)cos(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
 
 			//printf("%f\n",value);
 			if(j == 1)
