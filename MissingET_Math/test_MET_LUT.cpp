@@ -41,9 +41,6 @@ bool write_genSINE() {
 		{
 
 			angle += 5;
-			double temp = sin(angle*conversion_factor);
-			printf("%f\n",angle);
-
 			value = (ap_fixed<5,1>)sin(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
 
 			//printf("%f\n",value);
@@ -101,9 +98,6 @@ bool write_genCOS() {
 		{
 
 			angle += 2.5;
-			double temp = cos(angle*conversion_factor);
-			printf("%f\n",temp);
-
 			value = (ap_fixed<5,1>)cos(angle*conversion_factor); //converting angle(in deg) to sin() input in radians
 
 			//printf("%f\n",value);
