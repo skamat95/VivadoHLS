@@ -32,6 +32,7 @@ bool write_genSINE() {
 	f1 << "#ifndef sineLUTs_h\n";
 	f1 << "#define sineLUTs_h\n";
 	f1 << "#include <stdint.h>\n";
+	f1 << "#include <ap_fixed.h>\n";
 	f1 << "static const ap_fixed<4,1> sineLUT[18][4]{\n";
 
 	for(int i = 1; i <= NCrts; i ++)
@@ -62,12 +63,12 @@ bool write_genSINE() {
 		}
 		if(i != NCrts)
 		{
-			f1 << ",";
+			f1 << ",\n";
 		}
 
 	}
 
-	f1 << "};\n";
+	f1 << "\n};\n";
 	f1 << "#endif";
 	f1.close();
 	return true;
@@ -89,6 +90,7 @@ bool write_genCOS() {
 	f1 << "#ifndef cosLUTs_h\n";
 	f1 << "#define cosLUTs_h\n";
 	f1 << "#include <stdint.h>\n";
+	f1 << "#include <ap_fixed.h>\n";
 	f1 << "static const ap_fixed<4,1> cosLUT[18][4]{\n";
 
 	for(int i = 1; i <= NCrts; i ++)
@@ -119,19 +121,19 @@ bool write_genCOS() {
 		}
 		if(i != NCrts)
 		{
-			f1 << ",";
+			f1 << ",\n";
 		}
 
 	}
 
-	f1 << "};\n";
+	f1 << "\n};\n";
 	f1 << "#endif";
 	f1.close();
 	return true;
 
 }
 
-bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], uint16_t MET[3]) {
+bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], int16_t MET[3]) {
   // This code is to write suitable mapping of inputs to signals in the CTP7_HLS project from Ales
 
   // Block 1 of User Code
@@ -240,7 +242,7 @@ bool writeInputFile(uint16_t rgn_in[NCrts*NCrds*NRgns], bool last) {
   return true;
 }
 
-bool writeOutputFile(uint16_t MET[3], bool last) {
+bool writeOutputFile(int16_t MET[3], bool last) {
 
   static bool first = true;
   static int count = 0;
@@ -307,7 +309,7 @@ bool makeTestData(int argc, char** argv, uint16_t rgn_in[NCrts*NCrds*NRgns]) {
 
     // Default test data; Construct it using indices for the fun of it!
     for(iRgn = 0; iRgn < NCrts * NCrds * NRgns; iRgn++) {
-      rgn_in[iRgn] = 01;
+      rgn_in[iRgn] = 0xFF;
     }
 
 
@@ -318,7 +320,7 @@ int main(int argc, char **argv) {
 
 	uint16_t rgn_in[NCrts*NCrds*NRgns];
 	uint16_t rgnPhi[NCrts];
-	uint16_t MET[3];
+	int16_t MET[3];
 
 	bool success_sin = write_genSINE();
 	bool success_cos = write_genCOS();

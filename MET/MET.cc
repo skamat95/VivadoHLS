@@ -3,7 +3,7 @@
 #include "MET_LUT.h"
 //#include "ap_int.h"
 
-void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], uint16_t MET[3])
+void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], int16_t MET[3])
 {
 
 #pragma HLS PIPELINE II=6
@@ -12,7 +12,7 @@ void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], uint16_t MET[3])
 
 	uint16_t rgn_ET, tower_phi, rgn_tmp;
 	int inr_x, inr_y;
-	uint16_t rgnMET_out[2] = {0,0};
+	uint32_t rgnMET_out[2] = {0,0};
 
 iRgn:
 	for(int iRgn = 0; iRgn < NCrts; iRgn++)
@@ -34,8 +34,8 @@ iRgn:
 	  for(int itwr = 0; itwr < NTwrs; itwr++)
 	  	{
 	  #pragma HLS UNROLL
-	  		rgnMET_out[0] += (rgn_sum[itwr] * cosLUT[NCrts][itwr]);
-	  		rgnMET_out[1] += (rgn_sum[itwr] * sineLUT[NCrts][itwr]);
+	  		rgnMET_out[0] = (rgn_sum[itwr] * cosLUT[NCrts][itwr]);
+	  		rgnMET_out[1] = (rgn_sum[itwr] * sineLUT[NCrts][itwr]);
 	  	}
 
 

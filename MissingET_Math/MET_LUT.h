@@ -6,10 +6,10 @@
 #define NRgns 2
 #define NTwrs 4
 
-//#include "ap_int.h"
-//#define uint16_t ap_uint<16>
 
 #include <stdint.h>
+#include "sine1.h"
+#include "cos1.h"
 //#include <hls_math.h>
 //#include "sinee.h"
 //#include "coss.h"
