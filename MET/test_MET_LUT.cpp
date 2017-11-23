@@ -133,7 +133,7 @@ bool write_genCOS() {
 
 }
 
-bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], int16_t MET[3]) {
+bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<10,7> MET[3]) {
   // This code is to write suitable mapping of inputs to signals in the CTP7_HLS project from Ales
 
   // Block 1 of User Code
@@ -242,7 +242,8 @@ bool writeInputFile(uint16_t rgn_in[NCrts*NCrds*NRgns], bool last) {
   return true;
 }
 
-bool writeOutputFile(int16_t MET[3], bool last) {
+/*
+bool writeOutputFile(ap_fixed<10,7> MET[3], bool last) {
 
   static bool first = true;
   static int count = 0;
@@ -292,7 +293,7 @@ bool writeOutputFile(int16_t MET[3], bool last) {
   return true;
 
 }
-
+*/
 bool makeTestData(int argc, char** argv, uint16_t rgn_in[NCrts*NCrds*NRgns]) {
   static FILE *f1;
   static bool first = true;
@@ -309,7 +310,7 @@ bool makeTestData(int argc, char** argv, uint16_t rgn_in[NCrts*NCrds*NRgns]) {
 
     // Default test data; Construct it using indices for the fun of it!
     for(iRgn = 0; iRgn < NCrts * NCrds * NRgns; iRgn++) {
-      rgn_in[iRgn] = 0xFF;
+      rgn_in[iRgn] = 0;
     }
 
 
@@ -319,12 +320,13 @@ bool makeTestData(int argc, char** argv, uint16_t rgn_in[NCrts*NCrds*NRgns]) {
 int main(int argc, char **argv) {
 
 	uint16_t rgn_in[NCrts*NCrds*NRgns];
-	uint16_t rgnPhi[NCrts];
-	int16_t MET[3];
+	ap_fixed<20,15>  MET[3];
 
 	bool success_sin = write_genSINE();
 	bool success_cos = write_genCOS();
 		// Test data; Construct it using indices for the fun of it
+
+	 uint16_t temp;
 
 		int iCrt;
 		int iCrd;
@@ -353,25 +355,27 @@ int main(int argc, char **argv) {
 
 		    // Make test data
 
-		    if(!makeTestData(argc, argv, rgn_in)) return 999;
+		    //if(!makeTestData(argc, argv, rgn_in)) return 999;
 
 		//Test code
-		MET_O(rgn_in, MET);
+		MET_O(rgn_in, MET, temp);
 
 		// Save input and output
-		    if(!writeInputFile(rgn_in, last)) return 2;
-		    if(!writeOutputFile(MET, last)) return 3;
+		   // if(!writeInputFile(rgn_in, last)) return 2;
+		    //if(!writeOutputFile(MET, last)) return 3;
 		 }
 
-		 if(!writeLinkMapHT(rgn_in, MET)) return 4;
+		 //if(!writeLinkMapHT(rgn_in, MET)) return 4;
 
 		   printf("Test succeeded\n");
 
-		printf("METx = %d\n",MET[0]);
-		printf("METy = %d\n",MET[1]);
-		printf("Theta = %d\n",MET[2]);
-
-
+		printf("METx = %f\n",MET[0]);
+		printf("METy = %f\n",MET[1]);
+		printf("Theta = %d\n",temp);
+		std::cout << hex << MET[0] << "," ;
+		std::cout << hex << MET[1] << "," ;
+		std::cout << showbase << internal << setw(20) << setprecision(5) << hex << MET[0] << ",";
+		std::cout << showbase << internal << setw(20) << setprecision(5) << hex << MET[1] << ",";
 		return 0;
 
 }
