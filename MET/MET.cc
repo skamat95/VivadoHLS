@@ -7,7 +7,7 @@
 #include <iomanip>
 using namespace std;
 
-void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,15>  MET[3], uint16_t temp)
+void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17>  MET[3])
 {
 
 #pragma HLS PIPELINE II=6
@@ -16,7 +16,7 @@ void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,15>  MET[3], uint16_t
 
 	uint16_t rgn_ET, tower_phi, rgn_tmp;
 	int inr_x, inr_y;
-	ap_fixed<20,15> rgnMET_out[2] = {0,0};
+	ap_fixed<20,17> rgnMET_out[2] = {0,0};
 
 iRgn:
 	for(int iRgn = 0; iRgn < NCrts; iRgn++)
@@ -28,8 +28,8 @@ iRgn:
 	  for(int iRgn1 =0; iRgn1 < (NCrds*NRgns); iRgn1++)
 	    {
 #pragma HLS UNROLL
-	      rgn_tmp = rgn_in[iRgn * (NCrds*NRgns) + iRgn1] && 4095;
-		  tower_phi = rgn_in[iRgn * (NCrds*NRgns) + iRgn1] && 0xC000;
+	      rgn_tmp = rgn_in[iRgn * (NCrds*NRgns) + iRgn1] & 4095;
+		  tower_phi = rgn_in[iRgn * (NCrds*NRgns) + iRgn1] & 0xC000;
 		  if(tower_phi == 0) rgn_sum[0] += rgn_tmp;
 		  else if(tower_phi == 1) rgn_sum[1] += rgn_tmp;
 		  else if(tower_phi == 2) rgn_sum[2] += rgn_tmp;
@@ -38,11 +38,9 @@ iRgn:
 	  for(int itwr = 0; itwr < NTwrs; itwr++)
 	  	{
 	  #pragma HLS UNROLL
-	  		rgnMET_out[0] += ap_fixed<20,15> (rgn_sum[itwr] * cosLUT[iRgn][itwr]);
-	  		rgnMET_out[1] += ap_fixed<20,15> (rgn_sum[itwr] * sineLUT[iRgn][itwr]);
+	  		rgnMET_out[0] += ap_fixed<20,17> (rgn_sum[itwr] * cosLUT[iRgn][itwr]);
+	  		rgnMET_out[1] += ap_fixed<20,17> (rgn_sum[itwr] * sineLUT[iRgn][itwr]);
 	  	}
-
-	  temp = rgnMET_out[0];
 	}
 
 	//temp = rgn_sum[1];

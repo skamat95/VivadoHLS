@@ -17,7 +17,7 @@
 //#include "atan2.h"
 //#include "atan2_head.h"
 
-void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,15>  MET[3],  uint16_t temp);
+void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17>  MET[3]);
 //void rgnMET(uint16_t rgn_sum[4],uint16_t rgnMET_out[2]);
 
 

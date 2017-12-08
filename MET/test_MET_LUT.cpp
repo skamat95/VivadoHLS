@@ -33,7 +33,7 @@ bool write_genSINE() {
 	f1 << "#define sineLUTs_h\n";
 	f1 << "#include <stdint.h>\n";
 	f1 << "#include <ap_fixed.h>\n";
-	f1 << "static const ap_fixed<4,1> sineLUT[18][4]{\n";
+	f1 << "static const ap_fixed<4,1> sineLUT[18][4] = {";
 
 	for(int i = 1; i <= NCrts; i ++)
 	{
@@ -68,7 +68,7 @@ bool write_genSINE() {
 
 	}
 
-	f1 << "\n};\n";
+	f1 << "};\n";
 	f1 << "#endif";
 	f1.close();
 	return true;
@@ -91,7 +91,7 @@ bool write_genCOS() {
 	f1 << "#define cosLUTs_h\n";
 	f1 << "#include <stdint.h>\n";
 	f1 << "#include <ap_fixed.h>\n";
-	f1 << "static const ap_fixed<4,1> cosLUT[18][4]{\n";
+	f1 << "static const ap_fixed<4,1> cosLUT[18][4] = {\n";
 
 	for(int i = 1; i <= NCrts; i ++)
 	{
@@ -133,7 +133,7 @@ bool write_genCOS() {
 
 }
 
-bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<10,7> MET[3]) {
+bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[3]) {
   // This code is to write suitable mapping of inputs to signals in the CTP7_HLS project from Ales
 
   // Block 1 of User Code
@@ -243,7 +243,7 @@ bool writeInputFile(uint16_t rgn_in[NCrts*NCrds*NRgns], bool last) {
 }
 
 /*
-bool writeOutputFile(ap_fixed<10,7> MET[3], bool last) {
+bool writeOutputFile(ap_fixed<20,17> MET[3], bool last) {
 
   static bool first = true;
   static int count = 0;
@@ -320,7 +320,7 @@ bool makeTestData(int argc, char** argv, uint16_t rgn_in[NCrts*NCrds*NRgns]) {
 int main(int argc, char **argv) {
 
 	uint16_t rgn_in[NCrts*NCrds*NRgns];
-	ap_fixed<20,15>  MET[3];
+	ap_fixed<20,17>  MET[3];
 
 	bool success_sin = write_genSINE();
 	bool success_cos = write_genCOS();
@@ -358,7 +358,7 @@ int main(int argc, char **argv) {
 		    //if(!makeTestData(argc, argv, rgn_in)) return 999;
 
 		//Test code
-		MET_O(rgn_in, MET, temp);
+		MET_O(rgn_in, MET);
 
 		// Save input and output
 		   // if(!writeInputFile(rgn_in, last)) return 2;
@@ -369,8 +369,8 @@ int main(int argc, char **argv) {
 
 		   printf("Test succeeded\n");
 
-		printf("METx = %f\n",MET[0]);
-		printf("METy = %f\n",MET[1]);
+		//printf("METx = %f\n",MET[0]);
+		//printf("METy = %f\n",MET[1]);
 		printf("Theta = %d\n",temp);
 		std::cout << hex << MET[0] << "," ;
 		std::cout << hex << MET[1] << "," ;
