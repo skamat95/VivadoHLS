@@ -17,6 +17,7 @@ using namespace std;
 #define NRgns 2
 #define NTwrs 4
 
+/*
 bool write_genSINE() {
 	//To generate sin LUT
 	float pi = acos(-1.0);
@@ -132,6 +133,8 @@ bool write_genCOS() {
 	return true;
 
 }
+
+*/
 
 bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[3]) {
   // This code is to write suitable mapping of inputs to signals in the CTP7_HLS project from Ales
@@ -322,8 +325,8 @@ int main(int argc, char **argv) {
 	uint16_t rgn_in[NCrts*NCrds*NRgns];
 	ap_fixed<20,17>  MET[3];
 
-	bool success_sin = write_genSINE();
-	bool success_cos = write_genCOS();
+	//bool success_sin = write_genSINE();
+	//bool success_cos = write_genCOS();
 		// Test data; Construct it using indices for the fun of it
 
 	 uint16_t temp;
