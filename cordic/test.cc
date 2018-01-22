@@ -2,7 +2,12 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-
+#include <stdlib.h>
+#include <string>
+#include <iterator>
+#include <iostream>
+#include <algorithm>
+#include <array>
 #include "fuzzer.h"
 #include "CordicXIP.h"
 #include "CordicXilinx.h"

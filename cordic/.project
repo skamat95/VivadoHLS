@@ -37,9 +37,49 @@
 			<location>/data/skamat/Github/VivadoHLS/cordic/.apc/.tb</location>
 		</link>
 		<link>
+			<name>.reference/CordicXilinx.h</name>
+			<type>1</type>
+			<location>/data/skamat/Github/VivadoHLS/cordic/CordicXilinx.h</location>
+		</link>
+		<link>
 			<name>solution1/constraints</name>
 			<type>2</type>
 			<location>/data/skamat/Github/VivadoHLS/cordic/solution1/.tcls</location>
+		</link>
+		<link>
+			<name>source/CordicXIP.cc</name>
+			<type>1</type>
+			<location>/data/skamat/Github/VivadoHLS/cordic/CordicXIP.cc</location>
+		</link>
+		<link>
+			<name>source/CordicXIP.h</name>
+			<type>1</type>
+			<location>/data/skamat/Github/VivadoHLS/cordic/CordicXIP.h</location>
+		</link>
+		<link>
+			<name>source/CordicXilinx.h</name>
+			<type>1</type>
+			<location>/data/skamat/Github/VivadoHLS/cordic/CordicXilinx.h</location>
+		</link>
+		<link>
+			<name>source/cordic_v6_0_bitacc_cmodel.h</name>
+			<type>1</type>
+			<location>/data/skamat/Github/VivadoHLS/cordic/cordic_v6_0_bitacc_cmodel.h</location>
+		</link>
+		<link>
+			<name>source/fuzzer.h</name>
+			<type>1</type>
+			<location>/data/skamat/Github/VivadoHLS/cordic/fuzzer.h</location>
+		</link>
+		<link>
+			<name>source/xip_common_bitacc_cmodel.h</name>
+			<type>1</type>
+			<location>/data/skamat/Github/VivadoHLS/cordic/xip_common_bitacc_cmodel.h</location>
+		</link>
+		<link>
+			<name>testbench/test.cc</name>
+			<type>1</type>
+			<location>/data/skamat/Github/VivadoHLS/cordic/test.cc</location>
 		</link>
 		<link>
 			<name>solution1/constraints/.xml.directive</name>

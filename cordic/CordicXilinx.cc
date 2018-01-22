@@ -30,6 +30,8 @@
 #include <iomanip> 
 #include <cassert>
 #include <math.h>
+#include <hls_math.h>
+
 
 CordicXilinx::CordicXilinx(int inputBits, int outputBits, bool debug) :
     inputBits_(inputBits),
