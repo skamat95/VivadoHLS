@@ -6,23 +6,23 @@ using namespace std;
 int const length = 32; //Total length of the variable
 int const number = 12; //Number of bits before the decimal
 
- typedef ap_fixed<length, number> fix3;
+ typedef ap_fixed<length, number> in;
 
  int main() {
 	 // n,m,r=0 skip pre-, post-process
 
-     fix3 a = 9;
-     fix3 z; // output
+     in a = 9;
+     in z; // output
 
      int q = length - number;
      int p = number;
 
-     fix3 one = 1;
+     in one = 1;
 
-     fix3 x = a + (one << q);
-     fix3 y = a - (one << q);
+     in x = a + (one << q);
+     in y = a - (one << q);
 
-     fix3 x_tmp;
+     in x_tmp;
 
      for (int i = 1; i<=5; i++) {
     	 if (y<0) {
@@ -39,7 +39,7 @@ int const number = 12; //Number of bits before the decimal
     	 }
      }
 
-     fix3 tmp  = 0.603748068;  //tmp = 1/1.65632
+     in tmp  = 0.603748068;  //tmp = 1/1.65632
      cout <<"a: " << a <<"\n";
      cout <<"x: " << x <<"\n";
      z = x*tmp;
