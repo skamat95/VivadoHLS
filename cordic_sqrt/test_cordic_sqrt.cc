@@ -3,8 +3,8 @@
 #include <stdio.h>
 using namespace std;
 
-int const length = 32; //Total length of the variable
-int const number = 12; //Number of bits before the decimal
+int const length = 20; //Total length of the variable
+int const number = 17; //Number of bits before the decimal
 
  typedef ap_fixed<length, number> in;
 
@@ -24,7 +24,7 @@ int const number = 12; //Number of bits before the decimal
 
      in x_tmp;
 
-     for (int i = 1; i<=5; i++) {
+     for (int i = 1; i <= 15; i++) {
     	 if (y<0) {
     		    x_tmp = x;
     		    x = x + (y << i);
