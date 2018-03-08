@@ -20,7 +20,7 @@ const uint16_t MaxTrackEta = int(1.479 / 0.0005);
 const uint16_t MaxTrackPhi = int(2. * 3.1415927 / 0.0001);
 
 const uint16_t MaxTracksInCard = 20;
-const uint16_t MaxNeutralClusters = NCaloLayer1Eta * NCaloLayer1Phi * 18;
+const uint16_t MaxNeutralClusters = NCaloLayer1Eta * NCaloLayer1Phi;
 
 
 
