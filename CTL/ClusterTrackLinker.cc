@@ -75,7 +75,7 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
     	uint16_t clus_phi = clusterPhi[cluster] % NCaloLayer1Phi;
     	uint16_t eta_diff = track_peak_eta[track] - clus_eta; //maybe take modulus
     	uint16_t phi_diff = track_peak_phi[track] - clus_phi;
-    	if(!(eta_diff <= 2) || (phi_diff <= 2)) break;
+    	if(!(eta_diff <= 2) && (phi_diff <= 2)) break;
       uint16_t diffEta = clusterEta[cluster] - trackEta[track];
       if(diffEta >= MaxTrackEta) diffEta = trackEta[track] - clusterEta[cluster];
       uint16_t diffPhi = clusterPhi[cluster] - trackPhi[track];
