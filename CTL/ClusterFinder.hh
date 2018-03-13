@@ -5,8 +5,8 @@
 
 const uint16_t NCaloLayer1Cards = 18;
 
-const uint16_t NCaloLayer1Eta = 2*17;
-const uint16_t NCaloLayer1Phi = 2*4;
+const uint16_t NCaloLayer1Eta = 17;
+const uint16_t NCaloLayer1Phi = 4;
 
 const uint16_t NCrystalsPerEtaPhi = 5;
 
