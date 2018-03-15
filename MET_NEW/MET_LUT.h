@@ -14,11 +14,15 @@
 #include <math.h>
 #include "sine1.h"
 #include "cos1.h"
-//#include "atan2.h"
-//#include "atan2_head.h"
+#include "hls_dsp.h"
+#include "sqrt.h"
+#include "atan2.h"
 
-void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2], ap_fixed<40,35> MET_sq[2], ap_fixed<40,35> MET_res);
-//void rgnMET(uint16_t rgn_sum[4],uint16_t rgnMET_out[2]);
+void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2],
+		hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out &sqrtX,
+		hls::atan2_output<OutputWidth_atan>::phase &atanX);
+
+
 
 
 #endif
