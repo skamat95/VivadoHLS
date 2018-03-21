@@ -79,13 +79,14 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 	  uint8_t nMatches = 0; //once for every track
 	  //For 3*3 matrix around the track-tower
 	  for (int i = -1; i < 2; i++){
-//#pragma HLS UNROLL
+#pragma HLS UNROLL
 		  for (int j = -1; j < 2; j++){
-//#pragma HLS UNROLL
+#pragma HLS UNROLL
 			int eta = clus_eta + i;
 			int phi = clus_phi + j;
 			//to find out the tower coordinate in the 1D cluster array
 			int cluster_trial = (eta * NCaloLayer1Phi) + phi;
+			if(cluster_trial < 0 || cluster_trial > 67) break;
 			uint16_t diffEta = clusterEta[cluster_trial] - trackEta[track];
 			if(diffEta >= MaxTrackEta) diffEta = trackEta[track] - clusterEta[cluster_trial];
 			uint16_t diffPhi = clusterPhi[cluster_trial] - trackPhi[track];
