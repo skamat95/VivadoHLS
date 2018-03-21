@@ -7,7 +7,7 @@
 #define uint10_t ap_uint<10>
 #define uint9_t ap_uint<9>
 
-const uint16_t MaxTracks = 10;//60;
+const uint16_t MaxTracks = 10;
 
 // Track PT is specified in 16-bits
 const uint16_t MaxTrackPT = 0xFFFF;
@@ -21,8 +21,7 @@ const uint16_t MaxTrackPhi = int(2. * 3.1415927 / 0.0001);
 const uint16_t conv_cluster_phi = MaxTrackPhi / NCrystalsInPhi;
 const uint16_t conv_track_phi = NCrystalsInPhi / MaxTrackPhi;
 
-const uint16_t MaxTracksInCard = 10;//60;
-const int MaxNeutralClusters = NCaloLayer1Eta * NCaloLayer1Phi;
+const uint16_t MaxNeutralClusters = NCaloLayer1Eta * NCaloLayer1Phi;
 
 
 
@@ -36,6 +35,8 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 		   uint9_t linkedTrackEta[MaxTracks],
 		   uint10_t linkedTrackPhi[MaxTracks],
 		   uint16_t linkedTrackQuality[MaxTracks],
+		   uint16_t linkedClusterID_1[MaxTracks],
+		   uint16_t linkedClusterID_2[MaxTracks],
 		   uint10_t neutralClusterET[MaxNeutralClusters],
 		   uint9_t neutralClusterEta[MaxNeutralClusters],
 		   uint10_t neutralClusterPhi[MaxNeutralClusters]);

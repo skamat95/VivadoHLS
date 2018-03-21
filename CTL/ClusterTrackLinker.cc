@@ -14,6 +14,8 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 			   uint9_t linkedTrackEta[MaxTracks],
 			   uint10_t linkedTrackPhi[MaxTracks],
 			   uint16_t linkedTrackQuality[MaxTracks],
+			   uint16_t linkedClusterID_1[MaxTracks],
+			   uint16_t linkedClusterID_2[MaxTracks],
 			   uint10_t neutralClusterET[MaxNeutralClusters],
 			   uint9_t neutralClusterEta[MaxNeutralClusters],
 			   uint10_t neutralClusterPhi[MaxNeutralClusters])
@@ -77,7 +79,7 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 
 
 	  uint8_t nMatches = 0; //once for every track
-	  //For 3*3 matrix around the track-tower
+	  //For 3*3 matrix around the track-tower level
 	  for (int i = -1; i < 2; i++){
 #pragma HLS UNROLL
 		  for (int j = -1; j < 2; j++){
@@ -86,33 +88,39 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 			int phi = clus_phi + j;
 			//to find out the tower coordinate in the 1D cluster array
 			int cluster_trial = (eta * NCaloLayer1Phi) + phi;
-			if(cluster_trial < 0 || cluster_trial > 67) break;
+			if(cluster_trial < 0 || cluster_trial > 271) break;
 			uint16_t diffEta = clusterEta[cluster_trial] - trackEta[track];
 			if(diffEta >= MaxTrackEta) diffEta = trackEta[track] - clusterEta[cluster_trial];
 			uint16_t diffPhi = clusterPhi[cluster_trial] - trackPhi[track];
 			if(diffPhi >= MaxTrackPhi) diffPhi = trackPhi[track] - clusterPhi[cluster_trial];
 
-			if(diffEta <= 1 && diffPhi <= 2) {
-			nMatches++;
-			linkedTrackQuality[track] |= 0x0001;
-			if(diffEta <= 1 && diffPhi <= 1) {
-			  linkedTrackQuality[track] |= 0x0002;
-			}
-			if(diffEta == 0 && diffPhi == 0) {
-			  linkedTrackQuality[track] |= 0x0004;
-			}
+			if(diffEta <=2 && diffPhi <= 2){
+			//making a 5*5 grid around the track- crystal level
+				linkedClusterID_1[track] = cluster_trial;
 
-			if(neutralClusterET[cluster_trial] > trackPT[track]) {
-			  neutralClusterET[cluster_trial] -= trackPT[track];
-			  linkedTrackQuality[track] |= 0x0010;
-			  // To do: Adjust eta, phi somehow
-			}
-
-			else {
-			  linkedTrackQuality[track] |= 0x0020;
-			  neutralClusterET[cluster_trial] = 0;
+				if(diffEta <= 1 && diffPhi <= 2) {
+					nMatches++;
+					linkedTrackQuality[track] |= 0x0001;
+					if(diffEta <= 1 && diffPhi <= 1) {
+					  linkedTrackQuality[track] |= 0x0002;
 					}
-				}
+					if(diffEta == 0 && diffPhi == 0) {
+					  linkedTrackQuality[track] |= 0x0004;
+					}
+
+					if(neutralClusterET[cluster_trial] > trackPT[track]) {
+					  neutralClusterET[cluster_trial] -= trackPT[track];
+					  linkedTrackQuality[track] |= 0x0010;
+					  // To do: Adjust eta, phi somehow
+					}
+
+					else {
+					  linkedTrackQuality[track] |= 0x0020;
+					  neutralClusterET[cluster_trial] = 0;
+							}
+					}
+			}
+
 		  	}
 	  }
 
