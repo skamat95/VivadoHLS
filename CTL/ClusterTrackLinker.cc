@@ -79,6 +79,7 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 
 
 	  uint8_t nMatches = 0; //once for every track
+	  int diff[3][3] = 0;
 	  //For 3*3 matrix around the track-tower level
 	  for (int i = -1; i < 2; i++){
 #pragma HLS UNROLL
@@ -96,35 +97,27 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 
 			if(diffEta <=2 && diffPhi <= 2){
 			//making a 5*5 grid around the track- crystal level
-				linkedClusterID_1[track] = cluster_trial;
-
-				if(diffEta <= 1 && diffPhi <= 2) {
-					nMatches++;
-					linkedTrackQuality[track] |= 0x0001;
-					if(diffEta <= 1 && diffPhi <= 1) {
-					  linkedTrackQuality[track] |= 0x0002;
-					}
-					if(diffEta == 0 && diffPhi == 0) {
-					  linkedTrackQuality[track] |= 0x0004;
-					}
-
-					if(neutralClusterET[cluster_trial] > trackPT[track]) {
-					  neutralClusterET[cluster_trial] -= trackPT[track];
-					  linkedTrackQuality[track] |= 0x0010;
-					  // To do: Adjust eta, phi somehow
-					}
-
-					else {
-					  linkedTrackQuality[track] |= 0x0020;
-					  neutralClusterET[cluster_trial] = 0;
-							}
-					}
+				//linkedClusterID_1[track] = cluster_trial;
+				nMatches++;
+				diff[i][j] = diffEta + 1.5*diffPhi;
 			}
 
 		  	}
 	  }
 
 	  linkedTrackQuality[track] |= (nMatches << 8);
+	  //Sort and take the least of two diff. Store it in linkedClusterID 1 and 2
+	  for (int i = -1; i < 2; i++){
+	  #pragma HLS UNROLL
+		  for (int j = -1; j < 2; j++){
+	  #pragma HLS UNROLL
+			 if(diff[i][j])
+			 {
+				 int temp = diff[i][j];
+			 }
+
+	  		  }
+	  }
   }
 	  return true;
 }
