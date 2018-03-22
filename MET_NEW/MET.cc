@@ -64,17 +64,12 @@ iRgn:
 
 
 	hls::sqrt_input<InputWidth_sqrt, DataFormat_sqrt>::in x_sample_sqrt;
-	hls::sqrt_input<InputWidth_sqrt, DataFormat_sqrt>::in x_sqrt;
-	hls::stream< hls::sqrt_input<InputWidth_sqrt, DataFormat_sqrt>::in > x("Input Data: x");
-//#pragma HLS STREAM variable=x dim=1
 
-	x_sample_sqrt.in = MET_res;
-	x << x_sample_sqrt;
-	x.read(x_sqrt);
-	sqrt_top(x_sqrt,sqrtX);
+	x_sample_sqrt.in = 9;
+	sqrt_top(x_sample_sqrt,sqrtX);
 
 	hls::atan2_input<InputWidth_atan>::cartesian x_sample_atan;
-
+	x_sample_atan.cartesian = 1;
 	atan2_top(x_sample_atan,atanX);
 
 

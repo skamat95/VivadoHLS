@@ -343,6 +343,8 @@ int main(int argc, char **argv) {
 	ap_fixed<40,35> MET_res;
 	ap_fixed<40,35> MET_sq[2] = {0,0};
 
+	hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out sqrtX;
+	hls::atan2_output<OutputWidth_atan>::phase atanX;
 	//bool success_sin = write_genSINE();
 	//bool success_cos = write_genCOS();
 		// Test data; Construct it using indices for the fun of it
@@ -379,7 +381,7 @@ int main(int argc, char **argv) {
 		    if(!makeTestData(argc, argv, rgn_in)) return 999;
 
 		//Test code
-		MET_O(rgn_in, MET, MET_sq, MET_res);
+		MET_O(rgn_in, MET, sqrtX, atanX);
 
 		// Save input and output
 		   if(!writeInputFile(rgn_in, last)) return 2;
@@ -392,9 +394,9 @@ int main(int argc, char **argv) {
 
 		std::cout << showbase << internal << setw(20) << setprecision(5) << hex << MET[0] << ",";
 		std::cout << showbase << internal << setw(20) << setprecision(5) << hex << MET[1] << ",";
-		std::cout << showbase << internal << setw(40) << setprecision(5) << hex << MET_sq[0] << ",";
-		std::cout << showbase << internal << setw(40) << setprecision(5) << hex << MET_sq[1] << ",";
-		std::cout << showbase << internal << setw(40) << setprecision(5) << hex << MET_res << ",";
+
+		std::cout << "Actual " << sqrtX.out << std::endl;
+		std::cout << "Actual " << atanX.phase << std::endl;
 
 		return 0;
 
