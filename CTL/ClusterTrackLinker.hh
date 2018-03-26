@@ -35,8 +35,6 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 		   uint9_t linkedTrackEta[MaxTracks],
 		   uint10_t linkedTrackPhi[MaxTracks],
 		   uint16_t linkedTrackQuality[MaxTracks],
-		 //  uint16_t linkedClusterID_1[MaxTracks],
-		 //  uint16_t linkedClusterID_2[MaxTracks],
 		   uint10_t neutralClusterET[MaxNeutralClusters],
 		   uint9_t neutralClusterEta[MaxNeutralClusters],
 		   uint10_t neutralClusterPhi[MaxNeutralClusters]);
