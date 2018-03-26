@@ -45,8 +45,8 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
       int cluster = tEta * NCaloLayer1Phi + tPhi;
       // Convert cruder calorimeter position to track LSB
       // This can be a LUT - perhaps HLS will take care of this efficiently
-      clusterEta[cluster] = (tEta * NCrystalsPerEtaPhi + peakEta[tEta][tPhi]) * conv_cluster_eta;
-      clusterPhi[cluster] = (tPhi * NCrystalsPerEtaPhi + peakPhi[tEta][tPhi]) * conv_cluster_phi;
+      clusterEta[cluster] = tEta * NCrystalsPerEtaPhi + peakEta[tEta][tPhi];
+      clusterPhi[cluster] = tPhi * NCrystalsPerEtaPhi + peakPhi[tEta][tPhi];
       // Initialize neutral clusters
       neutralClusterET[cluster] = clusterET[tEta][tPhi];
       neutralClusterEta[cluster] = clusterEta[cluster];
@@ -75,7 +75,7 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 	  uint16_t clus_eta = int(track_peak_eta[track] / NCaloLayer1Phi);
 	  uint16_t clus_phi = int(track_peak_phi[track] % NCaloLayer1Phi);
 
-	  int diff[3][3] = {0};
+	  ap_ufixed<10,5> diff[3][3] = {0};
 	  //First check in the same tower as track
 	  int eta = clus_eta;
 	  int phi = clus_phi;
@@ -83,10 +83,10 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 
 		if(clusterET[eta][phi] == 0) break; //If no cluster ET, break
 
-		uint16_t diffEta = clusterEta[cluster_trial] - trackEta[track];
-		if(diffEta >= MaxTrackEta) diffEta = trackEta[track] - clusterEta[cluster_trial];
-		uint16_t diffPhi = clusterPhi[cluster_trial] - trackPhi[track];
-		if(diffPhi >= MaxTrackPhi) diffPhi = trackPhi[track] - clusterPhi[cluster_trial];
+		uint16_t diffEta = clusterEta[cluster_trial] - track_peak_eta[track];
+		if(diffEta >= MaxTrackEta) diffEta = track_peak_eta[track] - clusterEta[cluster_trial];
+		uint16_t diffPhi = clusterPhi[cluster_trial] - track_peak_phi[track];
+		if(diffPhi >= MaxTrackPhi) diffPhi = track_peak_phi[track] - clusterPhi[cluster_trial];
 
 		//If this is the best match,break:
 		if(diffEta <= 1 && diffPhi<= 1)
@@ -101,7 +101,7 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 
 		//If not, we run for all the other 8 towers in a 3*3 matrix around the track-tower level
 
-		int least_dist = 100; //random big value initialization
+		ap_ufixed<10,5> least_dist = 100; //random big value initialization
 	  for (int i = -1; i < 2; i++){
 #pragma HLS UNROLL
 		  for (int j = -1; j < 2; j++){
@@ -113,13 +113,12 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 				int phi = clus_phi + j;
 				//to find out the tower coordinate in the 1D cluster array
 				int cluster_trial = (eta * NCaloLayer1Phi) + phi;
-				if(cluster_trial < 0 || cluster_trial > 67) break;
+				if(cluster_trial < 0 || cluster_trial > 271) break;
 
-				uint16_t diffEta = clusterEta[cluster_trial] - trackEta[track];
-				if(diffEta >= MaxTrackEta) diffEta = trackEta[track] - clusterEta[cluster_trial];
-				uint16_t diffPhi = clusterPhi[cluster_trial] - trackPhi[track];
-				if(diffPhi >= MaxTrackPhi) diffPhi = trackPhi[track] - clusterPhi[cluster_trial];
-
+				uint16_t diffEta = clusterEta[cluster_trial] - track_peak_eta[track];
+				if(diffEta >= MaxTrackEta) diffEta = track_peak_eta[track] - clusterEta[cluster_trial];
+				uint16_t diffPhi = clusterPhi[cluster_trial] - track_peak_phi[track];
+				if(diffPhi >= MaxTrackPhi) diffPhi = track_peak_phi[track] - clusterPhi[cluster_trial];
 				int common, uncommon;
 				if(diffEta >= diffPhi) {
 
@@ -140,7 +139,7 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 					linkedTrackPhi[track] = clusterPhi[cluster_trial];
 					//making neutral cluster
 					neutralClusterET[cluster_trial] -= trackPT[track];
-					linkedTrackQuality[track] = least_dist;
+					//linkedTrackQuality[track] = least_dist;
 				}
 
 		  	}
