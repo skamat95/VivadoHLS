@@ -35,8 +35,8 @@
 #include "hls_dsp.h"
 
 const int PhaseFormat_atan = hls::CORDIC_FORMAT_RAD;
-const int InputWidth_atan = 16;
-const int OutputWidth_atan = 16;
+const int InputWidth_atan = 17;
+const int OutputWidth_atan = 17;
 const int RoundMode_atan = hls::CORDIC_ROUND_TRUNCATE;
 
 void atan2_top(const hls::atan2_input<InputWidth_atan>::cartesian &x,

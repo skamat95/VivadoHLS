@@ -13,7 +13,8 @@ using namespace std;
 
 void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2],
 		hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out &sqrtX,
-		hls::atan2_output<OutputWidth_atan>::phase &atanX)
+		hls::atan2_output<OutputWidth_atan>::phase &atanX
+		)
 {
 
 
@@ -24,10 +25,10 @@ void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2],
 
 	uint16_t rgn_ET, tower_phi, rgn_tmp;
 	int inr_x, inr_y;
-	ap_fixed<20,17> rgnMET_out[2] = {0,0};
 
-	ap_fixed<40,35> MET_sq[2] = {0,0};
-	ap_fixed<40,35> MET_res = 0;
+	ap_fixed<20,17> temp[2] = {0,0};
+	ap_uint<27> MET_sq[2] = {0,0};
+	ap_uint<27> MET_res = 0;
 
 iRgn:
 	for(int iRgn = 0; iRgn < NCrts; iRgn++)
@@ -49,28 +50,32 @@ iRgn:
 	  for(int itwr = 0; itwr < NTwrs; itwr++)
 	  	{
 	  #pragma HLS UNROLL
-	  		rgnMET_out[0] += ap_fixed<20,17> (rgn_sum[itwr] * cosLUT[iRgn][itwr]);
-	  		rgnMET_out[1] += ap_fixed<20,17> (rgn_sum[itwr] * sineLUT[iRgn][itwr]);
+	  		temp[0] += ap_fixed<20,17> (rgn_sum[itwr] * cosLUT[iRgn][itwr]);
+	  		temp[1] += ap_fixed<20,17> (rgn_sum[itwr] * sineLUT[iRgn][itwr]);
 	  	}
 	}
 
-	MET[0] = rgnMET_out[0];
-	MET[1] = rgnMET_out[1];
+	MET[0] = temp[0];
+	MET[1] = temp[1];
 
-	MET_sq[0] = MET[0] * MET[0];
-	MET_sq[1] = MET[1] * MET[1];
+	MET_sq[0] = (MET[0] * MET[0]);
+	MET_sq[1] = (MET[1] * MET[1]);
 	MET_res = MET_sq[0] + MET_sq[1];
 		//Output of the function: MET[0]- X sum, MET[1] - Y sum, MET_res- addition of squares of X and Y
 
 
-	hls::sqrt_input<InputWidth_sqrt, DataFormat_sqrt>::in x_sample_sqrt;
 
-	x_sample_sqrt.in = 9;
-	sqrt_top(x_sample_sqrt,sqrtX);
+	hls::sqrt_input<InputWidth_sqrt, DataFormat_sqrt>::in x_sqrt;
 
-	hls::atan2_input<InputWidth_atan>::cartesian x_sample_atan;
-	x_sample_atan.cartesian = 1;
-	atan2_top(x_sample_atan,atanX);
+	x_sqrt.in = MET_res;
+	sqrt_top(x_sqrt,sqrtX);
+
+	hls::atan2_input<InputWidth_atan>::cartesian x_atan;
+	x_atan.cartesian.real() = MET[0];
+	x_atan.cartesian.imag() = MET[1];
+
+	atan2_top(x_atan,atanX);
+
 
 
 }

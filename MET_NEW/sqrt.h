@@ -34,13 +34,13 @@
 
 #include "hls_dsp.h"
 
-const int DataFormat = hls::CORDIC_FORMAT_USIG_INT;
-const int InputWidth = 40;
-const int OutputWidth = 21; // Output width for integer square root must be (InputWidth/2)+1
-const int RoundMode = hls::CORDIC_ROUND_TRUNCATE;
+const int DataFormat_sqrt = hls::CORDIC_FORMAT_USIG_INT;
+const int InputWidth_sqrt = 27;
+const int OutputWidth_sqrt = 14; // Output width for integer square root must be (InputWidth/2)+1
+const int RoundMode_sqrt = hls::CORDIC_ROUND_TRUNCATE;
 
-void sqrt_top(const hls::sqrt_input<InputWidth, DataFormat>::in &x,
-              hls::sqrt_output<OutputWidth, DataFormat>::out &sqrtX);
+void sqrt_top(const hls::sqrt_input<InputWidth_sqrt, DataFormat_sqrt>::in &x,
+              hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out &sqrtX);
 
 #endif
 
