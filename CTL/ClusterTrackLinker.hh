@@ -6,6 +6,7 @@
 
 #define uint10_t ap_uint<10>
 #define uint9_t ap_uint<9>
+#define uint3_t ap_uint<3>
 
 const uint16_t MaxTracks = 10;
 
@@ -26,15 +27,15 @@ const uint16_t MaxNeutralClusters = NCaloLayer1Eta * NCaloLayer1Phi;
 
 
 bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
-		   uint16_t peakEta[NCaloLayer1Eta][NCaloLayer1Phi],
-		   uint16_t peakPhi[NCaloLayer1Eta][NCaloLayer1Phi],
+		   uint3_t peakEta[NCaloLayer1Eta][NCaloLayer1Phi],
+		   uint3_t peakPhi[NCaloLayer1Eta][NCaloLayer1Phi],
 		   uint10_t trackPT[MaxTracks],
 		   uint9_t trackEta[MaxTracks],
 		   uint10_t trackPhi[MaxTracks],
 		   uint10_t linkedTrackPT[MaxTracks],
 		   uint9_t linkedTrackEta[MaxTracks],
 		   uint10_t linkedTrackPhi[MaxTracks],
-		   uint16_t linkedTrackQuality[MaxTracks],
+		   ap_fixed<8,6> linkedTrackQuality[MaxTracks],
 		   uint10_t neutralClusterET[MaxNeutralClusters],
 		   uint9_t neutralClusterEta[MaxNeutralClusters],
 		   uint10_t neutralClusterPhi[MaxNeutralClusters]);

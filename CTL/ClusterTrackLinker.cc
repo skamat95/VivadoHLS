@@ -3,17 +3,18 @@
 
 #define uint10_t ap_uint<10>
 #define uint9_t ap_uint<9>
+#define uint3_t ap_uint<3>
 
 bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
-			   uint16_t peakEta[NCaloLayer1Eta][NCaloLayer1Phi],
-			   uint16_t peakPhi[NCaloLayer1Eta][NCaloLayer1Phi],
+			   uint3_t peakEta[NCaloLayer1Eta][NCaloLayer1Phi],
+			   uint3_t peakPhi[NCaloLayer1Eta][NCaloLayer1Phi],
 			   uint10_t trackPT[MaxTracks],
 			   uint9_t trackEta[MaxTracks],
 			   uint10_t trackPhi[MaxTracks],
 			   uint10_t linkedTrackPT[MaxTracks],
 			   uint9_t linkedTrackEta[MaxTracks],
 			   uint10_t linkedTrackPhi[MaxTracks],
-			   uint16_t linkedTrackQuality[MaxTracks],
+			   ap_fixed<8,6> linkedTrackQuality[MaxTracks],
 			   uint10_t neutralClusterET[MaxNeutralClusters],
 			   uint9_t neutralClusterEta[MaxNeutralClusters],
 			   uint10_t neutralClusterPhi[MaxNeutralClusters])
@@ -75,7 +76,7 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 	  uint16_t clus_eta = int(track_peak_eta[track] / NCaloLayer1Phi);
 	  uint16_t clus_phi = int(track_peak_phi[track] % NCaloLayer1Phi);
 
-	  ap_ufixed<10,5> diff[3][3] = {0};
+	  ap_ufixed<6,4> diff[3][3] = {0};
 	  //First check in the same tower as track
 	  int eta = clus_eta;
 	  int phi = clus_phi;
@@ -101,7 +102,7 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 
 		//If not, we run for all the other 8 towers in a 3*3 matrix around the track-tower level
 
-		ap_ufixed<10,5> least_dist = 100; //random big value initialization
+		ap_ufixed<8,6> least_dist = 100; //random big value initialization
 	  for (int i = -1; i < 2; i++){
 #pragma HLS UNROLL
 		  for (int j = -1; j < 2; j++){
@@ -131,7 +132,7 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 					common = diffPhi - uncommon;
 				}
 
-				diff[i][j] = 1.5*common + uncommon;
+				diff[i][j] = 1.4*common + uncommon;
 				if(diff[i][j] < least_dist) {
 					least_dist =  diff[i][j];
 					//This is the best match, so link them
@@ -139,7 +140,7 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 					linkedTrackPhi[track] = clusterPhi[cluster_trial];
 					//making neutral cluster
 					neutralClusterET[cluster_trial] -= trackPT[track];
-					//linkedTrackQuality[track] = least_dist;
+					linkedTrackQuality[track] = least_dist;
 				}
 
 		  	}
