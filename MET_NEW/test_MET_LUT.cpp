@@ -15,7 +15,7 @@ using namespace std;
 #define NCrts 18
 #define NCrds 7
 #define NRgns 2
-#define NTwrs 4
+
 
 /*
 bool write_genSINE() {
@@ -136,7 +136,9 @@ bool write_genCOS() {
 
 */
 
-bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2], ap_fixed<40,35> MET_sq[2], ap_fixed<40,35> MET_res) {
+bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2],
+		hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out &sqrtX,
+		hls::atan2_output<OutputWidth_atan>::phase &atanX) {
   // This code is to write suitable mapping of inputs to signals in the CTP7_HLS project from Ales
 
   // Block 1 of User Code
@@ -152,12 +154,11 @@ bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2], 
   //Outputs
   fprintf(f1, "MET_0 : OUT STD_LOGIC_VECTOR (19 downto 0);\n"); //ap_fixed<20,17>
   fprintf(f1, "MET_1 : OUT STD_LOGIC_VECTOR (19 downto 0);\n"); //ap_fixed<20,17>
-  //fprintf(f1, "MET_2 : OUT STD_LOGIC_VECTOR (15 downto 0);\n\n\n");
 
-  fprintf(f1, "MET_sq_0 : OUT STD_LOGIC_VECTOR (39 downto 0);\n"); //ap_fixed<40,35>
-  fprintf(f1, "MET_sq_1 : OUT STD_LOGIC_VECTOR (39 downto 0);\n"); //ap_fixed<40,35>
 
-  fprintf(f1, "MET_res_0 : OUT STD_LOGIC_VECTOR (39 downto 0);\n\n\n"); //ap_fixed<40,35>
+  fprintf(f1, "sqrtX_0 : OUT STD_LOGIC_VECTOR (13 downto 0);\n"); //14
+  fprintf(f1, "atanX_0 : OUT STD_LOGIC_VECTOR (16 downto 0);\n\n\n"); //17
+
 
 
 
@@ -168,12 +169,10 @@ bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2], 
 
   fprintf(f1, "signal MET_0 : STD_LOGIC_VECTOR (19 downto 0);\n");
   fprintf(f1, "signal MET_1 : STD_LOGIC_VECTOR (19 downto 0);\n");
-  //fprintf(f1, "signal MET_2 : STD_LOGIC_VECTOR (15 downto 0);\n\n\n");
 
-  fprintf(f1, "signal MET_sq_0 : STD_LOGIC_VECTOR (39 downto 0);\n");
-  fprintf(f1, "signal MET_sq_1 : STD_LOGIC_VECTOR (39 downto 0);\n");
+  fprintf(f1, "signal sqrtX_0 : STD_LOGIC_VECTOR (13 downto 0);\n");//14
+  fprintf(f1, "signal atanX_0 : STD_LOGIC_VECTOR (16 downto 0);\n\n\n");//17
 
-  fprintf(f1, "signal MET_res_0 : STD_LOGIC_VECTOR (39 downto 0);\n\n\n");
 
   // Block 3
   for(iRgn = 0; iRgn < NCrts*NCrds*NRgns; iRgn++) {
@@ -182,12 +181,10 @@ bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2], 
 
   fprintf(f1, "MET_0 => MET_0,\n");
   fprintf(f1, "MET_1 => MET_1,\n");
-  //fprintf(f1, "MET_2 => MET_2,\n\n\n");
 
-  fprintf(f1, "MET_sq_0 => MET_sq_0,\n");
-  fprintf(f1, "MET_sq_1 => MET_sq_1,\n");
+  fprintf(f1, "sqrtX_0 => sqrtX_0,\n");
+  fprintf(f1, "atanX_0 => atanX_0,\n\n\n");
 
-  fprintf(f1, "MET_res_0 => MET_res_0,\n\n\n");
 
 
   // Block 4
@@ -202,12 +199,10 @@ bool writeLinkMapHT(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2], 
 
   fprintf(f1, "s_OUTPUT_LINK_ARR( 0 )(19 downto 0) <= MET_0;\n");
   fprintf(f1, "s_OUTPUT_LINK_ARR( 0 )(39 downto 20) <= MET_1;\n");
- // fprintf(f1, "s_OUTPUT_LINK_ARR( 0 )(47 downto 32) <= MET_2;\n");
 
-  fprintf(f1, "s_OUTPUT_LINK_ARR( 0 )(59 downto 40) <= MET_sq_0;\n");
-  fprintf(f1, "s_OUTPUT_LINK_ARR( 0 )(79 downto 60) <= MET_sq_1;\n");
+  fprintf(f1, "s_OUTPUT_LINK_ARR( 0 )(53 downto 40) <= sqrtX_0;\n");//14
+  fprintf(f1, "s_OUTPUT_LINK_ARR( 0 )(70 downto 54) <= atanX_0;\n\n\n");//17
 
-  fprintf(f1, "s_OUTPUT_LINK_ARR( 0 )(99 downto 80) <= MET_res_0;\n\n\n");
   return true;
 }
 
@@ -261,8 +256,10 @@ bool writeInputFile(uint16_t rgn_in[NCrts*NCrds*NRgns], bool last) {
   return true;
 }
 
-/*
-bool writeOutputFile(ap_fixed<20,17> MET[2], ap_fixed<40,35> MET_sq[2], ap_fixed<40,35> MET_res, bool last) {
+
+bool writeOutputFile(ap_fixed<20,17> MET[2],
+		hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out &sqrtX,
+		hls::atan2_output<OutputWidth_atan>::phase &atanX, bool last) {
 
   static bool first = true;
   static int count = 0;
@@ -284,7 +281,7 @@ bool writeOutputFile(ap_fixed<20,17> MET[2], ap_fixed<40,35> MET_sq[2], ap_fixed
     fprintf(f1,"\n");
     for (i=0; i < 679; i++) fprintf(f1,"=");
   }
-
+/*
   // Pack the three 16-bit outputs in link number 0 bits 0-15, 16-31 and 32-47
   for(j = 0; j < 6 && count < 1024; j++, count++) {
     fprintf(f1,"\n0x%05X", count);
@@ -298,6 +295,7 @@ bool writeOutputFile(ap_fixed<20,17> MET[2], ap_fixed<40,35> MET_sq[2], ap_fixed
 	  fprintf(f1,"    0x00000000");
       }
   }
+  */
 
   // Fill in zeros for the rest, when last event is reached
   if(last || count > 1017) {
@@ -312,7 +310,7 @@ bool writeOutputFile(ap_fixed<20,17> MET[2], ap_fixed<40,35> MET_sq[2], ap_fixed
   return true;
 
 }
-*/
+
 bool makeTestData(int argc, char** argv, uint16_t rgn_in[NCrts*NCrds*NRgns]) {
   static FILE *f1;
   static bool first = true;
@@ -340,33 +338,16 @@ int main(int argc, char **argv) {
 
 	uint16_t rgn_in[NCrts*NCrds*NRgns];
 	ap_fixed<20,17>  MET[2];
-	ap_fixed<40,35> MET_res;
-	ap_fixed<40,35> MET_sq[2] = {0,0};
-
 	hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out sqrtX;
 	hls::atan2_output<OutputWidth_atan>::phase atanX;
+
 	//bool success_sin = write_genSINE();
 	//bool success_cos = write_genCOS();
+
 		// Test data; Construct it using indices for the fun of it
 
-	 uint16_t temp;
 
-		int iCrt;
-		int iCrd;
-		int iRgn;
-		int i;
 		int event = 0;
-		/*
-		for(iCrt = 0; iCrt < NCrts; iCrt++) {
-			for(iCrd = 0; iCrd < NCrds; iCrd++) {
-				for(iRgn = 0; iRgn < NRgns; iRgn++) {
-					i = iCrt * NCrds * NRgns + iCrd * NRgns + iRgn;
-					rgnET[i] = 1;
-				}
-			}
-			rgnPhi[iCrt] = 46;
-		}
-	*/
 
 		bool last = false;
 		// Event loop - 170 events maximum can be written out
@@ -385,10 +366,10 @@ int main(int argc, char **argv) {
 
 		// Save input and output
 		   if(!writeInputFile(rgn_in, last)) return 2;
-		  // if(!writeOutputFile(MET, MET_sq, MET_res, last)) return 3;
+		   if(!writeOutputFile(MET, sqrtX, atanX, last)) return 3;
 		 }
 
-		 if(!writeLinkMapHT(rgn_in, MET, MET_sq, MET_res)) return 4;
+		 if(!writeLinkMapHT(rgn_in, MET, sqrtX, atanX)) return 4;
 
 		   printf("Test succeeded\n");
 
