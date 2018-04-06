@@ -114,7 +114,7 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 				int phi = clus_phi + j;
 				//to find out the tower coordinate in the 1D cluster array
 				int cluster_trial = (eta * NCaloLayer1Phi) + phi;
-				if(cluster_trial < 0 || cluster_trial > 271) break;
+				if(cluster_trial < 0 || cluster_trial > 67) break;
 
 				uint16_t diffEta = clusterEta[cluster_trial] - track_peak_eta[track];
 				if(diffEta >= MaxTrackEta) diffEta = track_peak_eta[track] - clusterEta[cluster_trial];

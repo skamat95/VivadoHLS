@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include <math.h>
-
+#include <stdio.h>
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -37,7 +37,421 @@ int poisson(double mean) {
   return em;
 }
 
+void WriteLinkMapCTL(
+		uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
+		uint3_t peakEta[NCaloLayer1Eta][NCaloLayer1Phi],
+		uint3_t peakPhi[NCaloLayer1Eta][NCaloLayer1Phi],
+		uint10_t trackPT[MaxTracks],
+		uint9_t trackEta[MaxTracks],
+		uint10_t trackPhi[MaxTracks],
+		uint10_t linkedTrackPT[MaxTracks],
+		uint9_t linkedTrackEta[MaxTracks],
+		uint10_t linkedTrackPhi[MaxTracks],
+		ap_fixed<8,6> linkedTrackQuality[MaxTracks],
+		uint10_t neutralClusterET[MaxNeutralClusters],
+		uint9_t neutralClusterEta[MaxNeutralClusters],
+		uint10_t neutralClusterPhi[MaxNeutralClusters])
+{
+  // This code is to write suitable mapping of inputs to signals in the CTP7_HLS project from Ales
+  // Block 1 of User Code
+  int iRgn, jRgn, mRgn, hRgn, iHFRgn, link, loBit, hiBit;
+  //ClusterTrackLinker
+  //printf("\n----------------ClusterTrackLinker---------------\n\n");
+  for(mRgn = 0; mRgn < NCaloLayer1Eta; mRgn++){
+		for (hRgn =0; hRgn < NCaloLayer1Phi; hRgn++)
+		{
+		 printf("ClusterET_%d_%d : IN STD_LOGIC_VECTOR (9 downto 0);\n", mRgn,hRgn);
+		}
+	}
+    printf("\n");
+
+  for(mRgn = 0; mRgn < NCaloLayer1Eta; mRgn++){
+        for (hRgn =0; hRgn < NCaloLayer1Phi; hRgn++)
+        {
+           printf("peakEta_%d_%d : IN STD_LOGIC_VECTOR (2 downto 0);\n", mRgn,hRgn);
+        }
+      }
+  printf("\n");
+  for(mRgn = 0; mRgn < NCaloLayer1Eta; mRgn++){
+        for (hRgn =0; hRgn < NCaloLayer1Phi; hRgn++)
+        {
+           printf("peakPhi_%d_%d : IN STD_LOGIC_VECTOR (2 downto 0);\n", mRgn,hRgn);
+        }
+      }
+  printf("\n");
+
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("trackPT_%d : IN STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("trackEta_%d : IN STD_LOGIC_VECTOR (8 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("trackPhi_%d : IN STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("linkedTrackPT_%d : OUT STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("linkedTrackEta_%d : OUT STD_LOGIC_VECTOR (8 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("linkedTrackPhi_%d : OUT STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("linkedTrackQuality_%d : OUT STD_LOGIC_VECTOR (15 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           printf("neutralClusterET_%d : OUT STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           printf("neutralClusterEta_%d : OUT STD_LOGIC_VECTOR (8 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           printf("neutralClusterPhi_%d : OUT STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+
+  //-------------------------------------------------------------------------------------------------
+  // Block 2
+  //  int iRgn, jRgn, mRgn, hRgn iHFRgn, link, loBit, hiBit;
+
+  //ClusterTrackLinker
+  //printf("\n----------------ClusterTrackLinker---------------\n\n");
+  for(mRgn = 0; mRgn < NCaloLayer1Eta; mRgn++){
+		for (hRgn =0; hRgn < NCaloLayer1Phi; hRgn++)
+		{
+		 printf("signal ClusterET_%d_%d : STD_LOGIC_VECTOR (9 downto 0);\n", mRgn,hRgn);
+		}
+      }
+    printf("\n");
+
+
+  for(mRgn = 0; mRgn < NCaloLayer1Eta; mRgn++){
+        for (hRgn =0; hRgn < NCaloLayer1Phi; hRgn++)
+        {
+           printf("signal peakEta_%d_%d : STD_LOGIC_VECTOR (2 downto 0);\n", mRgn,hRgn);
+        }
+      }
+  printf("\n");
+  for(mRgn = 0; mRgn < NCaloLayer1Eta; mRgn++){
+        for (hRgn =0; hRgn < NCaloLayer1Phi; hRgn++)
+        {
+           printf("signal peakPhi_%d_%d : STD_LOGIC_VECTOR (2 downto 0);\n", mRgn,hRgn);
+        }
+      }
+  printf("\n");
+
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("signal trackPT_%d : STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("signal trackEta_%d : STD_LOGIC_VECTOR (8 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("signal trackPhi_%d : STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("signal linkedTrackPT_%d : STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("signal linkedTrackEta_%d : STD_LOGIC_VECTOR (8 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("signal linkedTrackPhi_%d : STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("signal linkedTrackQuality_%d : STD_LOGIC_VECTOR (15 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           printf("signal neutralClusterET_%d : STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           printf("signal neutralClusterEta_%d : STD_LOGIC_VECTOR (8 downto 0);\n",hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           printf("signal neutralClusterPhi_%d : STD_LOGIC_VECTOR (9 downto 0);\n",hRgn);
+        }
+
+  //-------------------------------------------------------------------------------------
+  // Block 3
+
+  //ClusterTrackLinker
+  //printf("\n----------------ClusterTrackLinker---------------\n\n");
+  for(mRgn = 0; mRgn < NCaloLayer1Eta; mRgn++){
+		for (hRgn =0; hRgn < NCaloLayer1Phi; hRgn++)
+		{
+		 printf("ClusterET_%d_%d => ClusterET_%d_%d,\n", mRgn,hRgn,mRgn,hRgn);
+		}
+	 }
+    printf("\n");
+
+  for(mRgn = 0; mRgn < NCaloLayer1Eta; mRgn++){
+        for (hRgn =0; hRgn < NCaloLayer1Phi; hRgn++)
+        {
+           printf("peakEta_%d_%d => peakEta_%d_%d,\n", mRgn,hRgn,mRgn,hRgn);
+        }
+      }
+  printf("\n");
+  for(mRgn = 0; mRgn < NCaloLayer1Eta; mRgn++){
+        for (hRgn =0; hRgn < NCaloLayer1Phi; hRgn++)
+        {
+          printf("peakPhi_%d_%d => peakPhi_%d_%d,\n", mRgn,hRgn,mRgn,hRgn);
+        }
+      }
+  printf("\n");
+
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("trackPT_%d => trackPT_%d,\n", hRgn,hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("trackEta_%d => trackEta_%d,\n", hRgn,hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("trackPhi_%d => trackPhi_%d,\n", hRgn,hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("linkedTrackPT_%d => linkedTrackPT_%d,\n", hRgn,hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("linkedTrackEta_%d => linkedTrackEta_%d,\n", hRgn,hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("linkedTrackPhi_%d => linkedTrackPhi_%d,\n", hRgn,hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           printf("linkedTrackQuality_%d => linkedTrackQuality_%d,\n", hRgn,hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           printf("neutralClusterET_%d => neutralClusterET_%d,\n",hRgn,hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           printf("neutralClusterEta_%d => neutralClusterEta_%d,\n",hRgn,hRgn);
+        }
+  printf("\n");
+  for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           printf("neutralClusterPhi_%d => neutralClusterPhi_%d,\n",hRgn,hRgn);
+        }
+
+//---------------------------------------------------------------------------------------------------------------
+  // Block 4
+/*
+  printf("======================================================================================")
+  for(iRgn = 0; iRgn < NCrts*NCrds*NRgns; iRgn++) {
+    // Each link can carry 192-bits, or 12x16-bits of data
+    // Each iRgn needs 16 bits
+    link = (iRgn / 12);
+    loBit = (iRgn % 12) * 16;
+    hiBit = loBit + 15;
+    printf("rgnET_%d <= s_INPUT_LINK_ARR( %d )(%d downto %d);\n", iRgn, link, hiBit, loBit);
+  }
+  for(iHFRgn = 0; iHFRgn < NCrts * NHFRgns; iHFRgn++) {
+    // Each link can carry 192-bits, or 12x16-bits of data
+    // Each iHFRgn needs 16 bits
+    link = (iHFRgn / 12) + 21;
+    loBit = (iHFRgn % 12) * 16;
+    hiBit = loBit + 15;
+    printf("hfET_%d <= s_INPUT_LINK_ARR( %d )(%d downto %d);\n", iHFRgn, link, hiBit, loBit);
+  }
+  printf("s_OUTPUT_LINK_ARR( 0 )(15 downto 0) <= HT_0;\n");
+------ CHECK THE BIT NUMBERS AND LINK NUMBERS IN ALL------
+   */
+  //printf("\n----------------ClusterFinder---------------\n\n");
+  int k=0;
+
+
+  	  for(mRgn = 0; mRgn < NCaloLayer1Eta; mRgn++){
+		for (hRgn =0; hRgn < NCaloLayer1Phi; hRgn++)
+		{
+		 link = (k / 12);
+		 loBit = (k % 12) * 16;
+		 hiBit = loBit + 9;
+		 k++;
+		 printf("ClusterET_%d_%d <= s_INPUT_LINK_ARR( %d )(%d downto %d);\n", mRgn, hRgn, link, hiBit, loBit);
+		 loBit = hiBit + 1;
+		 hiBit = hiBit + 3;
+		 printf("peakEta_%d_%d <= s_INPUT_LINK_ARR( %d )(%d downto %d);\n", mRgn, hRgn, link, hiBit, loBit);
+		 loBit = hiBit + 1;
+		 hiBit = hiBit + 3;
+		 printf("peakPhi_%d_%d <= s_INPUT_LINK_ARR( %d )(%d downto %d);\n", mRgn, hRgn, link, hiBit, loBit);
+
+		}
+  	  }
+  	  printf("\n");
+
+      for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           link = (k / 12);
+           loBit = (k % 12) * 16;
+           hiBit = loBit + 9;
+           k++;
+           printf("trackPT_%d <= s_INPUT_LINK_ARR( %d )(%d downto %d);\n", hRgn, link, hiBit, loBit);
+        }
+
+      printf("\n");
+      for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           link = (k / 12);
+           loBit = (k % 12) * 16;
+           hiBit = loBit + 8;
+           k++;
+           printf("trackEta_%d <= s_INPUT_LINK_ARR( %d )(%d downto %d);\n", hRgn, link, hiBit, loBit);
+        }
+
+      printf("\n");
+      for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           link = (k / 12);
+           loBit = (k % 12) * 16;
+           hiBit = loBit + 9;
+           k++;
+           printf("trackPhi_%d <= s_INPUT_LINK_ARR( %d )(%d downto %d);\n", hRgn, link, hiBit, loBit);
+        }
+      k=0;
+      printf("\n");
+      for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           link = (k / 12);
+           loBit = (k % 12) * 16;
+           hiBit = loBit + 9;
+           k++;
+           printf("s_OUTPUT_LINK_ARR( %d )(%d downto %d) <= linkedTrackPT_%d ;\n", link, hiBit, loBit, hRgn);
+        }
+
+      printf("\n");
+      for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           link = (k / 12);
+           loBit = (k % 12) * 16;
+           hiBit = loBit + 8;
+           k++;
+           printf("s_OUTPUT_LINK_ARR( %d )(%d downto %d) <= linkedTrackEta_%d ;\n", link, hiBit, loBit, hRgn);
+        }
+
+      printf("\n");
+      for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           link = (k / 12);
+           loBit = (k % 12) * 16;
+           hiBit = loBit + 9;
+           k++;
+           printf("s_OUTPUT_LINK_ARR( %d )(%d downto %d) <= linkedTrackPhi_%d ;\n", link, hiBit, loBit, hRgn);
+        }
+
+      printf("\n");
+      for (hRgn =0; hRgn < MaxTracks; hRgn++)
+        {
+           link = (k / 12);
+           loBit = (k % 12) * 16;
+           hiBit = loBit + 7;
+           k++;
+           printf("s_OUTPUT_LINK_ARR( %d )(%d downto %d) <= linkedTrackQuality_%d ;\n", link, hiBit, loBit, hRgn);
+        }
+
+      printf("\n");
+      for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           link = (k / 12);
+           loBit = (k % 12) * 16;
+           hiBit = loBit + 9;
+           k++;
+           printf("s_OUTPUT_LINK_ARR( %d )(%d downto %d) <= neutralClusterET_%d ;\n", link, hiBit, loBit,hRgn);
+        }
+
+      printf("\n");
+      for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           link = (k / 12);
+           loBit = (k % 12) * 16;
+           hiBit = loBit + 8;
+           k++;
+           printf("s_OUTPUT_LINK_ARR( %d )(%d downto %d) <= neutralClusterEta_%d ;\n", link, hiBit, loBit, hRgn);
+        }
+
+      printf("\n");
+      for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
+        {
+           link = (k / 12);
+           loBit = (k % 12) * 16;
+           hiBit = loBit + 9;
+           k++;
+           printf("s_OUTPUT_LINK_ARR( %d )(%d downto %d) <= neutralClusterPhi_%d ;\n", link, hiBit, loBit, hRgn);
+        }
+    }
+
+
+
+
 int main(int argc, char **argv) {
+
+	uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi] = {0};
+	uint3_t peakEta[NCaloLayer1Eta][NCaloLayer1Phi] = {0};
+	uint3_t peakPhi[NCaloLayer1Eta][NCaloLayer1Phi] = {0};
+	uint10_t trackPT[MaxTracks] = {0};
+	uint9_t trackEta[MaxTracks] = {0};
+	uint10_t trackPhi[MaxTracks] = {0};
+	uint10_t linkedTrackPT[MaxTracks] = {0};
+	uint9_t linkedTrackEta[MaxTracks] = {0};
+	uint10_t linkedTrackPhi[MaxTracks] = {0};
+	ap_fixed<8,6> linkedTrackQuality[MaxTracks] = {0};
+	uint10_t neutralClusterET[MaxNeutralClusters] = {0};
+	uint9_t neutralClusterEta[MaxNeutralClusters] = {0};
+	uint10_t neutralClusterPhi[MaxNeutralClusters] = {0};
 
   if(argc == 2) srandom((unsigned int) atoi(argv[1]));
 
@@ -51,17 +465,18 @@ int main(int argc, char **argv) {
       }
     }
   }
-  uint16_t trackPT[MaxTracksInCard] = {0};
-  uint16_t trackEta[MaxTracksInCard] = {0};
-  uint16_t trackPhi[MaxTracksInCard] = {0};
-  for(int track = 0; track < MaxTracksInCard; track++) {
+  /*
+  uint16_t trackPT[MaxTracks] = {0};
+  uint16_t trackEta[MaxTracks] = {0};
+  uint16_t trackPhi[MaxTracks] = {0};
+  for(int track = 0; track < MaxTracks; track++) {
     trackPT[track] = 0;
-  }
+  }*/
 
   // Get a random number of objects and tracks, but within hardware constraints
 
   int nObjects = max(poisson(50), int(MaxNeutralClusters));
-  int nTracks = max(poisson(15), int(MaxTracksInCard));
+  int nTracks = max(poisson(15), int(MaxTracks));
   if(nTracks > nObjects) nTracks = nObjects;
 
   double totalET = 0;
@@ -92,7 +507,7 @@ int main(int argc, char **argv) {
         else if(ncEta > NCaloLayer1Phi) {ncEta = 0; ntEta = tEta + 1;}
         if(ncPhi < 0) {ncPhi = NCaloLayer1Phi; ntPhi = tPhi - 1;}
         else if(ncPhi > NCaloLayer1Phi) {ncPhi = 0; ntPhi = tPhi + 1;}
-        // Ignore spill-overs outside the card, defering to next layer
+        // Ignore spill-overs outside the card, deferring to next layer
         if(dEta == 0 && dPhi == 0) {
           crystals[tEta][tPhi][cEta][cPhi] = (objectET * 0.9);
         }
@@ -124,11 +539,12 @@ int main(int argc, char **argv) {
     }
   }
   cout << "Total deposited ET = " << totalDeposited << endl;
-  uint16_t peakEta[NCaloLayer1Eta][NCaloLayer1Phi];
-  uint16_t peakPhi[NCaloLayer1Eta][NCaloLayer1Phi];
+
+
   uint16_t largeClusterET[NCaloLayer1Eta][NCaloLayer1Phi];
   uint16_t smallClusterET[NCaloLayer1Eta][NCaloLayer1Phi];
   uint16_t totalCardET = 0;
+  /*
   if(getClustersInCard(crystals, peakEta, peakPhi, largeClusterET, smallClusterET)) {
     cout << "From the cluster simulation: " << endl;
     cout << "tEta\ttPhi\tpeakEta\tpeakPhi\tlargeClusterET\tsmallClusterET" << endl;
@@ -151,30 +567,25 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  uint16_t linkedTrackPT[MaxTracksInCard] = {0};
-  uint16_t linkedTrackEta[MaxTracksInCard] = {0};
-  uint16_t linkedTrackPhi[MaxTracksInCard] = {0};
-  uint16_t linkedTrackQuality[MaxTracksInCard] = {0};
-  uint16_t neutralClusterET[MaxNeutralClusters] = {0};
-  uint16_t neutralClusterEta[MaxNeutralClusters] = {0};
-  uint16_t neutralClusterPhi[MaxNeutralClusters] = {0};
 
-  if(getClusterTrackLinker(smallClusterET, peakEta, peakPhi, 
-			   trackPT, trackEta, trackPhi, 
-			   linkedTrackPT, linkedTrackEta, linkedTrackPhi, linkedTrackQuality,
-			   neutralClusterET, neutralClusterEta, neutralClusterPhi)) {
+*/
+
+  if(getClusterTrackLinker(clusterET, peakEta, peakPhi,
+         trackPT, trackEta, trackPhi,
+         linkedTrackPT, linkedTrackEta, linkedTrackPhi, linkedTrackQuality,
+         neutralClusterET, neutralClusterEta, neutralClusterPhi)) {
 
     cout << "From the cluster-track linking simulation: " << endl;
 
     cout << "LinkedTracks: " << endl;
     cout << "trackEta\ttrackPhi\ttrackPT\ttrackLinkQuality" << endl;
-    for(int track = 0; track < MaxTracksInCard; track++) {
+    for(int track = 0; track < MaxTracks; track++) {
       if(linkedTrackPT[track] > 0) {
-	cout << linkedTrackEta[track]
-	     << "\t" << linkedTrackPhi[track]
-	     << "\t" << linkedTrackPT[track]
-	     << "\t" << linkedTrackQuality[track]
-	     << endl;
+  cout << linkedTrackEta[track]
+       << "\t" << linkedTrackPhi[track]
+       << "\t" << linkedTrackPT[track]
+       << "\t" << linkedTrackQuality[track]
+       << endl;
       }
     }
 
@@ -182,14 +593,29 @@ int main(int argc, char **argv) {
     cout << "clusterEta\tclusterPhi\tclusterET" << endl;
     for(int cluster = 0; cluster < MaxNeutralClusters; cluster++) {
       if(neutralClusterET[cluster] > 0) {
-	cout << neutralClusterEta[cluster]
-	     << "\t" << neutralClusterPhi[cluster]
-	     << "\t" << neutralClusterET[cluster]
-	     << endl;
+  cout << neutralClusterEta[cluster]
+       << "\t" << neutralClusterPhi[cluster]
+       << "\t" << neutralClusterET[cluster]
+       << endl;
       }
     }
 
   }
-     
+  WriteLinkMapCTL(
+  clusterET,
+  peakEta,
+  peakPhi,
+  trackPT,
+  trackEta,
+  trackPhi,
+  linkedTrackPT,
+  linkedTrackEta,
+  linkedTrackPhi,
+  linkedTrackQuality,
+  neutralClusterET,
+  neutralClusterEta,
+  neutralClusterPhi);
+
+
   return 0;
 }
