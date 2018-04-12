@@ -125,7 +125,7 @@ COMPONENT ila_hls
   
 
   signal s_clk_50  : std_logic;
-  signal s_clk_240        : std_logic;
+  signal s_clk_240 : std_logic;
 
   signal BRAM_CTRL_REG_FILE_en   : std_logic;
   signal BRAM_CTRL_REG_FILE_dout : std_logic_vector (31 downto 0);
@@ -188,58 +188,11 @@ COMPONENT ila_hls
   signal s_INPUT_link_arr :  t_slv_arr_192(66 downto 0) := (others => (others => '0'));
   signal s_OUTPUT_link_arr:   t_slv_arr_192(47 downto 0) := (others => (others => '0'));
   signal s_cfg_reg : t_slv_arr_32(31 downto 0);
- 
- 
--- CORDIC 0: Square root calculation
-------------- Begin Cut here for COMPONENT Declaration ------ COMP_TAG
-COMPONENT cordic_0
-  PORT (
-    aclk : IN STD_LOGIC;
-    s_axis_cartesian_tvalid : IN STD_LOGIC;
-    s_axis_cartesian_tdata : IN STD_LOGIC_VECTOR(39 DOWNTO 0);
-    m_axis_dout_tvalid : OUT STD_LOGIC;
-    m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(23 DOWNTO 0)
-  );
-END COMPONENT;
--- COMP_TAG_END ------ End COMPONENT Declaration ------------
-
--- The following code must appear in the VHDL architecture
--- body. Substitute your own instance name and net names.
-
-------------- Begin Cut here for INSTANTIATION Template ----- INST_TAG
---your_instance_name : cordic_0
- 
--- INST_TAG_END ------ End INSTANTIATION Template ---------
-
-
-
-
---CORDIc 1: Atan calculation
-------------- Begin Cut here for COMPONENT Declaration ------ COMP_TAG
-COMPONENT cordic_1
-  PORT (
-    aclk : IN STD_LOGIC;
-    s_axis_cartesian_tvalid : IN STD_LOGIC;
-    s_axis_cartesian_tdata : IN STD_LOGIC_VECTOR(79 DOWNTO 0);
-    m_axis_dout_tvalid : OUT STD_LOGIC;
-    m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
-  );
-END COMPONENT;
--- COMP_TAG_END ------ End COMPONENT Declaration ------------
-
--- The following code must appear in the VHDL architecture
--- body. Substitute your own instance name and net names.
-
-------------- Begin Cut here for INSTANTIATION Template ----- INST_TAG
---your_instance_name : cordic_1
-  
--- INST_TAG_END ------ End INSTANTIATION Template ---------
-
 
 -----------------------------------------------------------------------------
 -- Begin User_Code
 -----------------------------------------------------------------------------
- COMPONENT Met_o_0
+ COMPONENT MET_O_1
     PORT (
       ap_clk : IN STD_LOGIC;
       ap_rst : IN STD_LOGIC;
@@ -247,565 +200,563 @@ END COMPONENT;
       ap_done : OUT STD_LOGIC;
       ap_idle : OUT STD_LOGIC;
       ap_ready : OUT STD_LOGIC;
-    
       
-      rgn_in_0 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_1 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_2 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_3 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_4 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_5 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_6 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_7 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_8 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_9 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_10 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_11 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_12 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_13 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_14 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_15 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_16 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_17 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_18 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_19 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_20 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_21 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_22 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_23 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_24 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_25 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_26 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_27 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_28 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_29 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_30 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_31 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_32 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_33 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_34 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_35 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_36 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_37 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_38 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_39 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_40 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_41 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_42 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_43 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_44 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_45 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_46 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_47 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_48 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_49 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_50 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_51 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_52 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_53 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_54 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_55 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_56 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_57 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_58 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_59 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_60 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_61 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_62 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_63 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_64 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_65 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_66 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_67 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_68 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_69 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_70 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_71 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_72 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_73 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_74 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_75 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_76 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_77 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_78 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_79 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_80 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_81 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_82 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_83 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_84 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_85 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_86 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_87 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_88 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_89 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_90 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_91 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_92 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_93 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_94 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_95 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_96 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_97 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_98 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_99 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_100 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_101 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_102 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_103 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_104 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_105 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_106 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_107 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_108 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_109 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_110 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_111 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_112 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_113 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_114 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_115 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_116 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_117 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_118 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_119 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_120 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_121 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_122 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_123 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_124 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_125 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_126 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_127 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_128 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_129 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_130 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_131 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_132 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_133 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_134 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_135 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_136 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_137 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_138 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_139 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_140 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_141 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_142 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_143 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_144 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_145 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_146 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_147 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_148 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_149 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_150 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_151 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_152 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_153 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_154 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_155 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_156 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_157 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_158 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_159 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_160 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_161 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_162 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_163 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_164 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_165 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_166 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_167 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_168 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_169 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_170 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_171 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_172 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_173 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_174 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_175 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_176 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_177 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_178 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_179 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_180 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_181 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_182 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_183 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_184 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_185 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_186 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_187 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_188 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_189 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_190 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_191 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_192 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_193 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_194 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_195 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_196 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_197 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_198 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_199 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_200 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_201 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_202 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_203 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_204 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_205 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_206 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_207 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_208 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_209 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_210 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_211 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_212 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_213 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_214 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_215 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_216 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_217 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_218 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_219 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_220 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_221 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_222 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_223 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_224 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_225 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_226 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_227 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_228 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_229 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_230 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_231 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_232 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_233 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_234 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_235 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_236 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_237 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_238 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_239 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_240 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_241 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_242 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_243 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_244 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_245 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_246 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_247 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_248 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_249 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_250 : IN STD_LOGIC_VECTOR (15 downto 0);
-            rgn_in_251 : IN STD_LOGIC_VECTOR (15 downto 0);
-      
-      
-          MET_0 : OUT STD_LOGIC_VECTOR (19 downto 0);
-          MET_1 : OUT STD_LOGIC_VECTOR (19 downto 0);
-          MET_sq_0 : OUT STD_LOGIC_VECTOR (39 downto 0);
-          MET_sq_1 : OUT STD_LOGIC_VECTOR (39 downto 0);
-          MET_res_0 : OUT STD_LOGIC_VECTOR (39 downto 0)
+--      algo_config_cfg0_V : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+--      algo_config_cfg1_V : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+--      algo_config_cfg2_V : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+--      algo_in_a_V : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+--      algo_in_b_V : IN STD_LOGIC_VECTOR(19 DOWNTO 0);
+--      algo_in_c_V : IN STD_LOGIC_VECTOR(30 DOWNTO 0);
+--      algo_in_d_V : IN STD_LOGIC_VECTOR(18 DOWNTO 0);
+--      algo_out_w_V : OUT STD_LOGIC_VECTOR(24 DOWNTO 0);
+--      algo_out_x_V : OUT STD_LOGIC_VECTOR(17 DOWNTO 0);
+--      algo_out_y_V : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+--      algo_out_z_V : OUT STD_LOGIC_VECTOR(8 DOWNTO 0)
+
+
+
+rgn_in_0 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_1 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_2 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_3 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_4 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_5 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_6 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_7 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_8 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_9 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_10 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_11 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_12 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_13 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_14 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_15 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_16 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_17 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_18 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_19 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_20 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_21 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_22 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_23 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_24 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_25 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_26 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_27 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_28 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_29 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_30 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_31 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_32 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_33 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_34 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_35 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_36 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_37 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_38 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_39 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_40 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_41 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_42 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_43 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_44 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_45 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_46 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_47 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_48 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_49 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_50 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_51 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_52 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_53 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_54 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_55 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_56 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_57 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_58 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_59 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_60 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_61 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_62 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_63 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_64 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_65 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_66 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_67 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_68 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_69 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_70 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_71 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_72 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_73 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_74 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_75 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_76 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_77 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_78 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_79 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_80 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_81 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_82 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_83 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_84 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_85 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_86 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_87 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_88 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_89 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_90 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_91 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_92 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_93 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_94 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_95 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_96 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_97 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_98 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_99 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_100 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_101 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_102 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_103 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_104 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_105 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_106 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_107 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_108 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_109 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_110 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_111 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_112 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_113 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_114 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_115 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_116 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_117 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_118 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_119 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_120 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_121 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_122 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_123 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_124 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_125 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_126 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_127 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_128 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_129 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_130 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_131 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_132 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_133 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_134 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_135 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_136 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_137 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_138 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_139 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_140 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_141 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_142 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_143 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_144 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_145 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_146 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_147 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_148 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_149 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_150 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_151 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_152 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_153 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_154 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_155 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_156 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_157 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_158 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_159 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_160 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_161 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_162 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_163 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_164 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_165 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_166 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_167 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_168 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_169 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_170 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_171 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_172 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_173 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_174 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_175 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_176 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_177 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_178 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_179 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_180 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_181 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_182 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_183 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_184 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_185 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_186 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_187 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_188 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_189 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_190 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_191 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_192 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_193 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_194 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_195 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_196 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_197 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_198 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_199 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_200 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_201 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_202 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_203 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_204 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_205 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_206 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_207 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_208 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_209 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_210 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_211 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_212 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_213 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_214 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_215 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_216 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_217 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_218 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_219 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_220 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_221 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_222 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_223 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_224 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_225 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_226 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_227 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_228 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_229 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_230 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_231 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_232 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_233 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_234 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_235 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_236 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_237 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_238 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_239 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_240 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_241 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_242 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_243 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_244 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_245 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_246 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_247 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_248 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_249 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_250 : IN STD_LOGIC_VECTOR (15 downto 0);
+rgn_in_251 : IN STD_LOGIC_VECTOR (15 downto 0);
+
+output_MET_0_V : OUT STD_LOGIC_VECTOR(19 DOWNTO 0);
+output_MET_1_V : OUT STD_LOGIC_VECTOR(19 DOWNTO 0);
+output_sqrtX_out_V : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
+output_atanX_phase_V : OUT STD_LOGIC_VECTOR(16 DOWNTO 0)
+
     );
   END COMPONENT;  
 
 -- HLS Algo Control/Handshake Interface
-      signal ap_clk :  STD_LOGIC;
-      signal ap_rst :  STD_LOGIC;
-      signal ap_start :  STD_LOGIC;
-      signal ap_done :  STD_LOGIC;
-      signal ap_idle :  STD_LOGIC;
-      signal ap_ready :  STD_LOGIC;
+signal ap_clk :  STD_LOGIC;
+signal ap_rst :  STD_LOGIC;
+signal ap_start :  STD_LOGIC;
+signal ap_done :  STD_LOGIC;
+signal ap_idle :  STD_LOGIC;
+signal ap_ready :  STD_LOGIC;
       
-      signal algo_config_cfg0_V :  STD_LOGIC_VECTOR(31 DOWNTO 0);
-      signal algo_config_cfg1_V :  STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal algo_config_cfg2_V :  STD_LOGIC_VECTOR(7 DOWNTO 0);
-      signal algo_in_a_V :  STD_LOGIC_VECTOR(4 DOWNTO 0);
-      signal algo_in_b_V :  STD_LOGIC_VECTOR(19 DOWNTO 0);
-      signal algo_in_c_V :  STD_LOGIC_VECTOR(30 DOWNTO 0);
-      signal algo_in_d_V :  STD_LOGIC_VECTOR(18 DOWNTO 0);
-      signal algo_out_w_V :  STD_LOGIC_VECTOR(24 DOWNTO 0);
-      signal algo_out_x_V :  STD_LOGIC_VECTOR(17 DOWNTO 0);
-      signal algo_out_y_V :  STD_LOGIC_VECTOR(31 DOWNTO 0);
-      signal algo_out_z_V :  STD_LOGIC_VECTOR(8 DOWNTO 0);
-      
-      
-      signal rgn_in_0 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_1 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_2 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_3 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_4 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_5 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_6 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_7 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_8 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_9 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_10 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_11 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_12 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_13 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_14 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_15 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_16 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_17 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_18 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_19 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_20 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_21 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_22 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_23 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_24 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_25 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_26 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_27 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_28 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_29 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_30 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_31 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_32 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_33 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_34 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_35 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_36 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_37 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_38 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_39 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_40 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_41 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_42 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_43 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_44 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_45 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_46 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_47 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_48 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_49 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_50 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_51 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_52 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_53 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_54 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_55 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_56 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_57 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_58 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_59 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_60 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_61 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_62 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_63 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_64 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_65 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_66 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_67 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_68 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_69 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_70 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_71 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_72 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_73 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_74 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_75 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_76 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_77 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_78 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_79 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_80 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_81 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_82 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_83 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_84 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_85 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_86 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_87 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_88 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_89 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_90 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_91 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_92 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_93 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_94 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_95 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_96 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_97 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_98 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_99 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_100 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_101 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_102 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_103 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_104 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_105 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_106 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_107 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_108 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_109 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_110 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_111 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_112 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_113 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_114 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_115 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_116 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_117 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_118 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_119 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_120 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_121 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_122 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_123 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_124 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_125 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_126 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_127 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_128 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_129 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_130 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_131 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_132 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_133 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_134 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_135 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_136 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_137 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_138 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_139 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_140 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_141 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_142 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_143 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_144 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_145 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_146 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_147 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_148 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_149 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_150 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_151 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_152 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_153 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_154 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_155 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_156 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_157 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_158 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_159 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_160 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_161 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_162 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_163 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_164 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_165 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_166 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_167 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_168 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_169 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_170 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_171 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_172 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_173 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_174 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_175 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_176 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_177 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_178 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_179 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_180 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_181 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_182 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_183 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_184 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_185 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_186 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_187 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_188 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_189 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_190 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_191 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_192 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_193 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_194 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_195 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_196 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_197 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_198 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_199 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_200 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_201 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_202 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_203 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_204 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_205 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_206 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_207 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_208 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_209 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_210 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_211 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_212 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_213 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_214 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_215 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_216 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_217 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_218 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_219 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_220 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_221 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_222 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_223 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_224 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_225 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_226 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_227 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_228 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_229 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_230 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_231 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_232 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_233 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_234 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_235 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_236 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_237 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_238 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_239 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_240 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_241 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_242 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_243 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_244 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_245 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_246 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_247 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_248 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_249 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_250 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal rgn_in_251 : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      signal MET_0 : STD_LOGIC_VECTOR (19 downto 0);
-      signal MET_1 : STD_LOGIC_VECTOR (19 downto 0);
-      signal MET_sq_0 : STD_LOGIC_VECTOR (39 downto 0);
-      signal MET_sq_1 : STD_LOGIC_VECTOR (39 downto 0);
-      signal MET_res_0 : STD_LOGIC_VECTOR (39 downto 0);
+--      signal algo_config_cfg0_V :  STD_LOGIC_VECTOR(31 DOWNTO 0);
+--      signal algo_config_cfg1_V :  STD_LOGIC_VECTOR(15 DOWNTO 0);
+--      signal algo_config_cfg2_V :  STD_LOGIC_VECTOR(7 DOWNTO 0);
+--      signal algo_in_a_V :  STD_LOGIC_VECTOR(4 DOWNTO 0);
+--      signal algo_in_b_V :  STD_LOGIC_VECTOR(19 DOWNTO 0);
+--      signal algo_in_c_V :  STD_LOGIC_VECTOR(30 DOWNTO 0);
+--      signal algo_in_d_V :  STD_LOGIC_VECTOR(18 DOWNTO 0);
+--      signal algo_out_w_V :  STD_LOGIC_VECTOR(24 DOWNTO 0);
+--      signal algo_out_x_V :  STD_LOGIC_VECTOR(17 DOWNTO 0);
+--      signal algo_out_y_V :  STD_LOGIC_VECTOR(31 DOWNTO 0);
+--      signal algo_out_z_V :  STD_LOGIC_VECTOR(8 DOWNTO 0);
 
-      
-     --CORDIC 0
-     signal aclk : STD_LOGIC;
-     signal s_axis_cartesian_tvalid : STD_LOGIC;
-     --signal s_axis_cartesian_tdata : STD_LOGIC_VECTOR(39 DOWNTO 0);
-     signal m_axis_dout_tvalid : STD_LOGIC;
-     signal m_axis_dout_tdata : STD_LOGIC_VECTOR(23 DOWNTO 0);
-     
-     --CORDIC 1
-     
-     --signal aclk : STD_LOGIC;
-     --signal s_axis_cartesian_tvalid : STD_LOGIC;
-     signal s_axis_cartesian_tdata : STD_LOGIC_VECTOR(79 DOWNTO 0);
-     --signal m_axis_dout_tvalid : STD_LOGIC;
-     --signal m_axis_dout_tdata : STD_LOGIC_VECTOR(15 DOWNTO 0);
-      
+signal rgn_in_0 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_1 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_2 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_3 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_4 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_5 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_6 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_7 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_8 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_9 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_10 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_11 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_12 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_13 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_14 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_15 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_16 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_17 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_18 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_19 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_20 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_21 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_22 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_23 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_24 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_25 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_26 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_27 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_28 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_29 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_30 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_31 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_32 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_33 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_34 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_35 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_36 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_37 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_38 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_39 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_40 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_41 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_42 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_43 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_44 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_45 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_46 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_47 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_48 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_49 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_50 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_51 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_52 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_53 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_54 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_55 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_56 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_57 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_58 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_59 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_60 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_61 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_62 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_63 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_64 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_65 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_66 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_67 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_68 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_69 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_70 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_71 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_72 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_73 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_74 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_75 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_76 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_77 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_78 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_79 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_80 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_81 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_82 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_83 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_84 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_85 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_86 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_87 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_88 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_89 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_90 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_91 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_92 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_93 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_94 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_95 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_96 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_97 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_98 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_99 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_100 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_101 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_102 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_103 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_104 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_105 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_106 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_107 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_108 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_109 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_110 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_111 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_112 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_113 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_114 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_115 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_116 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_117 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_118 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_119 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_120 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_121 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_122 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_123 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_124 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_125 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_126 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_127 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_128 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_129 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_130 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_131 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_132 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_133 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_134 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_135 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_136 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_137 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_138 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_139 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_140 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_141 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_142 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_143 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_144 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_145 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_146 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_147 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_148 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_149 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_150 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_151 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_152 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_153 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_154 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_155 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_156 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_157 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_158 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_159 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_160 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_161 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_162 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_163 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_164 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_165 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_166 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_167 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_168 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_169 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_170 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_171 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_172 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_173 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_174 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_175 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_176 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_177 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_178 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_179 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_180 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_181 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_182 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_183 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_184 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_185 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_186 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_187 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_188 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_189 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_190 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_191 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_192 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_193 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_194 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_195 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_196 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_197 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_198 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_199 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_200 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_201 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_202 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_203 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_204 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_205 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_206 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_207 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_208 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_209 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_210 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_211 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_212 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_213 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_214 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_215 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_216 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_217 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_218 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_219 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_220 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_221 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_222 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_223 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_224 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_225 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_226 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_227 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_228 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_229 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_230 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_231 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_232 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_233 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_234 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_235 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_236 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_237 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_238 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_239 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_240 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_241 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_242 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_243 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_244 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_245 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_246 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_247 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_248 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_249 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_250 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal rgn_in_251 : STD_LOGIC_VECTOR(15 DOWNTO 0);
+
+
+signal output_MET_0_V : STD_LOGIC_VECTOR (19 downto 0);
+signal output_MET_1_V : STD_LOGIC_VECTOR (19 downto 0);
+signal output_sqrtX_out_V : STD_LOGIC_VECTOR (13 downto 0);
+signal output_atanX_phase_V : STD_LOGIC_VECTOR (16 downto 0);
+
+
+
 -----------------------------------------------------------------------------
 -- End User_Code
 -----------------------------------------------------------------------------
@@ -982,7 +933,7 @@ i_pattern_io_engine : entity work.pattern_io_engine
 -- Begin User_Code
 -----------------------------------------------------------------------------
      
-   i_Met_o_0 : Met_o_0
+   i_MET_O_1 : MET_O_1
        PORT MAP (
          ap_clk => ap_clk,
          ap_rst => ap_rst,
@@ -990,297 +941,273 @@ i_pattern_io_engine : entity work.pattern_io_engine
          ap_done => ap_done,
          ap_idle => ap_idle,
          ap_ready => ap_ready,
-        rgn_in_0 => rgn_in_0,
-         rgn_in_1 => rgn_in_1,
-         rgn_in_2 => rgn_in_2,
-         rgn_in_3 => rgn_in_3,
-         rgn_in_4 => rgn_in_4,
-         rgn_in_5 => rgn_in_5,
-         rgn_in_6 => rgn_in_6,
-         rgn_in_7 => rgn_in_7,
-         rgn_in_8 => rgn_in_8,
-         rgn_in_9 => rgn_in_9,
-         rgn_in_10 => rgn_in_10,
-         rgn_in_11 => rgn_in_11,
-         rgn_in_12 => rgn_in_12,
-         rgn_in_13 => rgn_in_13,
-         rgn_in_14 => rgn_in_14,
-         rgn_in_15 => rgn_in_15,
-         rgn_in_16 => rgn_in_16,
-         rgn_in_17 => rgn_in_17,
-         rgn_in_18 => rgn_in_18,
-         rgn_in_19 => rgn_in_19,
-         rgn_in_20 => rgn_in_20,
-         rgn_in_21 => rgn_in_21,
-         rgn_in_22 => rgn_in_22,
-         rgn_in_23 => rgn_in_23,
-         rgn_in_24 => rgn_in_24,
-         rgn_in_25 => rgn_in_25,
-         rgn_in_26 => rgn_in_26,
-         rgn_in_27 => rgn_in_27,
-         rgn_in_28 => rgn_in_28,
-         rgn_in_29 => rgn_in_29,
-         rgn_in_30 => rgn_in_30,
-         rgn_in_31 => rgn_in_31,
-         rgn_in_32 => rgn_in_32,
-         rgn_in_33 => rgn_in_33,
-         rgn_in_34 => rgn_in_34,
-         rgn_in_35 => rgn_in_35,
-         rgn_in_36 => rgn_in_36,
-         rgn_in_37 => rgn_in_37,
-         rgn_in_38 => rgn_in_38,
-         rgn_in_39 => rgn_in_39,
-         rgn_in_40 => rgn_in_40,
-         rgn_in_41 => rgn_in_41,
-         rgn_in_42 => rgn_in_42,
-         rgn_in_43 => rgn_in_43,
-         rgn_in_44 => rgn_in_44,
-         rgn_in_45 => rgn_in_45,
-         rgn_in_46 => rgn_in_46,
-         rgn_in_47 => rgn_in_47,
-         rgn_in_48 => rgn_in_48,
-         rgn_in_49 => rgn_in_49,
-         rgn_in_50 => rgn_in_50,
-         rgn_in_51 => rgn_in_51,
-         rgn_in_52 => rgn_in_52,
-         rgn_in_53 => rgn_in_53,
-         rgn_in_54 => rgn_in_54,
-         rgn_in_55 => rgn_in_55,
-         rgn_in_56 => rgn_in_56,
-         rgn_in_57 => rgn_in_57,
-         rgn_in_58 => rgn_in_58,
-         rgn_in_59 => rgn_in_59,
-         rgn_in_60 => rgn_in_60,
-         rgn_in_61 => rgn_in_61,
-         rgn_in_62 => rgn_in_62,
-         rgn_in_63 => rgn_in_63,
-         rgn_in_64 => rgn_in_64,
-         rgn_in_65 => rgn_in_65,
-         rgn_in_66 => rgn_in_66,
-         rgn_in_67 => rgn_in_67,
-         rgn_in_68 => rgn_in_68,
-         rgn_in_69 => rgn_in_69,
-         rgn_in_70 => rgn_in_70,
-         rgn_in_71 => rgn_in_71,
-         rgn_in_72 => rgn_in_72,
-         rgn_in_73 => rgn_in_73,
-         rgn_in_74 => rgn_in_74,
-         rgn_in_75 => rgn_in_75,
-         rgn_in_76 => rgn_in_76,
-         rgn_in_77 => rgn_in_77,
-         rgn_in_78 => rgn_in_78,
-         rgn_in_79 => rgn_in_79,
-         rgn_in_80 => rgn_in_80,
-         rgn_in_81 => rgn_in_81,
-         rgn_in_82 => rgn_in_82,
-         rgn_in_83 => rgn_in_83,
-         rgn_in_84 => rgn_in_84,
-         rgn_in_85 => rgn_in_85,
-         rgn_in_86 => rgn_in_86,
-         rgn_in_87 => rgn_in_87,
-         rgn_in_88 => rgn_in_88,
-         rgn_in_89 => rgn_in_89,
-         rgn_in_90 => rgn_in_90,
-         rgn_in_91 => rgn_in_91,
-         rgn_in_92 => rgn_in_92,
-         rgn_in_93 => rgn_in_93,
-         rgn_in_94 => rgn_in_94,
-         rgn_in_95 => rgn_in_95,
-         rgn_in_96 => rgn_in_96,
-         rgn_in_97 => rgn_in_97,
-         rgn_in_98 => rgn_in_98,
-         rgn_in_99 => rgn_in_99,
-         rgn_in_100 => rgn_in_100,
-         rgn_in_101 => rgn_in_101,
-         rgn_in_102 => rgn_in_102,
-         rgn_in_103 => rgn_in_103,
-         rgn_in_104 => rgn_in_104,
-         rgn_in_105 => rgn_in_105,
-         rgn_in_106 => rgn_in_106,
-         rgn_in_107 => rgn_in_107,
-         rgn_in_108 => rgn_in_108,
-         rgn_in_109 => rgn_in_109,
-         rgn_in_110 => rgn_in_110,
-         rgn_in_111 => rgn_in_111,
-         rgn_in_112 => rgn_in_112,
-         rgn_in_113 => rgn_in_113,
-         rgn_in_114 => rgn_in_114,
-         rgn_in_115 => rgn_in_115,
-         rgn_in_116 => rgn_in_116,
-         rgn_in_117 => rgn_in_117,
-         rgn_in_118 => rgn_in_118,
-         rgn_in_119 => rgn_in_119,
-         rgn_in_120 => rgn_in_120,
-         rgn_in_121 => rgn_in_121,
-         rgn_in_122 => rgn_in_122,
-         rgn_in_123 => rgn_in_123,
-         rgn_in_124 => rgn_in_124,
-         rgn_in_125 => rgn_in_125,
-         rgn_in_126 => rgn_in_126,
-         rgn_in_127 => rgn_in_127,
-         rgn_in_128 => rgn_in_128,
-         rgn_in_129 => rgn_in_129,
-         rgn_in_130 => rgn_in_130,
-         rgn_in_131 => rgn_in_131,
-         rgn_in_132 => rgn_in_132,
-         rgn_in_133 => rgn_in_133,
-         rgn_in_134 => rgn_in_134,
-         rgn_in_135 => rgn_in_135,
-         rgn_in_136 => rgn_in_136,
-         rgn_in_137 => rgn_in_137,
-         rgn_in_138 => rgn_in_138,
-         rgn_in_139 => rgn_in_139,
-         rgn_in_140 => rgn_in_140,
-         rgn_in_141 => rgn_in_141,
-         rgn_in_142 => rgn_in_142,
-         rgn_in_143 => rgn_in_143,
-         rgn_in_144 => rgn_in_144,
-         rgn_in_145 => rgn_in_145,
-         rgn_in_146 => rgn_in_146,
-         rgn_in_147 => rgn_in_147,
-         rgn_in_148 => rgn_in_148,
-         rgn_in_149 => rgn_in_149,
-         rgn_in_150 => rgn_in_150,
-         rgn_in_151 => rgn_in_151,
-         rgn_in_152 => rgn_in_152,
-         rgn_in_153 => rgn_in_153,
-         rgn_in_154 => rgn_in_154,
-         rgn_in_155 => rgn_in_155,
-         rgn_in_156 => rgn_in_156,
-         rgn_in_157 => rgn_in_157,
-         rgn_in_158 => rgn_in_158,
-         rgn_in_159 => rgn_in_159,
-         rgn_in_160 => rgn_in_160,
-         rgn_in_161 => rgn_in_161,
-         rgn_in_162 => rgn_in_162,
-         rgn_in_163 => rgn_in_163,
-         rgn_in_164 => rgn_in_164,
-         rgn_in_165 => rgn_in_165,
-         rgn_in_166 => rgn_in_166,
-         rgn_in_167 => rgn_in_167,
-         rgn_in_168 => rgn_in_168,
-         rgn_in_169 => rgn_in_169,
-         rgn_in_170 => rgn_in_170,
-         rgn_in_171 => rgn_in_171,
-         rgn_in_172 => rgn_in_172,
-         rgn_in_173 => rgn_in_173,
-         rgn_in_174 => rgn_in_174,
-         rgn_in_175 => rgn_in_175,
-         rgn_in_176 => rgn_in_176,
-         rgn_in_177 => rgn_in_177,
-         rgn_in_178 => rgn_in_178,
-         rgn_in_179 => rgn_in_179,
-         rgn_in_180 => rgn_in_180,
-         rgn_in_181 => rgn_in_181,
-         rgn_in_182 => rgn_in_182,
-         rgn_in_183 => rgn_in_183,
-         rgn_in_184 => rgn_in_184,
-         rgn_in_185 => rgn_in_185,
-         rgn_in_186 => rgn_in_186,
-         rgn_in_187 => rgn_in_187,
-         rgn_in_188 => rgn_in_188,
-         rgn_in_189 => rgn_in_189,
-         rgn_in_190 => rgn_in_190,
-         rgn_in_191 => rgn_in_191,
-         rgn_in_192 => rgn_in_192,
-         rgn_in_193 => rgn_in_193,
-         rgn_in_194 => rgn_in_194,
-         rgn_in_195 => rgn_in_195,
-         rgn_in_196 => rgn_in_196,
-         rgn_in_197 => rgn_in_197,
-         rgn_in_198 => rgn_in_198,
-         rgn_in_199 => rgn_in_199,
-         rgn_in_200 => rgn_in_200,
-         rgn_in_201 => rgn_in_201,
-         rgn_in_202 => rgn_in_202,
-         rgn_in_203 => rgn_in_203,
-         rgn_in_204 => rgn_in_204,
-         rgn_in_205 => rgn_in_205,
-         rgn_in_206 => rgn_in_206,
-         rgn_in_207 => rgn_in_207,
-         rgn_in_208 => rgn_in_208,
-         rgn_in_209 => rgn_in_209,
-         rgn_in_210 => rgn_in_210,
-         rgn_in_211 => rgn_in_211,
-         rgn_in_212 => rgn_in_212,
-         rgn_in_213 => rgn_in_213,
-         rgn_in_214 => rgn_in_214,
-         rgn_in_215 => rgn_in_215,
-         rgn_in_216 => rgn_in_216,
-         rgn_in_217 => rgn_in_217,
-         rgn_in_218 => rgn_in_218,
-         rgn_in_219 => rgn_in_219,
-         rgn_in_220 => rgn_in_220,
-         rgn_in_221 => rgn_in_221,
-         rgn_in_222 => rgn_in_222,
-         rgn_in_223 => rgn_in_223,
-         rgn_in_224 => rgn_in_224,
-         rgn_in_225 => rgn_in_225,
-         rgn_in_226 => rgn_in_226,
-         rgn_in_227 => rgn_in_227,
-         rgn_in_228 => rgn_in_228,
-         rgn_in_229 => rgn_in_229,
-         rgn_in_230 => rgn_in_230,
-         rgn_in_231 => rgn_in_231,
-         rgn_in_232 => rgn_in_232,
-         rgn_in_233 => rgn_in_233,
-         rgn_in_234 => rgn_in_234,
-         rgn_in_235 => rgn_in_235,
-         rgn_in_236 => rgn_in_236,
-         rgn_in_237 => rgn_in_237,
-         rgn_in_238 => rgn_in_238,
-         rgn_in_239 => rgn_in_239,
-         rgn_in_240 => rgn_in_240,
-         rgn_in_241 => rgn_in_241,
-         rgn_in_242 => rgn_in_242,
-         rgn_in_243 => rgn_in_243,
-         rgn_in_244 => rgn_in_244,
-         rgn_in_245 => rgn_in_245,
-         rgn_in_246 => rgn_in_246,
-         rgn_in_247 => rgn_in_247,
-         rgn_in_248 => rgn_in_248,
-         rgn_in_249 => rgn_in_249,
-         rgn_in_250 => rgn_in_250,
-         rgn_in_251 => rgn_in_251,
-         MET_0 => MET_0,
-         MET_1 => MET_1,
-         MET_sq_0 => MET_sq_0,
-         MET_sq_1 => MET_sq_1,
-         MET_res_0 => MET_res_0
+         
 
-       );
+rgn_in_0 => rgn_in_0,
+rgn_in_1 => rgn_in_1,
+rgn_in_2 => rgn_in_2,
+rgn_in_3 => rgn_in_3,
+rgn_in_4 => rgn_in_4,
+rgn_in_5 => rgn_in_5,
+rgn_in_6 => rgn_in_6,
+rgn_in_7 => rgn_in_7,
+rgn_in_8 => rgn_in_8,
+rgn_in_9 => rgn_in_9,
+rgn_in_10 => rgn_in_10,
+rgn_in_11 => rgn_in_11,
+rgn_in_12 => rgn_in_12,
+rgn_in_13 => rgn_in_13,
+rgn_in_14 => rgn_in_14,
+rgn_in_15 => rgn_in_15,
+rgn_in_16 => rgn_in_16,
+rgn_in_17 => rgn_in_17,
+rgn_in_18 => rgn_in_18,
+rgn_in_19 => rgn_in_19,
+rgn_in_20 => rgn_in_20,
+rgn_in_21 => rgn_in_21,
+rgn_in_22 => rgn_in_22,
+rgn_in_23 => rgn_in_23,
+rgn_in_24 => rgn_in_24,
+rgn_in_25 => rgn_in_25,
+rgn_in_26 => rgn_in_26,
+rgn_in_27 => rgn_in_27,
+rgn_in_28 => rgn_in_28,
+rgn_in_29 => rgn_in_29,
+rgn_in_30 => rgn_in_30,
+rgn_in_31 => rgn_in_31,
+rgn_in_32 => rgn_in_32,
+rgn_in_33 => rgn_in_33,
+rgn_in_34 => rgn_in_34,
+rgn_in_35 => rgn_in_35,
+rgn_in_36 => rgn_in_36,
+rgn_in_37 => rgn_in_37,
+rgn_in_38 => rgn_in_38,
+rgn_in_39 => rgn_in_39,
+rgn_in_40 => rgn_in_40,
+rgn_in_41 => rgn_in_41,
+rgn_in_42 => rgn_in_42,
+rgn_in_43 => rgn_in_43,
+rgn_in_44 => rgn_in_44,
+rgn_in_45 => rgn_in_45,
+rgn_in_46 => rgn_in_46,
+rgn_in_47 => rgn_in_47,
+rgn_in_48 => rgn_in_48,
+rgn_in_49 => rgn_in_49,
+rgn_in_50 => rgn_in_50,
+rgn_in_51 => rgn_in_51,
+rgn_in_52 => rgn_in_52,
+rgn_in_53 => rgn_in_53,
+rgn_in_54 => rgn_in_54,
+rgn_in_55 => rgn_in_55,
+rgn_in_56 => rgn_in_56,
+rgn_in_57 => rgn_in_57,
+rgn_in_58 => rgn_in_58,
+rgn_in_59 => rgn_in_59,
+rgn_in_60 => rgn_in_60,
+rgn_in_61 => rgn_in_61,
+rgn_in_62 => rgn_in_62,
+rgn_in_63 => rgn_in_63,
+rgn_in_64 => rgn_in_64,
+rgn_in_65 => rgn_in_65,
+rgn_in_66 => rgn_in_66,
+rgn_in_67 => rgn_in_67,
+rgn_in_68 => rgn_in_68,
+rgn_in_69 => rgn_in_69,
+rgn_in_70 => rgn_in_70,
+rgn_in_71 => rgn_in_71,
+rgn_in_72 => rgn_in_72,
+rgn_in_73 => rgn_in_73,
+rgn_in_74 => rgn_in_74,
+rgn_in_75 => rgn_in_75,
+rgn_in_76 => rgn_in_76,
+rgn_in_77 => rgn_in_77,
+rgn_in_78 => rgn_in_78,
+rgn_in_79 => rgn_in_79,
+rgn_in_80 => rgn_in_80,
+rgn_in_81 => rgn_in_81,
+rgn_in_82 => rgn_in_82,
+rgn_in_83 => rgn_in_83,
+rgn_in_84 => rgn_in_84,
+rgn_in_85 => rgn_in_85,
+rgn_in_86 => rgn_in_86,
+rgn_in_87 => rgn_in_87,
+rgn_in_88 => rgn_in_88,
+rgn_in_89 => rgn_in_89,
+rgn_in_90 => rgn_in_90,
+rgn_in_91 => rgn_in_91,
+rgn_in_92 => rgn_in_92,
+rgn_in_93 => rgn_in_93,
+rgn_in_94 => rgn_in_94,
+rgn_in_95 => rgn_in_95,
+rgn_in_96 => rgn_in_96,
+rgn_in_97 => rgn_in_97,
+rgn_in_98 => rgn_in_98,
+rgn_in_99 => rgn_in_99,
+rgn_in_100 => rgn_in_100,
+rgn_in_101 => rgn_in_101,
+rgn_in_102 => rgn_in_102,
+rgn_in_103 => rgn_in_103,
+rgn_in_104 => rgn_in_104,
+rgn_in_105 => rgn_in_105,
+rgn_in_106 => rgn_in_106,
+rgn_in_107 => rgn_in_107,
+rgn_in_108 => rgn_in_108,
+rgn_in_109 => rgn_in_109,
+rgn_in_110 => rgn_in_110,
+rgn_in_111 => rgn_in_111,
+rgn_in_112 => rgn_in_112,
+rgn_in_113 => rgn_in_113,
+rgn_in_114 => rgn_in_114,
+rgn_in_115 => rgn_in_115,
+rgn_in_116 => rgn_in_116,
+rgn_in_117 => rgn_in_117,
+rgn_in_118 => rgn_in_118,
+rgn_in_119 => rgn_in_119,
+rgn_in_120 => rgn_in_120,
+rgn_in_121 => rgn_in_121,
+rgn_in_122 => rgn_in_122,
+rgn_in_123 => rgn_in_123,
+rgn_in_124 => rgn_in_124,
+rgn_in_125 => rgn_in_125,
+rgn_in_126 => rgn_in_126,
+rgn_in_127 => rgn_in_127,
+rgn_in_128 => rgn_in_128,
+rgn_in_129 => rgn_in_129,
+rgn_in_130 => rgn_in_130,
+rgn_in_131 => rgn_in_131,
+rgn_in_132 => rgn_in_132,
+rgn_in_133 => rgn_in_133,
+rgn_in_134 => rgn_in_134,
+rgn_in_135 => rgn_in_135,
+rgn_in_136 => rgn_in_136,
+rgn_in_137 => rgn_in_137,
+rgn_in_138 => rgn_in_138,
+rgn_in_139 => rgn_in_139,
+rgn_in_140 => rgn_in_140,
+rgn_in_141 => rgn_in_141,
+rgn_in_142 => rgn_in_142,
+rgn_in_143 => rgn_in_143,
+rgn_in_144 => rgn_in_144,
+rgn_in_145 => rgn_in_145,
+rgn_in_146 => rgn_in_146,
+rgn_in_147 => rgn_in_147,
+rgn_in_148 => rgn_in_148,
+rgn_in_149 => rgn_in_149,
+rgn_in_150 => rgn_in_150,
+rgn_in_151 => rgn_in_151,
+rgn_in_152 => rgn_in_152,
+rgn_in_153 => rgn_in_153,
+rgn_in_154 => rgn_in_154,
+rgn_in_155 => rgn_in_155,
+rgn_in_156 => rgn_in_156,
+rgn_in_157 => rgn_in_157,
+rgn_in_158 => rgn_in_158,
+rgn_in_159 => rgn_in_159,
+rgn_in_160 => rgn_in_160,
+rgn_in_161 => rgn_in_161,
+rgn_in_162 => rgn_in_162,
+rgn_in_163 => rgn_in_163,
+rgn_in_164 => rgn_in_164,
+rgn_in_165 => rgn_in_165,
+rgn_in_166 => rgn_in_166,
+rgn_in_167 => rgn_in_167,
+rgn_in_168 => rgn_in_168,
+rgn_in_169 => rgn_in_169,
+rgn_in_170 => rgn_in_170,
+rgn_in_171 => rgn_in_171,
+rgn_in_172 => rgn_in_172,
+rgn_in_173 => rgn_in_173,
+rgn_in_174 => rgn_in_174,
+rgn_in_175 => rgn_in_175,
+rgn_in_176 => rgn_in_176,
+rgn_in_177 => rgn_in_177,
+rgn_in_178 => rgn_in_178,
+rgn_in_179 => rgn_in_179,
+rgn_in_180 => rgn_in_180,
+rgn_in_181 => rgn_in_181,
+rgn_in_182 => rgn_in_182,
+rgn_in_183 => rgn_in_183,
+rgn_in_184 => rgn_in_184,
+rgn_in_185 => rgn_in_185,
+rgn_in_186 => rgn_in_186,
+rgn_in_187 => rgn_in_187,
+rgn_in_188 => rgn_in_188,
+rgn_in_189 => rgn_in_189,
+rgn_in_190 => rgn_in_190,
+rgn_in_191 => rgn_in_191,
+rgn_in_192 => rgn_in_192,
+rgn_in_193 => rgn_in_193,
+rgn_in_194 => rgn_in_194,
+rgn_in_195 => rgn_in_195,
+rgn_in_196 => rgn_in_196,
+rgn_in_197 => rgn_in_197,
+rgn_in_198 => rgn_in_198,
+rgn_in_199 => rgn_in_199,
+rgn_in_200 => rgn_in_200,
+rgn_in_201 => rgn_in_201,
+rgn_in_202 => rgn_in_202,
+rgn_in_203 => rgn_in_203,
+rgn_in_204 => rgn_in_204,
+rgn_in_205 => rgn_in_205,
+rgn_in_206 => rgn_in_206,
+rgn_in_207 => rgn_in_207,
+rgn_in_208 => rgn_in_208,
+rgn_in_209 => rgn_in_209,
+rgn_in_210 => rgn_in_210,
+rgn_in_211 => rgn_in_211,
+rgn_in_212 => rgn_in_212,
+rgn_in_213 => rgn_in_213,
+rgn_in_214 => rgn_in_214,
+rgn_in_215 => rgn_in_215,
+rgn_in_216 => rgn_in_216,
+rgn_in_217 => rgn_in_217,
+rgn_in_218 => rgn_in_218,
+rgn_in_219 => rgn_in_219,
+rgn_in_220 => rgn_in_220,
+rgn_in_221 => rgn_in_221,
+rgn_in_222 => rgn_in_222,
+rgn_in_223 => rgn_in_223,
+rgn_in_224 => rgn_in_224,
+rgn_in_225 => rgn_in_225,
+rgn_in_226 => rgn_in_226,
+rgn_in_227 => rgn_in_227,
+rgn_in_228 => rgn_in_228,
+rgn_in_229 => rgn_in_229,
+rgn_in_230 => rgn_in_230,
+rgn_in_231 => rgn_in_231,
+rgn_in_232 => rgn_in_232,
+rgn_in_233 => rgn_in_233,
+rgn_in_234 => rgn_in_234,
+rgn_in_235 => rgn_in_235,
+rgn_in_236 => rgn_in_236,
+rgn_in_237 => rgn_in_237,
+rgn_in_238 => rgn_in_238,
+rgn_in_239 => rgn_in_239,
+rgn_in_240 => rgn_in_240,
+rgn_in_241 => rgn_in_241,
+rgn_in_242 => rgn_in_242,
+rgn_in_243 => rgn_in_243,
+rgn_in_244 => rgn_in_244,
+rgn_in_245 => rgn_in_245,
+rgn_in_246 => rgn_in_246,
+rgn_in_247 => rgn_in_247,
+rgn_in_248 => rgn_in_248,
+rgn_in_249 => rgn_in_249,
+rgn_in_250 => rgn_in_250,
+rgn_in_251 => rgn_in_251,
 
-    i_cordic_0 : cordic_0   
-    PORT MAP (
-          aclk => aclk,
-          s_axis_cartesian_tvalid => s_axis_cartesian_tvalid,
-          s_axis_cartesian_tdata => s_axis_cartesian_tdata,
-          m_axis_dout_tvalid => m_axis_dout_tvalid,
-          m_axis_dout_tdata => m_axis_dout_tdata
-        );
-          
-    i_cordic_1 : cordic_1
-    PORT MAP (
-        aclk => aclk,
-        s_axis_cartesian_tvalid => s_axis_cartesian_tvalid,
-        s_axis_cartesian_tdata => s_axis_cartesian_tdata,
-        m_axis_dout_tvalid => m_axis_dout_tvalid,
-        m_axis_dout_tdata => m_axis_dout_tdata
-      );
+output_MET_0_V => output_MET_0_V,
+output_MET_1_V => output_MET_1_V,
+output_sqrtX_out_V => output_sqrtX_out_V,
+output_atanX_phase_V => output_atanX_phase_V
+    );
+
 -----------------------------------------------------------------------------
 -- Configuration registers              
-   algo_config_cfg0_V <= s_cfg_reg(0);
-   algo_config_cfg1_V <= s_cfg_reg(1)(15 downto 0);
-   algo_config_cfg2_V <= s_cfg_reg(2)(7 downto 0);
+  
 -----------------------------------------------------------------------------
 
 -- Input Links
-   algo_in_a_V <= s_INPUT_link_arr( 0 )( 4 downto 0 );  -- Link 0, 4:0
-   algo_in_b_V <= s_INPUT_link_arr( 1 )( 19 downto 0 ); -- Link 1, 19:0
-   algo_in_c_V <= s_INPUT_link_arr( 2 )( 30 downto 0 ); -- Link 2, 30:0
-   algo_in_d_V <= s_INPUT_link_arr( 2 )( 50 downto 32 ); -- Link 2, 50:32
-
-
 rgn_in_0 <= s_INPUT_LINK_ARR( 0 )(15 downto 0);
 rgn_in_1 <= s_INPUT_LINK_ARR( 0 )(31 downto 16);
 rgn_in_2 <= s_INPUT_LINK_ARR( 0 )(47 downto 32);
@@ -1534,25 +1461,16 @@ rgn_in_249 <= s_INPUT_LINK_ARR( 20 )(159 downto 144);
 rgn_in_250 <= s_INPUT_LINK_ARR( 20 )(175 downto 160);
 rgn_in_251 <= s_INPUT_LINK_ARR( 20 )(191 downto 176);
 
+
 -----------------------------------------------------------------------------
  
 -- Output Links   
-   s_OUTPUT_link_arr( 0 )(24 DOWNTO 0)     <= algo_out_w_V;
-   s_OUTPUT_link_arr( 0 )(191 DOWNTO 167)  <= algo_out_w_V;
-   
-   s_OUTPUT_link_arr( 1 )(17 DOWNTO 0)     <= algo_out_x_V;
-   
-   s_OUTPUT_link_arr( 2 )(31 DOWNTO 0)     <= algo_out_y_V;
-   s_OUTPUT_link_arr( 2 )(40 DOWNTO 32)    <= algo_out_z_V;
-  
-   s_OUTPUT_link_arr( 47 )(24 DOWNTO 0)    <= algo_out_w_V;
-   s_OUTPUT_link_arr( 47 )(191 DOWNTO 167) <= algo_out_w_V;   
-   
-   s_OUTPUT_LINK_ARR( 0 )(19 downto 0) <= MET_0;
-   s_OUTPUT_LINK_ARR( 0 )(39 downto 20) <= MET_1;
-   s_OUTPUT_LINK_ARR( 0 )(59 downto 40) <= MET_sq_0;
-   s_OUTPUT_LINK_ARR( 0 )(79 downto 60) <= MET_sq_1;
-   s_OUTPUT_LINK_ARR( 0 )(99 downto 80) <= MET_res_0;
+s_OUTPUT_LINK_ARR( 0 )(19 downto 0) <= output_MET_0_V;
+s_OUTPUT_LINK_ARR( 0 )(39 downto 20) <= output_MET_1_V;
+s_OUTPUT_LINK_ARR( 0 )(53 downto 40) <= output_sqrtX_out_V;
+s_OUTPUT_LINK_ARR( 0 )(70 downto 54) <= output_atanX_phase_V;
+
+
 -----------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------
