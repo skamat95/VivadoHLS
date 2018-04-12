@@ -5,35 +5,32 @@
 #define uint9_t ap_uint<9>
 #define uint3_t ap_uint<3>
 
+
+
 bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 			   uint3_t peakEta[NCaloLayer1Eta][NCaloLayer1Phi],
 			   uint3_t peakPhi[NCaloLayer1Eta][NCaloLayer1Phi],
 			   uint10_t trackPT[MaxTracks],
 			   uint9_t trackEta[MaxTracks],
 			   uint10_t trackPhi[MaxTracks],
-			   uint10_t linkedTrackPT[MaxTracks],
-			   uint9_t linkedTrackEta[MaxTracks],
-			   uint10_t linkedTrackPhi[MaxTracks],
-			   ap_fixed<8,6> linkedTrackQuality[MaxTracks],
-			   uint10_t neutralClusterET[MaxNeutralClusters],
-			   uint9_t neutralClusterEta[MaxNeutralClusters],
-			   uint10_t neutralClusterPhi[MaxNeutralClusters])
+			   algo_out &output)
 			  {
 
 #pragma HLS PIPELINE II=6
+#pragma HLS INTERFACE ap_none port=output
 #pragma HLS ARRAY_PARTITION variable=clusterET complete dim=0
 #pragma HLS ARRAY_PARTITION variable=peakEta complete dim=0
 #pragma HLS ARRAY_PARTITION variable=peakPhi complete dim=0
 #pragma HLS ARRAY_PARTITION variable=trackPT complete dim=0
 #pragma HLS ARRAY_PARTITION variable=trackEta complete dim=0
 #pragma HLS ARRAY_PARTITION variable=trackPhi complete dim=0
-#pragma HLS ARRAY_PARTITION variable=linkedTrackPT complete dim=0
-#pragma HLS ARRAY_PARTITION variable=linkedTrackEta complete dim=0
-#pragma HLS ARRAY_PARTITION variable=linkedTrackPhi complete dim=0
-#pragma HLS ARRAY_PARTITION variable=linkedTrackQuality complete dim=0
-#pragma HLS ARRAY_PARTITION variable=neutralClusterET complete dim=0
-#pragma HLS ARRAY_PARTITION variable=neutralClusterEta complete dim=0
-#pragma HLS ARRAY_PARTITION variable=neutralClusterPhi complete dim=0
+#pragma HLS ARRAY_PARTITION variable=output.linkedTrackPT complete dim=0
+#pragma HLS ARRAY_PARTITION variable=output.linkedTrackEta complete dim=0
+#pragma HLS ARRAY_PARTITION variable=output.linkedTrackPhi complete dim=0
+#pragma HLS ARRAY_PARTITION variable=output.linkedTrackQuality complete dim=0
+#pragma HLS ARRAY_PARTITION variable=output.neutralClusterET complete dim=0
+#pragma HLS ARRAY_PARTITION variable=output.neutralClusterEta complete dim=0
+#pragma HLS ARRAY_PARTITION variable=output.neutralClusterPhi complete dim=0
 
   uint9_t clusterEta[MaxNeutralClusters];
   uint10_t clusterPhi[MaxNeutralClusters];
@@ -49,9 +46,9 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
       clusterEta[cluster] = tEta * NCrystalsPerEtaPhi + peakEta[tEta][tPhi];
       clusterPhi[cluster] = tPhi * NCrystalsPerEtaPhi + peakPhi[tEta][tPhi];
       // Initialize neutral clusters
-      neutralClusterET[cluster] = clusterET[tEta][tPhi];
-      neutralClusterEta[cluster] = clusterEta[cluster];
-      neutralClusterPhi[cluster] = clusterPhi[cluster];
+      output.neutralClusterET[cluster] = clusterET[tEta][tPhi];
+      output.neutralClusterEta[cluster] = clusterEta[cluster];
+      output.neutralClusterPhi[cluster] = clusterPhi[cluster];
     }
   }
 
@@ -65,10 +62,10 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
   for(int track = 0; track < MaxTracks; track++) {
 #pragma HLS UNROLL
 
-    linkedTrackPT[track] = trackPT[track];
-    linkedTrackEta[track] = trackEta[track];
-    linkedTrackPhi[track] = trackPhi[track];
-    linkedTrackQuality[track] = 0;
+	  output.linkedTrackPT[track] = trackPT[track];
+	  output.linkedTrackEta[track] = trackEta[track];
+	  output.linkedTrackPhi[track] = trackPhi[track];
+	  output.linkedTrackQuality[track] = 0;
 
 	  track_peak_eta[track] = int(trackEta[track] * conv_track_eta);
 	  track_peak_phi[track] = int(trackPhi[track] * conv_track_phi);
@@ -93,10 +90,10 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 		if(diffEta <= 1 && diffPhi<= 1)
 		{
 			//This is the best match, so link them
-			linkedTrackEta[track] = clusterEta[cluster_trial];
-			linkedTrackPhi[track] = clusterPhi[cluster_trial];
+			output.linkedTrackEta[track] = clusterEta[cluster_trial];
+			output.linkedTrackPhi[track] = clusterPhi[cluster_trial];
 			//making neutral cluster
-			neutralClusterET[cluster_trial] -= trackPT[track];
+			output.neutralClusterET[cluster_trial] -= trackPT[track];
 			break;
 		}
 
@@ -136,11 +133,11 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 				if(diff[i][j] < least_dist) {
 					least_dist =  diff[i][j];
 					//This is the best match, so link them
-					linkedTrackEta[track] = clusterEta[cluster_trial];
-					linkedTrackPhi[track] = clusterPhi[cluster_trial];
+					output.linkedTrackEta[track] = clusterEta[cluster_trial];
+					output.linkedTrackPhi[track] = clusterPhi[cluster_trial];
 					//making neutral cluster
-					neutralClusterET[cluster_trial] -= trackPT[track];
-					linkedTrackQuality[track] = least_dist;
+					output.neutralClusterET[cluster_trial] -= trackPT[track];
+					output.linkedTrackQuality[track] = least_dist;
 				}
 
 		  	}

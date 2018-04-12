@@ -24,6 +24,15 @@ const uint16_t conv_track_phi = NCrystalsInPhi / MaxTrackPhi;
 
 const uint16_t MaxNeutralClusters = NCaloLayer1Eta * NCaloLayer1Phi;
 
+typedef struct{
+	uint10_t linkedTrackPT[MaxTracks];
+	uint9_t linkedTrackEta[MaxTracks];
+	uint10_t linkedTrackPhi[MaxTracks];
+	ap_fixed<8,6> linkedTrackQuality[MaxTracks];
+	uint10_t neutralClusterET[MaxNeutralClusters];
+	uint9_t neutralClusterEta[MaxNeutralClusters];
+	uint10_t neutralClusterPhi[MaxNeutralClusters];
+} algo_out;
 
 
 bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
@@ -32,12 +41,6 @@ bool getClusterTrackLinker(uint10_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 		   uint10_t trackPT[MaxTracks],
 		   uint9_t trackEta[MaxTracks],
 		   uint10_t trackPhi[MaxTracks],
-		   uint10_t linkedTrackPT[MaxTracks],
-		   uint9_t linkedTrackEta[MaxTracks],
-		   uint10_t linkedTrackPhi[MaxTracks],
-		   ap_fixed<8,6> linkedTrackQuality[MaxTracks],
-		   uint10_t neutralClusterET[MaxNeutralClusters],
-		   uint9_t neutralClusterEta[MaxNeutralClusters],
-		   uint10_t neutralClusterPhi[MaxNeutralClusters]);
+		   algo_out &output);
 
 #endif

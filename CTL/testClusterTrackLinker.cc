@@ -112,7 +112,7 @@ void WriteLinkMapCTL(
   printf("\n");
   for (hRgn =0; hRgn < MaxTracks; hRgn++)
         {
-           printf("linkedTrackQuality_%d : OUT STD_LOGIC_VECTOR (15 downto 0);\n",hRgn);
+           printf("linkedTrackQuality_%d : OUT STD_LOGIC_VECTOR (7 downto 0);\n",hRgn);
         }
   printf("\n");
   for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
@@ -192,7 +192,7 @@ void WriteLinkMapCTL(
   printf("\n");
   for (hRgn =0; hRgn < MaxTracks; hRgn++)
         {
-           printf("signal linkedTrackQuality_%d : STD_LOGIC_VECTOR (15 downto 0);\n",hRgn);
+           printf("signal linkedTrackQuality_%d : STD_LOGIC_VECTOR (7 downto 0);\n",hRgn);
         }
   printf("\n");
   for (hRgn =0; hRgn < MaxNeutralClusters; hRgn++)
@@ -445,13 +445,9 @@ int main(int argc, char **argv) {
 	uint10_t trackPT[MaxTracks] = {0};
 	uint9_t trackEta[MaxTracks] = {0};
 	uint10_t trackPhi[MaxTracks] = {0};
-	uint10_t linkedTrackPT[MaxTracks] = {0};
-	uint9_t linkedTrackEta[MaxTracks] = {0};
-	uint10_t linkedTrackPhi[MaxTracks] = {0};
-	ap_fixed<8,6> linkedTrackQuality[MaxTracks] = {0};
-	uint10_t neutralClusterET[MaxNeutralClusters] = {0};
-	uint9_t neutralClusterEta[MaxNeutralClusters] = {0};
-	uint10_t neutralClusterPhi[MaxNeutralClusters] = {0};
+	algo_out output;
+
+
 
   if(argc == 2) srandom((unsigned int) atoi(argv[1]));
 
@@ -572,19 +568,18 @@ int main(int argc, char **argv) {
 
   if(getClusterTrackLinker(clusterET, peakEta, peakPhi,
          trackPT, trackEta, trackPhi,
-         linkedTrackPT, linkedTrackEta, linkedTrackPhi, linkedTrackQuality,
-         neutralClusterET, neutralClusterEta, neutralClusterPhi)) {
+         output)) {
 
     cout << "From the cluster-track linking simulation: " << endl;
 
     cout << "LinkedTracks: " << endl;
     cout << "trackEta\ttrackPhi\ttrackPT\ttrackLinkQuality" << endl;
     for(int track = 0; track < MaxTracks; track++) {
-      if(linkedTrackPT[track] > 0) {
-  cout << linkedTrackEta[track]
-       << "\t" << linkedTrackPhi[track]
-       << "\t" << linkedTrackPT[track]
-       << "\t" << linkedTrackQuality[track]
+      if(output.linkedTrackPT[track] > 0) {
+  cout << output.linkedTrackEta[track]
+       << "\t" << output.linkedTrackPhi[track]
+       << "\t" << output.linkedTrackPT[track]
+       << "\t" << output.linkedTrackQuality[track]
        << endl;
       }
     }
@@ -592,10 +587,10 @@ int main(int argc, char **argv) {
     cout << "Neutral Clusters: " << endl;
     cout << "clusterEta\tclusterPhi\tclusterET" << endl;
     for(int cluster = 0; cluster < MaxNeutralClusters; cluster++) {
-      if(neutralClusterET[cluster] > 0) {
-  cout << neutralClusterEta[cluster]
-       << "\t" << neutralClusterPhi[cluster]
-       << "\t" << neutralClusterET[cluster]
+      if(output.neutralClusterET[cluster] > 0) {
+  cout << output.neutralClusterEta[cluster]
+       << "\t" << output.neutralClusterPhi[cluster]
+       << "\t" << output.neutralClusterET[cluster]
        << endl;
       }
     }
@@ -608,13 +603,13 @@ int main(int argc, char **argv) {
   trackPT,
   trackEta,
   trackPhi,
-  linkedTrackPT,
-  linkedTrackEta,
-  linkedTrackPhi,
-  linkedTrackQuality,
-  neutralClusterET,
-  neutralClusterEta,
-  neutralClusterPhi);
+  output.linkedTrackPT,
+  output.linkedTrackEta,
+  output.linkedTrackPhi,
+  output.linkedTrackQuality,
+  output.neutralClusterET,
+  output.neutralClusterEta,
+  output.neutralClusterPhi);
 
 
   return 0;
