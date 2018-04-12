@@ -11,17 +11,16 @@
 #include "atan2.h"
 using namespace std;
 
-void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2],
-		hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out &sqrtX,
-		hls::atan2_output<OutputWidth_atan>::phase &atanX
-		)
+
+void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], algo_out &output)
 {
 
 
 
 #pragma HLS PIPELINE II=6
-#pragma HLS ARRAY_PARTITION variable=MET complete dim=0
 #pragma HLS ARRAY_PARTITION variable=rgn_in complete dim=0
+#pragma HLS INTERFACE ap_none port=&output
+#pragma HLS ARRAY_PARTITION variable=output.MET complete dim=0
 
 	uint16_t rgn_ET, tower_phi, rgn_tmp;
 	int inr_x, inr_y;
@@ -55,11 +54,11 @@ iRgn:
 	  	}
 	}
 
-	MET[0] = temp[0];
-	MET[1] = temp[1];
+	output.MET[0] = temp[0];
+	output.MET[1] = temp[1];
 
-	MET_sq[0] = (MET[0] * MET[0]);
-	MET_sq[1] = (MET[1] * MET[1]);
+	MET_sq[0] = (output.MET[0] * output.MET[0]);
+	MET_sq[1] = (output.MET[1] * output.MET[1]);
 	MET_res = MET_sq[0] + MET_sq[1];
 		//Output of the function: MET[0]- X sum, MET[1] - Y sum, MET_res- addition of squares of X and Y
 
@@ -68,13 +67,13 @@ iRgn:
 	hls::sqrt_input<InputWidth_sqrt, DataFormat_sqrt>::in x_sqrt;
 
 	x_sqrt.in = MET_res;
-	sqrt_top(x_sqrt,sqrtX);
+	sqrt_top(x_sqrt,output.sqrtX);
 
 	hls::atan2_input<InputWidth_atan>::cartesian x_atan;
-	x_atan.cartesian.real() = MET[0];
-	x_atan.cartesian.imag() = MET[1];
+	x_atan.cartesian.real() = output.MET[0];
+	x_atan.cartesian.imag() = output.MET[1];
 
-	atan2_top(x_atan,atanX);
+	atan2_top(x_atan,output.atanX);
 
 
 

@@ -257,9 +257,7 @@ bool writeInputFile(uint16_t rgn_in[NCrts*NCrds*NRgns], bool last) {
 }
 
 
-bool writeOutputFile(ap_fixed<20,17> MET[2],
-		hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out &sqrtX,
-		hls::atan2_output<OutputWidth_atan>::phase &atanX, bool last) {
+bool writeOutputFile(algo_out output, bool last) {
 
   static bool first = true;
   static int count = 0;
@@ -337,9 +335,7 @@ bool makeTestData(int argc, char** argv, uint16_t rgn_in[NCrts*NCrds*NRgns]) {
 int main(int argc, char **argv) {
 
 	uint16_t rgn_in[NCrts*NCrds*NRgns];
-	ap_fixed<20,17>  MET[2];
-	hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out sqrtX;
-	hls::atan2_output<OutputWidth_atan>::phase atanX;
+	algo_out output;
 
 	//bool success_sin = write_genSINE();
 	//bool success_cos = write_genCOS();
@@ -362,22 +358,22 @@ int main(int argc, char **argv) {
 		    if(!makeTestData(argc, argv, rgn_in)) return 999;
 
 		//Test code
-		MET_O(rgn_in, MET, sqrtX, atanX);
+		MET_O(rgn_in, output);
 
 		// Save input and output
 		   if(!writeInputFile(rgn_in, last)) return 2;
-		   if(!writeOutputFile(MET, sqrtX, atanX, last)) return 3;
+		   if(!writeOutputFile(output, last)) return 3;
 		 }
 
-		 if(!writeLinkMapHT(rgn_in, MET, sqrtX, atanX)) return 4;
+		 if(!writeLinkMapHT(rgn_in, output.MET, output.sqrtX, output.atanX)) return 4;
 
 		   printf("Test succeeded\n");
 
-		std::cout << showbase << internal << setw(20) << setprecision(5) << hex << MET[0] << ",";
-		std::cout << showbase << internal << setw(20) << setprecision(5) << hex << MET[1] << ",";
+		std::cout << showbase << internal << setw(20) << setprecision(5) << hex << output.MET[0] << ",";
+		std::cout << showbase << internal << setw(20) << setprecision(5) << hex << output.MET[1] << ",";
 
-		std::cout << "Actual " << sqrtX.out << std::endl;
-		std::cout << "Actual " << atanX.phase << std::endl;
+		std::cout << "Actual " << output.sqrtX.out << std::endl;
+		std::cout << "Actual " << output.atanX.phase << std::endl;
 
 		return 0;
 

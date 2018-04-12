@@ -18,10 +18,13 @@
 #include "sqrt.h"
 #include "atan2.h"
 
-void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], ap_fixed<20,17> MET[2],
-		hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out &sqrtX,
-		hls::atan2_output<OutputWidth_atan>::phase &atanX
-		);
+typedef struct{
+	ap_fixed<20,17> MET[2];
+	hls::sqrt_output<OutputWidth_sqrt, DataFormat_sqrt>::out sqrtX;
+	hls::atan2_output<OutputWidth_atan>::phase atanX;
+} algo_out;
+
+void MET_O(uint16_t rgn_in[NCrts*NCrds*NRgns], algo_out &output);
 
 
 
