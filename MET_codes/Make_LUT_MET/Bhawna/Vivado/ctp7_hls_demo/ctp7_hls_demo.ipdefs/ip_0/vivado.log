@@ -1,0 +1,17 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Wed Jul 26 02:15:00 2017
+# Process ID: 954
+# Current directory: /data/alex/hls_ventures/hls_demo/solution1/impl/ip
+# Command line: vivado -notrace -mode batch -source run_ippack.tcl
+# Log file: /data/alex/hls_ventures/hls_demo/solution1/impl/ip/vivado.log
+# Journal file: /data/alex/hls_ventures/hls_demo/solution1/impl/ip/vivado.jou
+#-----------------------------------------------------------
+Sourcing tcl script '/home/alex/.Xilinx/Vivado/init.tcl'
+source run_ippack.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2016.4/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Wed Jul 26 02:15:07 2017...

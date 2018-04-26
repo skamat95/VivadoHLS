@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="CordicXIP.h" path="/data/skamat/Github/VivadoHLS/cordic/CordicXIP.h"/>
+    <originFiles name="cordic_v6_0_bitacc_cmodel.h" path="/data/skamat/Github/VivadoHLS/cordic/cordic_v6_0_bitacc_cmodel.h"/>
+    <originFiles name="fuzzer.h" path="/data/skamat/Github/VivadoHLS/cordic/fuzzer.h"/>
+    <originFiles name="xip_common_bitacc_cmodel.h" path="/data/skamat/Github/VivadoHLS/cordic/xip_common_bitacc_cmodel.h"/>
+    <originFiles name="CordicXIP.cc" path="/data/skamat/Github/VivadoHLS/cordic/CordicXIP.cc"/>
+    <originFiles name="CordicXilinx.h" path="/data/skamat/Github/VivadoHLS/cordic/CordicXilinx.h"/>
+  </source>
+  <testbench>
+    <originFiles name="test.cc" path="/data/skamat/Github/VivadoHLS/cordic/test.cc"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

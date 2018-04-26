@@ -1,0 +1,6 @@
+vhdl xil_defaultlib "../../../ipstatic/hdl/vhdl/hls_demo.vhd" 
+vhdl xil_defaultlib "../../../ipstatic/hdl/vhdl/hls_demo_sdiv_20nbkb.vhd" 
+vhdl xil_defaultlib "../../../ipstatic/hdl/vhdl/hls_demo_mul_31s_cud.vhd" 
+vhdl xil_defaultlib "../../../ip/hls_demo_0/sim/hls_demo_0.vhd" 
+
+nosort

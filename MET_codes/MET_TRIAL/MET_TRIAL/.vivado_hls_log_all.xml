@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/MET_2_V' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.424+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_125' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.412+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_124' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.394+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_123' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.377+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_122' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.360+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_121' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.343+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_120' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.327+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_119' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.244+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_118' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.203+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_117' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.128+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_116' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.117+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_115' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.066+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_114' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.054+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_113' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:07.013+0100" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Port 'MET_O/rgn_in_112' has no fanin or fanout and is left dangling.&#xA;               Please use C simulation to confirm this function argument can be read from or written to." projectName="MET_TRIAL" solutionName="solution1" date="2017-12-13T11:45:06.987+0100" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

@@ -1,0 +1,592 @@
+#-----------------------------------------------------------
+# Vivado v2017.2 (64-bit)
+# SW Build 1909853 on Thu Jun 15 18:39:10 MDT 2017
+# IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+# Start of session at: Tue Jul 25 14:20:37 2017
+# Process ID: 19680
+# Current directory: /home/alex
+# Command line: vivado
+# Log file: /home/alex/vivado.log
+# Journal file: /home/alex/vivado.jou
+#-----------------------------------------------------------
+INFO: [Common 17-1460] Use of init.tcl in /home/alex/.Xilinx/Vivado/init.tcl is deprecated. Please use Vivado_init.tcl 
+Sourcing tcl script '/home/alex/.Xilinx/Vivado/init.tcl'
+start_gui
+open_project /data/alex/ipmc/ipmc_zynq_vivado/ipmc_zynq_vivado.xpr
+INFO: [Project 1-313] Project file moved from '/data/mpv/ipmc_zynq_vivado' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [filemgmt 56-1] IP Repository Path: Directory not found as '/data/alex/ipmc/ip_repo/led_0.1'; using path '/data/mpv/ip_repo/led_0.1' instead.
+INFO: [filemgmt 56-1] IP Repository Path: Directory not found as '/data/alex/ipmc/ip_repo/xvc_0.1'; using path '/data/mpv/ip_repo/xvc_0.1' instead.
+INFO: [filemgmt 56-1] IP Repository Path: Directory not found as '/data/alex/ipmc/ip_repo'; using path '/data/mpv/ip_repo' instead.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2017.2/data/ip'.
+WARNING: [BD 41-1661] One or more IPs have been locked in the design 'design_1.bd'. Please run report_ip_status for more details and recommendations on how to fix this issue.
+List of locked IPs:
+design_1_auto_pc_0
+design_1_s00_data_fifo_0
+design_1_xlconcat_1_3
+design_1_xlconcat_0_8
+design_1_xbar_9
+design_1_axi_interconnect_0_9
+design_1_xbar_3
+design_1_xbar_12
+design_1_axi_interconnect_0_8
+design_1_axi_iic_0_2
+design_1_axi_interconnect_1_0
+design_1_axi_interconnect_0_1
+design_1_xbar_1
+design_1_xbar_10
+design_1_proc_sys_reset_0_0
+design_1_processing_system7_0_0
+design_1_axi_intc_0_0
+design_1_axi_interconnect_0_0
+design_1_xbar_0
+design_1_xlconcat_0_0
+design_1_xlconcat_0_9
+design_1_axi_interconnect_0_10
+design_1_xbar_11
+design_1_axi_iic_0_9
+design_1_xlconcat_0_10
+design_1_axi_iic_0_10
+design_1_axi_interconnect_0_11
+design_1_xlconcat_0_11
+design_1_xlconcat_0_1
+design_1_xlslice_0_0
+design_1_xlconcat_1_0
+design_1_axi_iic_0_7
+design_1_axi_gpio_0_0
+design_1_xvc_0_0
+design_1_xlslice_0_1
+design_1_xlconcat_1_1
+design_1_axi_iic_0_8
+design_1_axi_gpio_0_1
+design_1_xlconcat_1_2
+
+open_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:06 . Memory (MB): peak = 6253.480 ; gain = 152.094 ; free physical = 40990 ; free virtual = 67132
+archive_project /data/alex/ipmc/ipmc_zynq_vivado.xpr.zip -force -exclude_run_results -include_config_settings
+INFO: [Coretcl 2-137] starting archive...
+INFO: [Coretcl 2-1499] Saving project copy to temporary location './.Xil/Vivado-19680-moonraker.cern.ch' for archiving project
+INFO: [Project 1-313] Project file moved from '/data/mpv/ipmc_zynq_vivado' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [filemgmt 56-1] IP Repository Path: Directory not found as '/data/alex/ipmc/ip_repo/led_0.1'; using path '/data/mpv/ip_repo/led_0.1' instead.
+INFO: [filemgmt 56-1] IP Repository Path: Directory not found as '/data/alex/ipmc/ip_repo/xvc_0.1'; using path '/data/mpv/ip_repo/xvc_0.1' instead.
+INFO: [filemgmt 56-1] IP Repository Path: Directory not found as '/data/alex/ipmc/ip_repo'; using path '/data/mpv/ip_repo' instead.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2017.2/data/ip'.
+WARNING: [BD 41-1661] One or more IPs have been locked in the design 'design_1.bd'. Please run report_ip_status for more details and recommendations on how to fix this issue.
+List of locked IPs:
+design_1_auto_pc_0
+design_1_s00_data_fifo_0
+design_1_xlconcat_1_3
+design_1_xlconcat_0_8
+design_1_xbar_9
+design_1_axi_interconnect_0_9
+design_1_xbar_3
+design_1_xbar_12
+design_1_axi_interconnect_0_8
+design_1_axi_iic_0_2
+design_1_axi_interconnect_1_0
+design_1_axi_interconnect_0_1
+design_1_xbar_1
+design_1_xbar_10
+design_1_proc_sys_reset_0_0
+design_1_processing_system7_0_0
+design_1_axi_intc_0_0
+design_1_axi_interconnect_0_0
+design_1_xbar_0
+design_1_xlconcat_0_0
+design_1_xlconcat_0_9
+design_1_axi_interconnect_0_10
+design_1_xbar_11
+design_1_axi_iic_0_9
+design_1_xlconcat_0_10
+design_1_axi_iic_0_10
+design_1_axi_interconnect_0_11
+design_1_xlconcat_0_11
+design_1_xlconcat_0_1
+design_1_xlslice_0_0
+design_1_xlconcat_1_0
+design_1_axi_iic_0_7
+design_1_axi_gpio_0_0
+design_1_xvc_0_0
+design_1_xlslice_0_1
+design_1_xlconcat_1_1
+design_1_axi_iic_0_8
+design_1_axi_gpio_0_1
+design_1_xlconcat_1_2
+
+INFO: [Coretcl 2-1211] Creating project copy for archival...
+WARNING: [IP_Flow 19-2162] IP 'design_1_processing_system7_0_0' is locked:
+* IP definition 'ZYNQ7 Processing System (5.5)' for IP 'design_1_processing_system7_0_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_proc_sys_reset_0_0' is locked:
+* IP definition 'Processor System Reset (5.0)' for IP 'design_1_proc_sys_reset_0_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_intc_0_0' is locked:
+* IP definition 'AXI Interrupt Controller (4.1)' for IP 'design_1_axi_intc_0_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_interconnect_0_0' is locked:
+* IP definition 'AXI Interconnect (2.1)' for IP 'design_1_axi_interconnect_0_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xbar_0' is locked:
+* IP definition 'AXI Crossbar (2.1)' for IP 'design_1_xbar_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlconcat_0_0' is locked:
+* IP definition 'Concat (2.1)' for IP 'design_1_xlconcat_0_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_interconnect_0_1' is locked:
+* IP definition 'AXI Interconnect (2.1)' for IP 'design_1_axi_interconnect_0_1' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xbar_1' is locked:
+* IP definition 'AXI Crossbar (2.1)' for IP 'design_1_xbar_1' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_iic_0_2' is locked:
+* IP definition 'AXI IIC (2.0)' for IP 'design_1_axi_iic_0_2' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3571] IP 'design_1_iic_to_i2c_master_0_0' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlconcat_0_1' is locked:
+* IP definition 'Concat (2.1)' for IP 'design_1_xlconcat_0_1' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_interconnect_1_0' is locked:
+* IP definition 'AXI Interconnect (2.1)' for IP 'design_1_axi_interconnect_1_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xbar_3' is locked:
+* IP definition 'AXI Crossbar (2.1)' for IP 'design_1_xbar_3' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_interconnect_0_8' is locked:
+* IP definition 'AXI Interconnect (2.1)' for IP 'design_1_axi_interconnect_0_8' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xbar_9' is locked:
+* IP definition 'AXI Crossbar (2.1)' for IP 'design_1_xbar_9' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_iic_0_7' is locked:
+* IP definition 'AXI IIC (2.0)' for IP 'design_1_axi_iic_0_7' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlconcat_0_8' is locked:
+* IP definition 'Concat (2.1)' for IP 'design_1_xlconcat_0_8' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3571] IP 'design_1_iic_to_i2c_master_0_7' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_interconnect_0_9' is locked:
+* IP definition 'AXI Interconnect (2.1)' for IP 'design_1_axi_interconnect_0_9' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xbar_10' is locked:
+* IP definition 'AXI Crossbar (2.1)' for IP 'design_1_xbar_10' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_iic_0_8' is locked:
+* IP definition 'AXI IIC (2.0)' for IP 'design_1_axi_iic_0_8' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlconcat_0_9' is locked:
+* IP definition 'Concat (2.1)' for IP 'design_1_xlconcat_0_9' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3571] IP 'design_1_iic_to_i2c_master_0_8' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_interconnect_0_10' is locked:
+* IP definition 'AXI Interconnect (2.1)' for IP 'design_1_axi_interconnect_0_10' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xbar_11' is locked:
+* IP definition 'AXI Crossbar (2.1)' for IP 'design_1_xbar_11' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_iic_0_9' is locked:
+* IP definition 'AXI IIC (2.0)' for IP 'design_1_axi_iic_0_9' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlconcat_0_10' is locked:
+* IP definition 'Concat (2.1)' for IP 'design_1_xlconcat_0_10' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3571] IP 'design_1_iic_to_i2c_master_0_9' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_interconnect_0_11' is locked:
+* IP definition 'AXI Interconnect (2.1)' for IP 'design_1_axi_interconnect_0_11' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xbar_12' is locked:
+* IP definition 'AXI Crossbar (2.1)' for IP 'design_1_xbar_12' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_iic_0_10' is locked:
+* IP definition 'AXI IIC (2.0)' for IP 'design_1_axi_iic_0_10' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlconcat_0_11' is locked:
+* IP definition 'Concat (2.1)' for IP 'design_1_xlconcat_0_11' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3571] IP 'design_1_iic_to_i2c_master_0_10' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlconcat_1_0' is locked:
+* IP definition 'Concat (2.1)' for IP 'design_1_xlconcat_1_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'axi_bram_ctrl_0' is locked:
+* IP definition 'AXI BRAM Controller (4.0)' for IP 'axi_bram_ctrl_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xvc_0_0' is locked:
+* IP 'design_1_xvc_0_0' contains one or more locked subcores.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3571] IP 'design_1_debouncer_0_1' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3571] IP 'design_1_debouncer_0_2' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3571] IP 'design_1_debouncer_0_3' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3571] IP 'design_1_debouncer_0_4' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3571] IP 'design_1_debouncer_0_5' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_gpio_0_0' is locked:
+* IP definition 'AXI GPIO (2.0)' for IP 'design_1_axi_gpio_0_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3571] IP 'design_1_tri_state_buffer_0_0' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlslice_0_0' is locked:
+* IP definition 'Slice (1.0)' for IP 'design_1_xlslice_0_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlslice_0_1' is locked:
+* IP definition 'Slice (1.0)' for IP 'design_1_xlslice_0_1' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlconcat_1_1' is locked:
+* IP definition 'Concat (2.1)' for IP 'design_1_xlconcat_1_1' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlconcat_1_2' is locked:
+* IP definition 'Concat (2.1)' for IP 'design_1_xlconcat_1_2' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_axi_gpio_0_1' is locked:
+* IP definition 'AXI GPIO (2.0)' for IP 'design_1_axi_gpio_0_1' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_xlconcat_1_3' is locked:
+* IP definition 'Concat (2.1)' for IP 'design_1_xlconcat_1_3' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_s00_data_fifo_0' is locked:
+* IP definition 'AXI Data FIFO (2.1)' for IP 'design_1_s00_data_fifo_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-2162] IP 'design_1_auto_pc_0' is locked:
+* IP definition 'AXI Protocol Converter (2.1)' for IP 'design_1_auto_pc_0' (customized with software release 2016.4) has a different revision in the IP Catalog.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [BD 41-1661] One or more IPs have been locked in the design 'design_1.bd'. Please run report_ip_status for more details and recommendations on how to fix this issue.
+List of locked IPs:
+design_1_auto_pc_0
+design_1_s00_data_fifo_0
+design_1_xlconcat_1_3
+design_1_xlconcat_0_8
+design_1_xbar_9
+design_1_axi_interconnect_0_9
+design_1_xbar_3
+design_1_xbar_12
+design_1_axi_interconnect_0_8
+design_1_axi_iic_0_2
+design_1_axi_interconnect_1_0
+design_1_axi_interconnect_0_1
+design_1_xbar_1
+design_1_xbar_10
+design_1_proc_sys_reset_0_0
+design_1_processing_system7_0_0
+design_1_axi_intc_0_0
+design_1_axi_interconnect_0_0
+design_1_xbar_0
+design_1_xlconcat_0_0
+design_1_xlconcat_0_9
+design_1_axi_interconnect_0_10
+design_1_xbar_11
+design_1_axi_iic_0_9
+design_1_xlconcat_0_10
+design_1_axi_iic_0_10
+design_1_axi_interconnect_0_11
+design_1_xlconcat_0_11
+design_1_xlconcat_0_1
+design_1_xlslice_0_0
+design_1_xlconcat_1_0
+design_1_axi_iic_0_7
+design_1_axi_gpio_0_0
+design_1_xvc_0_0
+design_1_xlslice_0_1
+design_1_xlconcat_1_1
+design_1_axi_iic_0_8
+design_1_axi_gpio_0_1
+design_1_xlconcat_1_2
+
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'I2C' of definition 'uw:uw:i2c:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'IIC' of definition 'xilinx.com:interface:iic:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'I2C' of definition 'uw:uw:i2c:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'IIC' of definition 'xilinx.com:interface:iic:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'I2C' of definition 'uw:uw:i2c:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'IIC' of definition 'xilinx.com:interface:iic:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'I2C' of definition 'uw:uw:i2c:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'IIC' of definition 'xilinx.com:interface:iic:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'I2C' of definition 'uw:uw:i2c:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'IIC' of definition 'xilinx.com:interface:iic:1.0' (from 'X_INTERFACE_INFO' attribute).
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/led_0.1'. The path is contained within another repository.
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/data/mpv/ip_repo/xvc_0.1'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+INFO: [Coretcl 2-135] resetting runs for excluding generated files from archive...
+WARNING: [Coretcl 2-105] Run 'synth_1' is currently active
+INFO: [Coretcl 2-133] re-setting run 'synth_1'...
+INFO: [Coretcl 2-133] re-setting run 'impl_1'...
+WARNING: [Coretcl 2-52] File '/home/alex/.Xil/Vivado-19680-moonraker.cern.ch/PrjAr/_X_/ipmc_zynq_vivado.srcs/sources_1/bd/mref/tri_state_buffer/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd' does not exist
+WARNING: [Coretcl 2-52] File '/home/alex/.Xil/Vivado-19680-moonraker.cern.ch/PrjAr/_X_/ipmc_zynq_vivado.srcs/sources_1/bd/mref/tri_state_buffer/hdl/axi_intc_v4_1_vh_rfs.vhd' does not exist
+INFO: [Coretcl 2-1212] Importing remotely added design sources and verilog include files (if any)...
+INFO: [filemgmt 20-334] All file(s) are already imported in fileset: 'constrs_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'constrs_1'
+INFO: [filemgmt 20-334] All file(s) are already imported in fileset: 'sources_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'sources_1'
+INFO: [Coretcl 2-1209] Adding archive summary file to the project...
+INFO: [Coretcl 2-1214] Preparing project files for archive...
+INFO: [Coretcl 2-1210] Compressing project files and data...
+INFO: [Coretcl 2-1215] Project archived (/data/alex/ipmc/ipmc_zynq_vivado.xpr.zip)
+INFO: [Coretcl 2-1216] To view the archive summary log in GUI, double click on 'Design Sources->Text->archive_project_summary.txt', or open this file from the archived project directory.
+archive_project: Time (s): cpu = 00:00:28 ; elapsed = 00:00:38 . Memory (MB): peak = 6355.930 ; gain = 50.844 ; free physical = 40628 ; free virtual = 67136
+update_compile_order -fileset sources_1
+close_project
+open_project /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.xpr
+INFO: [Project 1-313] Project file moved from '/data/mpv/ipmc_ctrl_testboard' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [filemgmt 56-1] IP Repository Path: Directory not found as '/data/alex/ipmc/ip_repo'; using path '/data/mpv/ip_repo' instead.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2017.2/data/ip'.
+WARNING: [IP_Flow 19-3664] IP 'design_1_processing_system7_0_0' generated file not found '/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0_1/sim/libps7.so'. Please regenerate to continue.
+WARNING: [IP_Flow 19-3664] IP 'design_1_processing_system7_0_0' generated file not found '/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0_1/sim/libremoteport.so'. Please regenerate to continue.
+WARNING: [BD 41-1661] One or more IPs have been locked in the design 'design_1.bd'. Please run report_ip_status for more details and recommendations on how to fix this issue.
+List of locked IPs:
+design_1_s00_data_fifo_0
+design_1_xlconcat_1_2
+design_1_xlslice_0_1
+design_1_auto_pc_0
+design_1_proc_sys_reset_0_0
+design_1_processing_system7_0_0
+design_1_axi_interconnect_0_0
+design_1_xlconcat_1_1
+design_1_xlslice_0_0
+design_1_xbar_0
+design_1_xvc_0_0
+design_1_axi_gpio_0_0
+
+INFO: [Project 1-230] Project 'ipmc_ctrl_testboard.xpr' upgraded for this version of Vivado.
+report_ip_status -name ip_status 
+update_compile_order -fileset sources_1
+upgrade_ip [get_ips  {design_1_xlslice_0_0 design_1_xvc_0_0 design_1_xlconcat_1_1 design_1_axi_interconnect_0_0 design_1_xlslice_0_1 design_1_processing_system7_0_0 design_1_xlconcat_1_2 design_1_proc_sys_reset_0_0 design_1_axi_gpio_0_0}] -log ip_upgrade.log
+Adding cell -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+Adding cell -- user.org:user:ad7689:0.1 - ad7689_0
+Adding cell -- user.org:user:ad7689:0.1 - ad7689_1
+Adding cell -- user.org:user:xvc:0.1 - xvc_0
+Adding cell -- uw:uw:led:0.1 - led_0
+Adding cell -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_0
+Adding cell -- xilinx.com:ip:xlslice:1.0 - xlslice_0
+Adding cell -- xilinx.com:ip:xlslice:1.0 - xlslice_1
+Adding cell -- xilinx.com:ip:xlconcat:2.1 - xlconcat_1
+Adding cell -- xilinx.com:ip:xlconcat:2.1 - xlconcat_2
+Adding cell -- user.org:module_ref:tri_state_buffer:1.0 - tri_state_buffer_0
+Adding cell -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding cell -- xilinx.com:ip:axi_data_fifo:2.1 - s00_data_fifo
+Adding cell -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Successfully read diagram <design_1> from BD file </data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/design_1.bd>
+Upgrading '/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/design_1.bd'
+INFO: [IP_Flow 19-3420] Updated design_1_axi_gpio_0_0 to use current project options
+INFO: [IP_Flow 19-3420] Updated design_1_axi_interconnect_0_0 to use current project options
+INFO: [IP_Flow 19-3420] Updated design_1_proc_sys_reset_0_0 to use current project options
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.025 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_2 has negative value -0.009 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-3]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_3 has negative value -0.033 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.025 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_2 has negative value -0.009 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-3]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_3 has negative value -0.033 . PS DDR interfaces might fail when entering negative DQS skew values. 
+INFO: [IP_Flow 19-3420] Updated design_1_processing_system7_0_0 to use current project options
+INFO: [IP_Flow 19-3420] Updated design_1_xlconcat_1_1 to use current project options
+INFO: [IP_Flow 19-3420] Updated design_1_xlconcat_1_2 to use current project options
+INFO: [IP_Flow 19-3420] Updated design_1_xlslice_0_0 to use current project options
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'DOUT_WIDTH' from '1' to '17' has been ignored for IP 'design_1_xlslice_0_1'
+INFO: [IP_Flow 19-3420] Updated design_1_xlslice_0_1 to use current project options
+INFO: [IP_Flow 19-1972] Upgraded design_1_xvc_0_0 from xvc_v0.1 0.1 to xvc_v0.1 0.1
+CRITICAL WARNING: [Coretcl 2-1279] The upgrade of 'design_1_xlslice_0_1' has identified issues that may require user intervention. Please review the upgrade log '/data/alex/ipmc/ipmc_ctrl_testboard/ip_upgrade.log', and verify that the upgraded IP is correctly configured.
+Wrote  : </data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/design_1.bd> 
+Wrote  : </data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui> 
+INFO: [Coretcl 2-1525] Wrote upgrade log to '/data/alex/ipmc/ipmc_ctrl_testboard/ip_upgrade.log'.
+upgrade_ip: Time (s): cpu = 00:00:16 ; elapsed = 00:00:11 . Memory (MB): peak = 6429.832 ; gain = 71.902 ; free physical = 40430 ; free virtual = 66983
+export_ip_user_files -of_objects [get_ips {design_1_xlslice_0_0 design_1_xvc_0_0 design_1_xlconcat_1_1 design_1_axi_interconnect_0_0 design_1_xlslice_0_1 design_1_processing_system7_0_0 design_1_xlconcat_1_2 design_1_proc_sys_reset_0_0 design_1_axi_gpio_0_0}] -no_script -sync -force -quiet
+generate_target all [get_files  /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/design_1.bd]
+Wrote  : </data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/design_1.bd> 
+VHDL Output written to : /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/hdl/design_1.vhd
+VHDL Output written to : /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ad7689_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ad7689_1 .
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.0-2] axi_bram_ctrl_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.0-1] axi_bram_ctrl_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.0-2] axi_bram_ctrl_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.0-1] axi_bram_ctrl_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+INFO: [IP_Flow 19-3420] Updated axi_bram_ctrl_0 to use current project options
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xvc_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block led_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block GPIO/axi_gpio_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block GPIO/xlslice_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block GPIO/xlslice_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block GPIO/xlconcat_1 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block GPIO/xlconcat_2 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block GPIO/tri_state_buffer_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/xbar .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_4/design_1_auto_pc_4_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/m05_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_3/design_1_auto_pc_3_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/m04_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_2/design_1_auto_pc_2_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/m03_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_1/design_1_auto_pc_1_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/m02_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_0/design_1_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/m01_couplers/auto_pc .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/ip/design_1_s00_data_fifo_0/design_1_s00_data_fifo_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/s00_couplers/s00_data_fifo .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/ip/design_1_auto_pc_5/design_1_auto_pc_5_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_interconnect_0/s00_couplers/auto_pc .
+Exporting to file /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/hw_handoff/design_1.hwh
+Generated Block Design Tcl file /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/hw_handoff/design_1_bd.tcl
+Generated Hardware Definition File /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/hdl/design_1.hwdef
+generate_target: Time (s): cpu = 00:00:21 ; elapsed = 00:00:17 . Memory (MB): peak = 6647.379 ; gain = 169.297 ; free physical = 40121 ; free virtual = 66780
+export_ip_user_files -of_objects [get_files /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/design_1.bd] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.srcs/sources_1/bd/design_1/design_1.bd] -directory /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.ip_user_files/sim_scripts -ip_user_files_dir /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.ip_user_files -ipstatic_source_dir /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.ip_user_files/ipstatic -lib_map_path [list {modelsim=/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.cache/compile_simlib/modelsim} {questa=/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.cache/compile_simlib/questa} {ies=/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.cache/compile_simlib/ies} {vcs=/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.cache/compile_simlib/vcs} {riviera=/data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Tue Jul 25 14:24:15 2017] Launched synth_1...
+Run output will be captured here: /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.runs/synth_1/runme.log
+[Tue Jul 25 14:24:15 2017] Launched impl_1...
+Run output will be captured here: /data/alex/ipmc/ipmc_ctrl_testboard/ipmc_ctrl_testboard.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 230 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2017.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/alex/.Xil/Vivado-19680-moonraker.cern.ch/dcp1/design_1_wrapper_board.xdc]
+Finished Parsing XDC File [/home/alex/.Xil/Vivado-19680-moonraker.cern.ch/dcp1/design_1_wrapper_board.xdc]
+Parsing XDC File [/home/alex/.Xil/Vivado-19680-moonraker.cern.ch/dcp1/design_1_wrapper_early.xdc]
+Finished Parsing XDC File [/home/alex/.Xil/Vivado-19680-moonraker.cern.ch/dcp1/design_1_wrapper_early.xdc]
+Parsing XDC File [/home/alex/.Xil/Vivado-19680-moonraker.cern.ch/dcp1/design_1_wrapper.xdc]
+Finished Parsing XDC File [/home/alex/.Xil/Vivado-19680-moonraker.cern.ch/dcp1/design_1_wrapper.xdc]
+Parsing XDC File [/home/alex/.Xil/Vivado-19680-moonraker.cern.ch/dcp1/design_1_wrapper_late.xdc]
+Finished Parsing XDC File [/home/alex/.Xil/Vivado-19680-moonraker.cern.ch/dcp1/design_1_wrapper_late.xdc]
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00.88 ; elapsed = 00:00:00.48 . Memory (MB): peak = 6831.508 ; gain = 11.000 ; free physical = 39794 ; free virtual = 66596
+Restored from archive | CPU: 0.890000 secs | Memory: 9.632401 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.88 ; elapsed = 00:00:00.48 . Memory (MB): peak = 6831.508 ; gain = 11.000 ; free physical = 39794 ; free virtual = 66596
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 74 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 49 instances
+  RAM32M => RAM32M (RAMS32, RAMS32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32): 22 instances
+  SRLC32E => SRL16E: 3 instances
+
+open_run: Time (s): cpu = 00:00:19 ; elapsed = 00:00:07 . Memory (MB): peak = 7179.723 ; gain = 435.055 ; free physical = 39650 ; free virtual = 66438
+archive_project /data/alex/ipmc/ipmc_ctrl_testboard.xpr.zip -force -exclude_run_results -include_config_settings
+INFO: [Coretcl 2-137] starting archive...
+INFO: [Coretcl 2-1499] Saving project copy to temporary location './.Xil/Vivado-19680-moonraker.cern.ch' for archiving project
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2017.2/data/ip'.
+INFO: [Coretcl 2-1211] Creating project copy for archival...
+WARNING: [IP_Flow 19-3571] IP 'design_1_tri_state_buffer_0_1' is restricted:
+* Module reference source file(s) not found.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/data/mpv/ip_repo'.
+INFO: [Coretcl 2-135] resetting runs for excluding generated files from archive...
+WARNING: [Coretcl 2-105] Run 'synth_1' is currently active
+INFO: [Coretcl 2-133] re-setting run 'synth_1'...
+INFO: [Coretcl 2-133] re-setting run 'impl_1'...
+INFO: [Coretcl 2-1212] Importing remotely added design sources and verilog include files (if any)...
+INFO: [filemgmt 20-334] All file(s) are already imported in fileset: 'constrs_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'constrs_1'
+INFO: [filemgmt 20-334] All file(s) are already imported in fileset: 'sources_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'sources_1'
+INFO: [Coretcl 2-1209] Adding archive summary file to the project...
+INFO: [Coretcl 2-1214] Preparing project files for archive...
+INFO: [Coretcl 2-1210] Compressing project files and data...
+INFO: [Coretcl 2-1215] Project archived (/data/alex/ipmc/ipmc_ctrl_testboard.xpr.zip)
+INFO: [Coretcl 2-1216] To view the archive summary log in GUI, double click on 'Design Sources->Text->archive_project_summary.txt', or open this file from the archived project directory.
+archive_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 7414.820 ; gain = 26.020 ; free physical = 39131 ; free virtual = 66021
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Jul 25 14:29:57 2017...

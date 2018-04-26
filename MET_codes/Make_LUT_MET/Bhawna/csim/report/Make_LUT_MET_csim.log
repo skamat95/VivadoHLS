@@ -1,0 +1,16 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling(apcc) ../../../../../Github/VivadoHLS/Make_LUT_MET/Bhawna/test_Make_LUT_MET.c in debug mode
+INFO: [HLS 200-10] Running '/data/tools/Vivado_HLS/2016.4/bin/unwrapped/lnx64.o/apcc'
+INFO: [HLS 200-10] For user 'skamat' on host 'uwlogin.cern.ch' (Linux_x86_64 version 2.6.32-696.6.3.el6.aufs21.x86_64) on Mon Oct 09 11:28:25 CEST 2017
+INFO: [HLS 200-10] On os "Scientific Linux CERN SLC release 6.9 (Carbon)"
+INFO: [HLS 200-10] In directory '/data/skamat/HLS/METB/solution1/csim/build'
+INFO: [APCC 202-3] Tmp directory is /tmp/apcc_db_skamat/31055421507541305778921
+INFO: [APCC 202-1] APCC is done.
+   Generating csim.exe
+Test succeeded
+METx = 15380
+METy = 3128
+Theta = 0
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************
