@@ -25,21 +25,30 @@ const uint16_t NCaloLayer2ClustersPerPhi = 3;
 
 const uint16_t NCaloLayer2ExtraPhi = 2;
 
-int GCT(uint16_t Tower[NCaloLayer2Eta][NCaloLayer2Phi_in],
-		uint10_t ClusterET[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-		uint7_t Cluster_TowerID[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-	    uint5_t Cluster_EtaPhi[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in]);
+int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in],
+		uint10_t ClusterET_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
+		uint7_t Cluster_TowerID_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
+	    uint5_t Cluster_EtaPhi_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
+		uint16_t Tower_out[NCaloLayer2Eta][NCaloLayer2Phi_out],
+		uint10_t ClusterET_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out],
+		uint7_t Cluster_TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out],
+		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out]);
 
 bool stitch_on_left(int i, int j, uint16_t tower_num, uint16_t crystal_num,
-		uint10_t ClusterET[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-		uint7_t Cluster_TowerID[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-	    uint5_t Cluster_EtaPhi[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in]);
+		uint10_t ClusterET_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
+		uint7_t Cluster_TowerID_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
+	    uint5_t Cluster_EtaPhi_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
+		uint10_t ClusterET_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out],
+		uint7_t Cluster_TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out],
+		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out]);
 
 bool stitch_on_right(int i, int j, uint16_t tower_num, uint16_t crystal_num,
-		uint10_t ClusterET[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-		uint7_t Cluster_TowerID[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-	    uint5_t Cluster_EtaPhi[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in]);
-
+		uint10_t ClusterET_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
+		uint7_t Cluster_TowerID_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
+	    uint5_t Cluster_EtaPhi_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
+		uint10_t ClusterET_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out],
+		uint7_t Cluster_TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out],
+		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out]);
 
 
 
