@@ -18,7 +18,7 @@ const uint16_t NCaloLayer2Eta = 17; //17*2
 const uint16_t NCaloLayer2Phi_in = 28; //6*4 + 2 on either side
 const uint16_t NCaloLayer2Phi_out = 24; //6*4 as output per card
 
-const uint16_t NCaloEtaDirections = 2;
+const uint16_t EtaDirections = 2;
 const uint16_t NCaloPhiRegionsPerCard = 6;
 const uint16_t NCaloLayer2ClustersPerCard = 12;
 const uint16_t NCaloLayer2ClustersPerPhi = 3;
@@ -34,21 +34,25 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in],
 		uint7_t Cluster_TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out],
 		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out]);
 
-bool stitch_on_left(int i, int j, uint16_t tower_num, uint16_t crystal_num,
-		uint10_t ClusterET_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-		uint7_t Cluster_TowerID_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-	    uint5_t Cluster_EtaPhi_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-		uint10_t ClusterET_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out],
-		uint7_t Cluster_TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out],
-		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out]);
 
-bool stitch_on_right(int i, int j, uint16_t tower_num, uint16_t crystal_num,
-		uint10_t ClusterET_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-		uint7_t Cluster_TowerID_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-	    uint5_t Cluster_EtaPhi_in[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in],
-		uint10_t ClusterET_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out],
-		uint7_t Cluster_TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out],
-		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out]);
+
+bool stitch_on_left(uint10_t current_cluster_ET_in, uint16_t tower_num, uint16_t crystal_num,
+		uint10_t ClusterET_in[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+		uint7_t Cluster_TowerID_in[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+	    uint5_t Cluster_EtaPhi_in[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+		uint10_t ClusterET_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+		uint7_t Cluster_TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+		uint10_t current_cluster_ET_out);
+
+bool stitch_on_right(uint10_t current_cluster_ET_in,uint16_t tower_num, uint16_t crystal_num,
+		uint10_t ClusterET_in[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+		uint7_t Cluster_TowerID_in[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+	    uint5_t Cluster_EtaPhi_in[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+		uint10_t ClusterET_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+		uint7_t Cluster_TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
+		uint10_t current_cluster_ET_out);
 
 
 
