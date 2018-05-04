@@ -77,8 +77,10 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 					crystal_num = Cluster_EtaPhi_in[j][i][e]/5;
 					int c = 0;
 					for(int a=i-4; a < i; a++){
+#pragma HLS UNROLL
 #pragma HLS LOOP_TRIPCOUNT max=4
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
+#pragma HLS UNROLL
 							if((a < NCaloLayer2Phi_in) || (a > NCaloLayer2Phi_in)) break;
 							ET_in[b][c] = ClusterET_in[b][a][e];
 							TowerID_in[b][c] = Cluster_TowerID_in[b][a][e];
@@ -93,8 +95,10 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 					ClusterET_out[j][i-2][e] = current_cluster_ET_out;
 					int d = 0;
 					for(int a=i-4; a < i; a++){
+#pragma HLS UNROLL
 #pragma HLS LOOP_TRIPCOUNT max=4
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
+#pragma HLS UNROLL
 							if((a < NCaloLayer2Phi_in) || (a > NCaloLayer2Phi_in)) break;
 						ClusterET_out[b][a][e] = ET_out[b][d];
 						Cluster_TowerID_out[b][a][e] = TowerID_out[b][d];
@@ -118,8 +122,10 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 					crystal_num = Cluster_EtaPhi_in[j][i][e]/5;
 					int e = 0;
 					for(int a=i-4; a < i; a++){
+#pragma HLS UNROLL
 #pragma HLS LOOP_TRIPCOUNT max=4
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
+#pragma HLS UNROLL
 							if((a < NCaloLayer2Phi_in) || (a > NCaloLayer2Phi_in)) break;
 						ET_in[b][e] = ClusterET_in[b][a][e];
 						TowerID_in[b][e] = Cluster_TowerID_in[b][a][e];
@@ -133,8 +139,10 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 					ClusterET_out[j][i-2][e] = current_cluster_ET_out;
 					int f = 0;
 					for(int a=i-4; a < i; a++){
+#pragma HLS UNROLL
 #pragma HLS LOOP_TRIPCOUNT max=4
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
+#pragma HLS UNROLL
 							if((a < NCaloLayer2Phi_in) || (a > NCaloLayer2Phi_in)) break;
 						ClusterET_out[b][a][e] = ET_out[b][f];
 						Cluster_TowerID_out[b][a][e] = TowerID_out[b][f];
@@ -148,16 +156,52 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 			}
 
 			//Stitching on Eta Boundary
-			if((Cluster_TowerID_in[j][i][e]%17) == 16){
+			if((Cluster_TowerID_in[j][i][e] > 63) || (Cluster_TowerID_in[j][i][e] < 68)){
 				//tower on eta boundary
-				tower_num = Cluster_TowerID_in[j][i][e]/4; //boundary towers will have 4,8,12,16 as tower_num
+				tower_num = Cluster_TowerID_in[j][i][e]/4; //it should be just 16 (coz 64 to 67 divided by 4 is 16)
+				uint16_t tower_eta = Cluster_TowerID_in[j][i][e]%4;
 
-				if((Cluster_EtaPhi_in[j][1][e] > 19) || (Cluster_EtaPhi_in[j][1][e] < 24)){
+				if((Cluster_EtaPhi_in[j][i][e] > 19) || (Cluster_EtaPhi_in[j][i][e] < 25)){
 					//Cluster on crystal eta boundary
 					crystal_num = Cluster_EtaPhi_in[j][i][e]/5; //it should be just 4 (coz 20 to 24 divided by 5 is 4)
 					uint16_t crystal_eta = Cluster_EtaPhi_in[j][i][e]%5;
-					//Need to search for neighbouring cluster
-					//give inputs
+
+					//Need to search for neighboring clusters
+					int phi_row = i-2;
+					int card_num = phi_row/4; //Layer1 card
+					int phi_row_start = card_num *4;
+					current_cluster_ET_in = ClusterET_in[j][i][e];
+
+					for(int a = phi_row_start; a < (phi_row_start + 4); a++){
+#pragma HLS UNROLL
+						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
+#pragma HLS UNROLL
+
+							//look for clusters at the boundary
+							if((Cluster_TowerID_in[b][a][1] >= 0) || (Cluster_TowerID_in[b][a][1] <4)){
+								//Then cluster is on boundary tower
+								if((Cluster_EtaPhi_in[b][a][1] >=0) || (Cluster_EtaPhi_in[b][a][1] <5)){
+									//Then it is on the crystal boundary as well
+									if(((Cluster_TowerID_in[b][a][1] % 4) == tower_eta) && ((Cluster_EtaPhi_in[b][a][1]%5) == crystal_eta)){
+										//Merge!
+										if(current_cluster_ET_in > ClusterET_in[b][a][1]){
+											current_cluster_ET_out = current_cluster_ET_in + ClusterET_in[b][a][1];
+											ClusterET_out[b][a][1] = 0;
+
+										}
+										else{
+											ClusterET_out[b][a][1] = ClusterET_in[b][a][1] + current_cluster_ET_in;
+											current_cluster_ET_out = 0;
+										}
+									}
+								}
+							}
+
+
+						}
+					}
+
+					ClusterET_out[j][i-2][0] = current_cluster_ET_out;
 
 
 
