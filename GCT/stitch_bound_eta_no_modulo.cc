@@ -7,7 +7,7 @@
 uint7_t tower_on_left_boundary[17] = {0,4,8,12,16,20,24,28,32,36,40,44,48,52,56,60,64};
 uint7_t tower_on_right_boundary[17] = {3,7,11,15,19,23,27,31,35,39,43,47,51,55,59,63,67};
 uint7_t tower_on_eta_boundary[4] = {64,65,66,67};
-uint7_t tower_eta_neg[4] = {0,1,2,3};
+uint7_t tower_search_eta[4] = {0,1,2,3};
 uint5_t crystal_on_A_boundary[5] = {0,1,2,3,4};
 uint5_t crystal_on_B_boundary[5] = {4,9,14,19,24};
 uint5_t crystal_on_C_boundary[5] = {20,21,22,23,24};
@@ -23,12 +23,6 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 		uint7_t Cluster_TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out][EtaDirections],
 		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out][EtaDirections])
 {
-#pragma HLS ARRAY_PARTITION variable=crystal_on_D_boundary complete dim=0
-#pragma HLS ARRAY_PARTITION variable=crystal_on_C_boundary complete dim=0
-#pragma HLS ARRAY_PARTITION variable=crystal_on_B_boundary complete dim =0
-#pragma HLS ARRAY_PARTITION variable=crystal_on_A_boundary complete dim=0
-#pragma HLS ARRAY_PARTITION variable=tower_on_right_boundary complete dim=0
-#pragma HLS ARRAY_PARTITION variable=tower_on_left_boundary complete dim=0
 
 #pragma HLS ARRAY_PARTITION variable=Cluster_EtaPhi_in complete dim=0
 #pragma HLS ARRAY_PARTITION variable=Cluster_TowerID_in complete dim=0
@@ -183,18 +177,16 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 		}
 	}
 }
-			//Stitching on Eta Boundary
+/*			//Stitching on Eta Boundary
 
 		uint16_t tower_eta;
-		uint16_t tower_eta_search;
 		uint16_t crystal_eta;
-		uint16_t crystal_eta_search;
 		for(int i = 2; i < NCaloLayer2Phi_in-2 ; i++){
 #pragma HLS UNROLL
 
 		for(int j = 0; j < NCaloLayer2ClustersPerPhi; j++){
 #pragma HLS UNROLL
- 	 	 	int e = 0;
+ 	 	 	 e = 0
 			bool tower_eta = ifExists_tower_eta(Cluster_TowerID_in[j][i][e], tower_on_eta_boundary, tower_eta);
 			if(tower_eta){
 				//tower on eta boundary
@@ -219,14 +211,14 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 #pragma HLS UNROLL
 
 							//look for clusters at the boundary
-							bool tower_search_1 = ifExists_tower_eta(Cluster_TowerID_in[b][a][1], tower_eta_neg, tower_eta_search);
-							if((tower_search_1) && (tower_eta_search == tower_eta)){//(Cluster_TowerID_in[b][a][1] >= 0) || (Cluster_TowerID_in[b][a][1] <4)
+							bool tower_search_1 = ifExists_tower_eta(Cluster_TowerID_in[b][a][1], tower_search_eta);
+							if(tower_search_1){//(Cluster_TowerID_in[b][a][1] >= 0) || (Cluster_TowerID_in[b][a][1] <4)
 								//Then cluster is on boundary tower
-								bool cluster_search_1 = ifExists_crystal(Cluster_EtaPhi_in[b][a][1], crystal_on_A_boundary, crystal_eta_search);
-								if((cluster_search_1) && (crystal_eta_search == crystal_eta)){//(Cluster_EtaPhi_in[b][a][1] >=0) || (Cluster_EtaPhi_in[b][a][1] <5)
+								bool cluster_search_1 = ifExists_crystal(Cluster_EtaPhi_in[b][a][1], crystal_on_A_boundary);
+								if(cluster_search_1){//(Cluster_EtaPhi_in[b][a][1] >=0) || (Cluster_EtaPhi_in[b][a][1] <5)
 									//Then it is on the crystal boundary as well
 
-									//if(((Cluster_TowerID_in[b][a][1] % 4) == tower_eta) && ((Cluster_EtaPhi_in[b][a][1]%5) == crystal_eta)){
+									if(((Cluster_TowerID_in[b][a][1] % 4) == tower_eta) && ((Cluster_EtaPhi_in[b][a][1]%5) == crystal_eta)){
 										//Merge!
 										if(current_cluster_ET_in > ClusterET_in[b][a][1]){
 											current_cluster_ET_out = current_cluster_ET_in + ClusterET_in[b][a][1];
@@ -237,7 +229,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 											ClusterET_out[b][a][1] = ClusterET_in[b][a][1] + current_cluster_ET_in;
 											current_cluster_ET_out = 0;
 										}
-									//}
+									}
 								}
 							}
 
@@ -253,7 +245,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 			}
 		}
 	}
-
+*/
 
 
 return(0);
@@ -268,9 +260,6 @@ bool stitch_on_left(uint10_t current_cluster_ET_in, uint16_t tower_num, uint16_t
 		uint7_t Cluster_TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
 		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
 		uint10_t current_cluster_ET_out){
-
-#pragma HLS ARRAY_PARTITION variable=tower_on_right_boundary complete dim=0
-#pragma HLS ARRAY_PARTITION variable=crystal_on_B_boundary complete dim=0
 
 #pragma HLS ARRAY_PARTITION variable=ClusterET_in complete dim=0
 #pragma HLS ARRAY_PARTITION variable=Cluster_TowerID_in complete dim=0
@@ -287,13 +276,11 @@ bool stitch_on_left(uint10_t current_cluster_ET_in, uint16_t tower_num, uint16_t
 
 			for (int l = 0; l < NCaloLayer2ClustersPerPhi; l++){
 #pragma HLS UNROLL
-				int expected_rem = 3;
-				bool is_tower_same = ifExists_tower_search(Cluster_TowerID_in[l][k], tower_on_right_boundary, tower_num, expected_rem);
+				bool is_tower_same = ifExists_tower_search(Cluster_TowerID_in[l][k], tower_on_right_boundary, tower_num);
 
 				if(is_tower_same){
 					//this means tower number is same
-					int expected_rem = 4;
-					bool is_crystal_same = ifExists_crystal_search(Cluster_EtaPhi_in[l][k], crystal_on_B_boundary, crystal_num, expected_rem);
+					bool is_crystal_same = ifExists_crystal_search(Cluster_EtaPhi_in[l][k], crystal_on_B_boundary, crystal_num);
 					if(is_crystal_same){
 						//This is right next crystal
 					if(current_cluster_ET_in >= ClusterET_in[l][k]){
@@ -330,9 +317,6 @@ bool stitch_on_right(uint10_t current_cluster_ET_in, uint16_t tower_num, uint16_
 		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
 		uint10_t current_cluster_ET_out){
 
-#pragma HLS ARRAY_PARTITION variable=crystal_on_D_boundary complete dim=0
-#pragma HLS ARRAY_PARTITION variable=tower_on_left_boundary complete dim=0
-
 #pragma HLS ARRAY_PARTITION variable=ClusterET_in complete dim=0
 #pragma HLS ARRAY_PARTITION variable=Cluster_TowerID_in complete dim=0
 #pragma HLS ARRAY_PARTITION variable=Cluster_EtaPhi_in complete dim=0
@@ -347,12 +331,10 @@ bool stitch_on_right(uint10_t current_cluster_ET_in, uint16_t tower_num, uint16_
 #pragma HLS UNROLL
 			for (int l = 0; l < NCaloLayer2ClustersPerPhi; l++){
 #pragma HLS UNROLL
-				int expected_rem = 0;
-				bool is_tower_same = ifExists_tower_search(Cluster_TowerID_in[l][k], tower_on_left_boundary, tower_num, expected_rem);
+				bool is_tower_same = ifExists_tower_search(Cluster_TowerID_in[l][k], tower_on_left_boundary, tower_num);
 				if(is_tower_same){
 					//this means tower number is same
-					int expected_rem = 0;
-					bool is_crystal_same = ifExists_crystal_search(Cluster_EtaPhi_in[l][k], crystal_on_D_boundary, crystal_num, expected_rem);
+					bool is_crystal_same = ifExists_crystal_search(Cluster_EtaPhi_in[l][k], crystal_on_D_boundary, crystal_num);
 					if(is_crystal_same){
 						//This is right next crystal
 					if(current_cluster_ET_in >= ClusterET_in[l][k]){
@@ -381,7 +363,6 @@ return true;
 bool ifExists_tower(uint7_t element, uint7_t *Array, int num){
 	bool it_does = false;
 	for(int i = 0; i < 17; i++){
-#pragma HLS UNROLL
 		if(element == *Array) {
 			it_does = true;
 			num = i;
@@ -392,15 +373,30 @@ bool ifExists_tower(uint7_t element, uint7_t *Array, int num){
 	return it_does;
 	}
 
-bool ifExists_tower_search(uint7_t element, uint7_t *Array, int num, int expected_rem){
-
+bool ifExists_tower_search(uint7_t element, uint7_t *Array, int num){
 	bool it_does = false;
 	for(int i = 0; i < 17; i++){
-#pragma HLS UNROLL
 		if(element == *Array) {
 			if(num == i){
 				int rem = element - (4*num);
-				if(rem == expected_rem){
+				if(rem == 3){
+					it_does = true;
+				}
+			}
+			break;
+		}
+	Array++;
+	}
+return it_does;
+}
+
+bool ifExists_tower_srh_rt(uint7_t element, uint7_t *Array, int num){
+	bool it_does = false;
+	for(int i = 0; i < 17; i++){
+		if(element == *Array) {
+			if(num == i){
+				int rem = element - (4*num);
+				if(rem == 0){
 					it_does = true;
 				}
 			}
@@ -412,12 +408,9 @@ return it_does;
 }
 
 
-
-
 bool ifExists_tower_eta(uint7_t element, uint7_t *Array, int num){
 	bool it_does = false;
 	for(int i = 0; i < 4; i++){
-#pragma HLS UNROLL
 		if(element == *Array) {
 			it_does = true;
 			num = i;
@@ -431,10 +424,8 @@ bool ifExists_tower_eta(uint7_t element, uint7_t *Array, int num){
 
 
 bool ifExists_crystal(uint5_t element, uint5_t *Array, int num){
-
 	bool it_does = false;
 	for(int i = 0; i < 5; i++){
-#pragma HLS UNROLL
 		if(element == *Array){
 			it_does = true;
 			num = i;
@@ -446,15 +437,30 @@ bool ifExists_crystal(uint5_t element, uint5_t *Array, int num){
 
 }
 
-bool ifExists_crystal_search(uint5_t element, uint5_t *Array, int num, int expected_rem){
-
+bool ifExists_crystal_search(uint5_t element, uint5_t *Array, int num){
 	bool it_does = false;
 		for(int i = 0; i < 5; i++){
-#pragma HLS UNROLL
 			if(element == *Array) {
 				if(num == i){
 					int rem = element - (5*num);
-					if(rem == expected_rem){
+					if(rem == 4){
+						it_does = true;
+					}
+				}
+				break;
+			}
+		Array++;
+		}
+	return it_does;
+}
+
+bool ifExists_crystal_srh_rt(uint5_t element, uint5_t *Array, int num){
+	bool it_does = false;
+		for(int i = 0; i < 5; i++){
+			if(element == *Array) {
+				if(num == i){
+					int rem = element - (5*num);
+					if(rem == 0){
 						it_does = true;
 					}
 				}

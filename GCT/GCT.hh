@@ -54,6 +54,10 @@ bool stitch_on_right(uint10_t current_cluster_ET_in,uint16_t tower_num, uint16_t
 		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi],
 		uint10_t current_cluster_ET_out);
 
-
+bool ifExists_tower(uint7_t element, uint7_t *Array, int num);
+bool ifExists_crystal(uint5_t element, uint5_t *Array, int num);
+bool ifExists_tower_eta(uint7_t element, uint7_t *Array, int num);
+bool ifExists_tower_search(uint7_t element, uint7_t *Array, int num, int expected_rem);
+bool ifExists_crystal_search(uint5_t element, uint5_t *Array, int num, int expected_rem);
 
 #endif
