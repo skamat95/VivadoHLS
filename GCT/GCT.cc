@@ -52,6 +52,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 	uint7_t TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi] = {0};
 	uint5_t EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi] = {0};
 
+	int temp_loop;
 #pragma HLS ARRAY_PARTITION variable=ET_in complete dim=0
 #pragma HLS ARRAY_PARTITION variable=TowerID_in complete dim=0
 #pragma HLS ARRAY_PARTITION variable=EtaPhi_in complete dim=0
@@ -99,15 +100,16 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 					//Then this crystal is on the boundary
 					//crystal_num = Cluster_EtaPhi_in[j][i][e]/5;
 					int c = 0;
-					for(int a=i-4; a < i; a++){
+					temp_loop = i-4;
+					for(int a=0; a < 4; a++){
 #pragma HLS UNROLL
-#pragma HLS LOOP_TRIPCOUNT max=4
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
-							if((a < NCaloLayer2Phi_in) || (a > NCaloLayer2Phi_in)) continue;
-							ET_in[b][c] = ClusterET_in[b][a][e];
-							TowerID_in[b][c] = Cluster_TowerID_in[b][a][e];
-							EtaPhi_in[b][c] = Cluster_EtaPhi_in[b][a][e];
+							if((temp_loop < NCaloLayer2Phi_in) || (temp_loop > NCaloLayer2Phi_in)) continue;
+							ET_in[b][c] = ClusterET_in[b][temp_loop][e];
+							TowerID_in[b][c] = Cluster_TowerID_in[b][temp_loop][e];
+							EtaPhi_in[b][c] = Cluster_EtaPhi_in[b][temp_loop][e];
+							temp_loop++;
 							c++;
 
 						}
@@ -117,15 +119,16 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 					 //put outputs back
 					ClusterET_out[j][i-2][e] = current_cluster_ET_out;
 					int d = 0;
-					for(int a=i-4; a < i; a++){
+					temp_loop = i-4;
+					for(int a=0; a < 4; a++){
 #pragma HLS UNROLL
-#pragma HLS LOOP_TRIPCOUNT max=4
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
-							if((a < NCaloLayer2Phi_in) || (a > NCaloLayer2Phi_in)) continue;
-						ClusterET_out[b][a][e] = ET_out[b][d];
-						Cluster_TowerID_out[b][a][e] = TowerID_out[b][d];
-						Cluster_EtaPhi_out[b][a][e] = EtaPhi_out[b][d];
+						if((temp_loop < NCaloLayer2Phi_in) || (temp_loop > NCaloLayer2Phi_in)) continue;
+						ClusterET_out[b][temp_loop][e] = ET_out[b][d];
+						Cluster_TowerID_out[b][temp_loop][e] = TowerID_out[b][d];
+						Cluster_EtaPhi_out[b][temp_loop][e] = EtaPhi_out[b][d];
+						temp_loop++;
 						d++;
 
 						}
@@ -144,17 +147,17 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 				if(crystal_right){
 					//Then this crystal is on second boundary
 					//crystal_num = Cluster_EtaPhi_in[j][i][e]/5;
-
-					for(int a=i-4; a < i; a++){
+					temp_loop = i-4;
+					for(int a=0; a < 4; a++){
 #pragma HLS UNROLL
-#pragma HLS LOOP_TRIPCOUNT max=4
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
-							if((a < NCaloLayer2Phi_in) || (a > NCaloLayer2Phi_in)) continue;
-						ET_in[b][e] = ClusterET_in[b][a][e];
-						TowerID_in[b][e] = Cluster_TowerID_in[b][a][e];
-						EtaPhi_in[b][e] = Cluster_EtaPhi_in[b][a][e];
+						if((temp_loop < NCaloLayer2Phi_in) || (temp_loop > NCaloLayer2Phi_in)) continue;
+						ET_in[b][e] = ClusterET_in[b][temp_loop][e];
+						TowerID_in[b][e] = Cluster_TowerID_in[b][temp_loop][e];
+						EtaPhi_in[b][e] = Cluster_EtaPhi_in[b][temp_loop][e];
 						e++;
+						temp_loop++;
 
 						}
 					}
@@ -162,16 +165,17 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 					success[j][i][e] = stitch_on_right(current_cluster_ET_in,tower_num, crystal_num, ET_in, TowerID_in, EtaPhi_in, ET_out, TowerID_out, EtaPhi_out, current_cluster_ET_out);
 					ClusterET_out[j][i-2][e] = current_cluster_ET_out;
 					int f = 0;
-					for(int a=i-4; a < i; a++){
+					temp_loop = i-4;
+					for(int a=0; a < 4; a++){
 #pragma HLS UNROLL
-#pragma HLS LOOP_TRIPCOUNT max=4
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
-							if((a < NCaloLayer2Phi_in) || (a > NCaloLayer2Phi_in)) continue;
-						ClusterET_out[b][a][e] = ET_out[b][f];
-						Cluster_TowerID_out[b][a][e] = TowerID_out[b][f];
-						Cluster_EtaPhi_out[b][a][e] = EtaPhi_out[b][f];
+						if((temp_loop < NCaloLayer2Phi_in) || (temp_loop > NCaloLayer2Phi_in)) continue;
+						ClusterET_out[b][temp_loop][e] = ET_out[b][f];
+						Cluster_TowerID_out[b][temp_loop][e] = TowerID_out[b][f];
+						Cluster_EtaPhi_out[b][temp_loop][e] = EtaPhi_out[b][f];
 						f++;
+						temp_loop++;
 
 						}
 					}
@@ -183,6 +187,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 		}
 	}
 }
+/*
 			//Stitching on Eta Boundary
 
 		uint16_t tower_eta;
@@ -253,7 +258,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 			}
 		}
 	}
-
+*/
 
 
 return(0);
