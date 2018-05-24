@@ -148,15 +148,16 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 					//Then this crystal is on second boundary
 					//crystal_num = Cluster_EtaPhi_in[j][i][e]/5;
 					temp_loop = i-4;
+					int g = 0;
 					for(int a=0; a < 4; a++){
 #pragma HLS UNROLL
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
 						if((temp_loop < NCaloLayer2Phi_in) || (temp_loop > NCaloLayer2Phi_in)) continue;
-						ET_in[b][e] = ClusterET_in[b][temp_loop][e];
-						TowerID_in[b][e] = Cluster_TowerID_in[b][temp_loop][e];
-						EtaPhi_in[b][e] = Cluster_EtaPhi_in[b][temp_loop][e];
-						e++;
+						ET_in[b][g] = ClusterET_in[b][temp_loop][e];
+						TowerID_in[b][g] = Cluster_TowerID_in[b][temp_loop][e];
+						EtaPhi_in[b][g] = Cluster_EtaPhi_in[b][temp_loop][e];
+						g++;
 						temp_loop++;
 
 						}
@@ -383,6 +384,7 @@ return true;
 
 }
 
+//Checks if the element exists in the array. If yes, it returns the element position in the variable num
 bool ifExists_tower(uint7_t element, uint7_t *Array, int num){
 	bool it_does = false;
 	for(int i = 0; i < 17; i++){
@@ -434,7 +436,7 @@ bool ifExists_tower_eta(uint7_t element, uint7_t *Array, int num){
 	}
 
 
-
+//Checks if the element exists in the array. If yes, it returns the element position in the variable num
 bool ifExists_crystal(uint5_t element, uint5_t *Array, int num){
 
 	bool it_does = false;
