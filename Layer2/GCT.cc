@@ -29,6 +29,8 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 #pragma HLS ARRAY_PARTITION variable=crystal_on_A_boundary complete dim=0
 #pragma HLS ARRAY_PARTITION variable=tower_on_right_boundary complete dim=0
 #pragma HLS ARRAY_PARTITION variable=tower_on_left_boundary complete dim=0
+#pragma HLS ARRAY_PARTITION variable=tower_on_eta_boundary complete dim=0
+#pragma HLS ARRAY_PARTITION variable=tower_eta_neg complete dim=0
 
 #pragma HLS ARRAY_PARTITION variable=Cluster_EtaPhi_in complete dim=0
 #pragma HLS ARRAY_PARTITION variable=Cluster_TowerID_in complete dim=0
@@ -65,7 +67,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 #pragma HLS UNROLL
 			for(int t=0; t < NCaloLayer2Eta; t++){
 #pragma HLS UNROLL
-				for(int e=0; e<EtaDirections; e++)
+				for(int e=0; e < EtaDirections; e++)
 #pragma HLS UNROLL
 				{
 					Tower_out[t][i-2][e] = Tower_in[t][i][e];
@@ -105,7 +107,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 #pragma HLS UNROLL
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
-							if((temp_loop < NCaloLayer2Phi_in) || (temp_loop > NCaloLayer2Phi_in)) continue;
+							if((temp_loop < 0) || (temp_loop >= NCaloLayer2Phi_in)) continue;
 							ET_in[b][c] = ClusterET_in[b][temp_loop][e];
 							TowerID_in[b][c] = Cluster_TowerID_in[b][temp_loop][e];
 							EtaPhi_in[b][c] = Cluster_EtaPhi_in[b][temp_loop][e];
@@ -124,7 +126,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 #pragma HLS UNROLL
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
-						if((temp_loop < NCaloLayer2Phi_in) || (temp_loop > NCaloLayer2Phi_in)) continue;
+						if((temp_loop < 0) || (temp_loop >= NCaloLayer2Phi_in)) continue;
 						ClusterET_out[b][temp_loop][e] = ET_out[b][d];
 						Cluster_TowerID_out[b][temp_loop][e] = TowerID_out[b][d];
 						Cluster_EtaPhi_out[b][temp_loop][e] = EtaPhi_out[b][d];
@@ -153,7 +155,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 #pragma HLS UNROLL
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
-						if((temp_loop < NCaloLayer2Phi_in) || (temp_loop > NCaloLayer2Phi_in)) continue;
+						if((temp_loop < 0) || (temp_loop >= NCaloLayer2Phi_in)) continue;
 						ET_in[b][g] = ClusterET_in[b][temp_loop][e];
 						TowerID_in[b][g] = Cluster_TowerID_in[b][temp_loop][e];
 						EtaPhi_in[b][g] = Cluster_EtaPhi_in[b][temp_loop][e];
@@ -171,7 +173,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 #pragma HLS UNROLL
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
-						if((temp_loop < NCaloLayer2Phi_in) || (temp_loop > NCaloLayer2Phi_in)) continue;
+						if((temp_loop < 0) || (temp_loop >= NCaloLayer2Phi_in)) continue;
 						ClusterET_out[b][temp_loop][e] = ET_out[b][f];
 						Cluster_TowerID_out[b][temp_loop][e] = TowerID_out[b][f];
 						Cluster_EtaPhi_out[b][temp_loop][e] = EtaPhi_out[b][f];
