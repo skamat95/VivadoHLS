@@ -41,11 +41,13 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 #pragma HLS ARRAY_PARTITION variable=ClusterET_out complete dim=0
 #pragma HLS ARRAY_PARTITION variable=Tower_out complete dim=0
 
+	//Variables for finding tower and crystal on boundary
 	uint16_t tower_num = 0;
 	uint16_t crystal_num = 0;
 	uint10_t current_cluster_ET_in = 0;
 	uint10_t current_cluster_ET_out = 0;
 
+	//Variables for merging of clusters from recognized boundary cluster
 	uint10_t ET_in[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi] = {0};
 	uint7_t TowerID_in[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi] = {0};
 	uint5_t EtaPhi_in[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi] = {0};
@@ -55,6 +57,8 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 	uint5_t EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer1Phi] = {0};
 
 	int temp_loop;
+
+
 #pragma HLS ARRAY_PARTITION variable=ET_in complete dim=0
 #pragma HLS ARRAY_PARTITION variable=TowerID_in complete dim=0
 #pragma HLS ARRAY_PARTITION variable=EtaPhi_in complete dim=0
@@ -63,21 +67,22 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 #pragma HLS ARRAY_PARTITION variable=EtaPhi_out complete dim=0
 
 	//This for loop is only to Put tower data in output, ignore it
-		for(int i = 2; i < NCaloLayer2Phi_in-2 ; i++){
+		for(int s = 2; s < NCaloLayer2Phi_in-2 ; s++){
 #pragma HLS UNROLL
-			for(int t=0; t < NCaloLayer2Eta; t++){
+			for(int t = 0; t < NCaloLayer2Eta; t++){
 #pragma HLS UNROLL
-				for(int e=0; e < EtaDirections; e++)
+				for(int e = 0; e < EtaDirections; e++)
 #pragma HLS UNROLL
 				{
-					Tower_out[t][i-2][e] = Tower_in[t][i][e];
+					Tower_out[t][s-2][e] = Tower_in[t][s][e];
 				}
 			}
 		}
 
 	bool success[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_in][EtaDirections] = {false}; //to keep a track of all clusters successful mergers or not
-
 #pragma HLS ARRAY_PARTITION variable=success complete dim=0
+
+
 		//For all clusters check if they are on the boundary
 		for(int i = 2; i < NCaloLayer2Phi_in-2 ; i++){
 #pragma HLS UNROLL
@@ -95,13 +100,10 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 				bool tower_left = ifExists_tower(Cluster_TowerID_in[j][i][e], tower_on_left_boundary, tower_num);
 				if(tower_left){
 				//First boundary in tower
-				//tower_num = Cluster_TowerID_in[j][i][e]/4;
 
-				bool crystal_left = ifExists_crystal(Cluster_EtaPhi_in[j][1][e], crystal_on_D_boundary, crystal_num);
+				bool crystal_left = ifExists_crystal(Cluster_EtaPhi_in[j][i][e], crystal_on_D_boundary, crystal_num);
 				if(crystal_left){
 					//Then this crystal is on the boundary
-					//crystal_num = Cluster_EtaPhi_in[j][i][e]/5;
-					int c = 0;
 					temp_loop = i-4;
 					for(int a=0; a < 4; a++){
 #pragma HLS UNROLL
@@ -111,29 +113,27 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 							ET_in[b][a] = ClusterET_in[b][temp_loop][e];
 							TowerID_in[b][a] = Cluster_TowerID_in[b][temp_loop][e];
 							EtaPhi_in[b][a] = Cluster_EtaPhi_in[b][temp_loop][e];
-							temp_loop++;
-							//c++;
 
 						}
+						temp_loop++;
 					}
 					current_cluster_ET_in = ClusterET_in[j][i][e];
-					success[j][i][e] = stitch_on_left(current_cluster_ET_in,tower_num, crystal_num, ET_in, TowerID_in, EtaPhi_in, ET_out, TowerID_out, EtaPhi_out, current_cluster_ET_out);
+					success[j][i][e] = stitch_on_left(current_cluster_ET_in, tower_num, crystal_num, ET_in, TowerID_in, EtaPhi_in, ET_out, TowerID_out, EtaPhi_out, current_cluster_ET_out);
+
 					 //put outputs back
 					ClusterET_out[j][i-2][e] = current_cluster_ET_out;
-					int d = 0;
 					temp_loop = i-4;
 					for(int a=0; a < 4; a++){
 #pragma HLS UNROLL
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
-						if((temp_loop < 0) || (temp_loop >= NCaloLayer2Phi_in)) continue;
-						ClusterET_out[b][temp_loop][e] = ET_out[b][d];
-						Cluster_TowerID_out[b][temp_loop][e] = TowerID_out[b][d];
-						Cluster_EtaPhi_out[b][temp_loop][e] = EtaPhi_out[b][d];
-						temp_loop++;
-						d++;
+						if((temp_loop < 2) || (temp_loop >= NCaloLayer2Phi_in-2)) continue;
+						ClusterET_out[b][temp_loop-2][e] = ET_out[b][a];
+						Cluster_TowerID_out[b][temp_loop-2][e] = TowerID_out[b][a];
+						Cluster_EtaPhi_out[b][temp_loop-2][e] = EtaPhi_out[b][a];
 
 						}
+						temp_loop++;
 					}
 
 					continue;
@@ -143,44 +143,37 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 			bool tower_right = ifExists_tower(Cluster_TowerID_in[j][i][e], tower_on_right_boundary, tower_num);
 			if(tower_right){
 				//First boundary in tower
-				//tower_num = Cluster_TowerID_in[j][i][e]/4;
 
 				bool crystal_right = ifExists_crystal(Cluster_EtaPhi_in[j][i][e], crystal_on_B_boundary, crystal_num);
 				if(crystal_right){
 					//Then this crystal is on second boundary
-					//crystal_num = Cluster_EtaPhi_in[j][i][e]/5;
 					temp_loop = i-4;
-					int g = 0;
-					for(int a=0; a < 4; a++){
+					for(int a = 0; a < 4; a++){
 #pragma HLS UNROLL
-						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
+						for(int b = 0; b < NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
 						if((temp_loop < 0) || (temp_loop >= NCaloLayer2Phi_in)) continue;
-						ET_in[b][g] = ClusterET_in[b][temp_loop][e];
-						TowerID_in[b][g] = Cluster_TowerID_in[b][temp_loop][e];
-						EtaPhi_in[b][g] = Cluster_EtaPhi_in[b][temp_loop][e];
-						g++;
-						temp_loop++;
+						ET_in[b][a] = ClusterET_in[b][temp_loop][e];
+						TowerID_in[b][a] = Cluster_TowerID_in[b][temp_loop][e];
+						EtaPhi_in[b][a] = Cluster_EtaPhi_in[b][temp_loop][e];
 
 						}
+						temp_loop++;
 					}
 					current_cluster_ET_in = ClusterET_in[j][i][e];
 					success[j][i][e] = stitch_on_right(current_cluster_ET_in,tower_num, crystal_num, ET_in, TowerID_in, EtaPhi_in, ET_out, TowerID_out, EtaPhi_out, current_cluster_ET_out);
 					ClusterET_out[j][i-2][e] = current_cluster_ET_out;
-					int f = 0;
 					temp_loop = i-4;
 					for(int a=0; a < 4; a++){
 #pragma HLS UNROLL
 						for(int b=0; b<NCaloLayer2ClustersPerPhi; b++){
 #pragma HLS UNROLL
-						if((temp_loop < 0) || (temp_loop >= NCaloLayer2Phi_in)) continue;
-						ClusterET_out[b][temp_loop][e] = ET_out[b][f];
-						Cluster_TowerID_out[b][temp_loop][e] = TowerID_out[b][f];
-						Cluster_EtaPhi_out[b][temp_loop][e] = EtaPhi_out[b][f];
-						f++;
-						temp_loop++;
-
+						if((temp_loop < 2) || (temp_loop >= NCaloLayer2Phi_in-2)) continue;
+						ClusterET_out[b][temp_loop-2][e] = ET_out[b][a];
+						Cluster_TowerID_out[b][temp_loop-2][e] = TowerID_out[b][a];
+						Cluster_EtaPhi_out[b][temp_loop-2][e] = EtaPhi_out[b][a];
 						}
+						temp_loop++;
 					}
 					continue;
 				}
@@ -190,35 +183,32 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 		}
 	}
 }
-/*
-			//Stitching on Eta Boundary
+
+			//Stitching on Eta Boundary, writing in a separate loop for now
 
 		uint16_t tower_eta;
 		uint16_t tower_eta_search;
 		uint16_t crystal_eta;
 		uint16_t crystal_eta_search;
+
 		for(int i = 2; i < NCaloLayer2Phi_in-2 ; i++){
 #pragma HLS UNROLL
 
 		for(int j = 0; j < NCaloLayer2ClustersPerPhi; j++){
 #pragma HLS UNROLL
  	 	 	int e = 0;
+
 			bool tower_eta = ifExists_tower_eta(Cluster_TowerID_in[j][i][e], tower_on_eta_boundary, tower_eta);
 			if(tower_eta){
 				//tower on eta boundary
-				//tower_num = Cluster_TowerID_in[j][i][e]/4; //it should be just 16 (coz 64 to 67 divided by 4 is 16)
-				//tower_eta = Cluster_TowerID_in[j][i][e]%4;
 
 				bool crystal_eta = ifExists_crystal(Cluster_EtaPhi_in[j][i][e], crystal_on_C_boundary, crystal_eta);
 				if(crystal_eta){
 					//Cluster on crystal eta boundary
-					//crystal_num = Cluster_EtaPhi_in[j][i][e]/5; //it should be just 4 (coz 20 to 24 divided by 5 is 4)
-					//crystal_eta = Cluster_EtaPhi_in[j][i][e]%5;
-
 					//Need to search for neighboring clusters
 					int phi_row = i-2;
 					int card_num = phi_row/4; //Layer1 card
-					int phi_row_start = card_num *4;
+					int phi_row_start = card_num * 4;
 					current_cluster_ET_in = ClusterET_in[j][i][e];
 
 					for(int a = phi_row_start; a < (phi_row_start + 4); a++){
@@ -228,13 +218,11 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 
 							//look for clusters at the boundary
 							bool tower_search_1 = ifExists_tower_eta(Cluster_TowerID_in[b][a][1], tower_eta_neg, tower_eta_search);
-							if((tower_search_1) && (tower_eta_search == tower_eta)){//(Cluster_TowerID_in[b][a][1] >= 0) || (Cluster_TowerID_in[b][a][1] <4)
+							if((tower_search_1) && (tower_eta_search == tower_eta)){
 								//Then cluster is on boundary tower
 								bool cluster_search_1 = ifExists_crystal(Cluster_EtaPhi_in[b][a][1], crystal_on_A_boundary, crystal_eta_search);
-								if((cluster_search_1) && (crystal_eta_search == crystal_eta)){//(Cluster_EtaPhi_in[b][a][1] >=0) || (Cluster_EtaPhi_in[b][a][1] <5)
+								if((cluster_search_1) && (crystal_eta_search == crystal_eta)){
 									//Then it is on the crystal boundary as well
-
-									//if(((Cluster_TowerID_in[b][a][1] % 4) == tower_eta) && ((Cluster_EtaPhi_in[b][a][1]%5) == crystal_eta)){
 										//Merge!
 										if(current_cluster_ET_in > ClusterET_in[b][a][1]){
 											current_cluster_ET_out = current_cluster_ET_in + ClusterET_in[b][a][1];
@@ -245,7 +233,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 											ClusterET_out[b][a][1] = ClusterET_in[b][a][1] + current_cluster_ET_in;
 											current_cluster_ET_out = 0;
 										}
-									//}
+
 								}
 							}
 
@@ -261,7 +249,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 			}
 		}
 	}
-*/
+
 
 
 return(0);
@@ -350,7 +338,6 @@ bool stitch_on_right(uint10_t current_cluster_ET_in, uint16_t tower_num, uint16_
 
 	//Find if there is a cluster in a tower next to it
 
-		//This is case 1, when cluster is on main boundary(on the other side), so only two phi rows
 		for(int k = 0; k < NCaloLayer1Phi; k++){
 #pragma HLS UNROLL
 			for (int l = 0; l < NCaloLayer2ClustersPerPhi; l++){
@@ -361,23 +348,19 @@ bool stitch_on_right(uint10_t current_cluster_ET_in, uint16_t tower_num, uint16_
 					//this means tower number is same
 					int expected_rem = 0;
 					bool is_crystal_same = ifExists_crystal_search(Cluster_EtaPhi_in[l][k], crystal_on_D_boundary, crystal_num, expected_rem);
-					if(is_crystal_same){
-						//This is right next crystal
-					if(current_cluster_ET_in >= ClusterET_in[l][k]){
-						//add the ET
-						current_cluster_ET_out = current_cluster_ET_in + ClusterET_in[l][k];
-						ClusterET_out[l][k] = 0;
+						if(is_crystal_same){
+							//This is right next crystal
+						if(current_cluster_ET_in >= ClusterET_in[l][k]){
+							//add the ET
+							current_cluster_ET_out = current_cluster_ET_in + ClusterET_in[l][k];
+							ClusterET_out[l][k] = 0;
+							}
+						else{
+							ClusterET_out[l][k] =  ClusterET_in[l][k] + current_cluster_ET_in;
+							current_cluster_ET_out = 0;
+							}
 
-
-					}
-					else{
-						ClusterET_out[l][k] =  ClusterET_in[l][k] + current_cluster_ET_in;
-						current_cluster_ET_out = 0;
-
-
-					}
-
-					}
+						}
 				}
 			}
 		}
@@ -388,6 +371,8 @@ return true;
 
 //Checks if the element exists in the array. If yes, it returns the element position in the variable num
 bool ifExists_tower(uint7_t element, uint7_t *Array, int num){
+#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
+
 	bool it_does = false;
 	for(int i = 0; i < 17; i++){
 #pragma HLS UNROLL
@@ -401,8 +386,9 @@ bool ifExists_tower(uint7_t element, uint7_t *Array, int num){
 	return it_does;
 	}
 
+//Sub-function is used in stitch_on_left function to search for tower corresponding to the cluster found on left boundary
 bool ifExists_tower_search(uint7_t element, uint7_t *Array, int num, int expected_rem){
-
+#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
 	bool it_does = false;
 	for(int i = 0; i < 17; i++){
 #pragma HLS UNROLL
@@ -422,7 +408,7 @@ return it_does;
 
 
 
-
+//This is only for searching along the eta boundary, for the tower corresponding to 'element' in 'Array', returning the position in 'num'
 bool ifExists_tower_eta(uint7_t element, uint7_t *Array, int num){
 	bool it_does = false;
 	for(int i = 0; i < 4; i++){
@@ -440,7 +426,8 @@ bool ifExists_tower_eta(uint7_t element, uint7_t *Array, int num){
 
 //Checks if the element exists in the array. If yes, it returns the element position in the variable num
 bool ifExists_crystal(uint5_t element, uint5_t *Array, int num){
-
+#pragma HLS ARRAY_PARTITION variable=crystal_on_A_boundary complete dim=0
+#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
 	bool it_does = false;
 	for(int i = 0; i < 5; i++){
 #pragma HLS UNROLL
@@ -455,8 +442,9 @@ bool ifExists_crystal(uint5_t element, uint5_t *Array, int num){
 
 }
 
+//Sub-function is used in stitch_on_left function to search for crystal corresponding to the cluster found on left boundary, expected_rem is also an input
 bool ifExists_crystal_search(uint5_t element, uint5_t *Array, int num, int expected_rem){
-
+#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
 	bool it_does = false;
 		for(int i = 0; i < 5; i++){
 #pragma HLS UNROLL
