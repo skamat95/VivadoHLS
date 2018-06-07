@@ -23,6 +23,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 		uint7_t Cluster_TowerID_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out][EtaDirections],
 		uint5_t Cluster_EtaPhi_out[NCaloLayer2ClustersPerPhi][NCaloLayer2Phi_out][EtaDirections])
 {
+#pragma HLS PIPELINE II=6
 #pragma HLS ARRAY_PARTITION variable=crystal_on_D_boundary complete dim=0
 #pragma HLS ARRAY_PARTITION variable=crystal_on_C_boundary complete dim=0
 #pragma HLS ARRAY_PARTITION variable=crystal_on_B_boundary complete dim=0
@@ -185,7 +186,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 }
 
 			//Stitching on Eta Boundary, writing in a separate loop for now
-
+/*
 		uint16_t tower_eta;
 		uint16_t tower_eta_search;
 		uint16_t crystal_eta;
@@ -250,7 +251,7 @@ int GCT(uint16_t Tower_in[NCaloLayer2Eta][NCaloLayer2Phi_in][EtaDirections],
 		}
 	}
 
-
+*/
 
 return(0);
 }
