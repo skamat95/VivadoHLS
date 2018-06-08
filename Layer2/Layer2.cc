@@ -371,29 +371,29 @@ return true;
 }
 
 //Checks if the element exists in the array. If yes, it returns the element position in the variable num
-bool ifExists_tower(uint7_t element, uint7_t *Array, int num){
-#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
+bool ifExists_tower(uint7_t element, uint7_t Array[17], int num){
+//#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
 
 	bool it_does = false;
 	for(int i = 0; i < 17; i++){
 #pragma HLS UNROLL
-		if(element == *Array) {
+		if(element == Array[i]) {
 			it_does = true;
 			num = i;
 			break;
 			}
-		Array++;
+
 		}
 	return it_does;
 	}
 
 //Sub-function is used in stitch_on_left function to search for tower corresponding to the cluster found on left boundary
-bool ifExists_tower_search(uint7_t element, uint7_t *Array, int num, int expected_rem){
-#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
+bool ifExists_tower_search(uint7_t element, uint7_t Array[17], int num, int expected_rem){
+//#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
 	bool it_does = false;
 	for(int i = 0; i < 17; i++){
 #pragma HLS UNROLL
-		if(element == *Array) {
+		if(element == Array[i]) {
 			if(num == i){
 				int rem = element - (4*num);
 				if(rem == expected_rem){
@@ -402,7 +402,6 @@ bool ifExists_tower_search(uint7_t element, uint7_t *Array, int num, int expecte
 			}
 			break;
 		}
-	Array++;
 	}
 return it_does;
 }
@@ -410,46 +409,45 @@ return it_does;
 
 
 //This is only for searching along the eta boundary, for the tower corresponding to 'element' in 'Array', returning the position in 'num'
-bool ifExists_tower_eta(uint7_t element, uint7_t *Array, int num){
+bool ifExists_tower_eta(uint7_t element, uint7_t Array[4], int num){
+
 	bool it_does = false;
 	for(int i = 0; i < 4; i++){
 #pragma HLS UNROLL
-		if(element == *Array) {
+		if(element == Array[i]) {
 			it_does = true;
 			num = i;
 			break;
 			}
-		Array++;
 		}
 	return it_does;
 	}
 
 
 //Checks if the element exists in the array. If yes, it returns the element position in the variable num
-bool ifExists_crystal(uint5_t element, uint5_t *Array, int num){
-#pragma HLS ARRAY_PARTITION variable=crystal_on_A_boundary complete dim=0
-#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
+bool ifExists_crystal(uint5_t element, uint5_t Array[5], int num){
+//#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
 	bool it_does = false;
 	for(int i = 0; i < 5; i++){
 #pragma HLS UNROLL
-		if(element == *Array){
+		if(element == Array[i]){
 			it_does = true;
 			num = i;
 			break;
 		}
-		Array++;
+
 	}
 	return it_does;
 
 }
 
 //Sub-function is used in stitch_on_left function to search for crystal corresponding to the cluster found on left boundary, expected_rem is also an input
-bool ifExists_crystal_search(uint5_t element, uint5_t *Array, int num, int expected_rem){
-#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
+bool ifExists_crystal_search(uint5_t element, uint5_t Array[5], int num, int expected_rem){
+//#pragma HLS ARRAY_PARTITION variable=Array complete dim=0
 	bool it_does = false;
 		for(int i = 0; i < 5; i++){
 #pragma HLS UNROLL
-			if(element == *Array) {
+			if(element == Array[i]) {
 				if(num == i){
 					int rem = element - (5*num);
 					if(rem == expected_rem){
@@ -458,7 +456,7 @@ bool ifExists_crystal_search(uint5_t element, uint5_t *Array, int num, int expec
 				}
 				break;
 			}
-		Array++;
+
 		}
 	return it_does;
 }
