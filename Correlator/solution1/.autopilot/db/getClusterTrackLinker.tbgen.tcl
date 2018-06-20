@@ -1,0 +1,9 @@
+set C_TypeInfoList {{ 
+"getClusterTrackLinker" : [[], {"return": [[], {"scalar": "bool"}] }, [{"ExternC" : 0}], [ {"clusterET": [[], {"array": [ {"array": ["0", [4]]}, [17]]}] }, {"peakEta": [[], {"array": [ {"array": ["1", [4]]}, [17]]}] }, {"peakPhi": [[], {"array": [ {"array": ["1", [4]]}, [17]]}] }, {"trackPT": [[], {"array": ["0", [10]]}] }, {"trackEta": [[], {"array": ["2", [10]]}] }, {"trackPhi": [[], {"array": ["0", [10]]}] }, {"linkedTrackPT": [[], {"array": ["0", [10]]}] }, {"linkedTrackEta": [[], {"array": ["2", [10]]}] }, {"linkedTrackPhi": [[], {"array": ["0", [10]]}] }, {"linkedTrackQuality": [[], {"array": ["3", [10]]}] }, {"neutralClusterET": [[], {"array": ["0", [68]]}] }, {"neutralClusterEta": [[], {"array": ["2", [68]]}] }, {"neutralClusterPhi": [[], {"array": ["0", [68]]}] }],[],""], 
+"0": [ "ap_uint<10>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 10}}]],""]}}], 
+"1": [ "ap_uint<3>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 3}}]],""]}}], 
+"2": [ "ap_uint<9>", {"hls_type": {"ap_uint": [[[[], {"scalar": { "int": 9}}]],""]}}], 
+"3": [ "ap_fixed<8, 6, 5, 3, 0>", {"hls_type": {"ap_fixed": [[[[], {"scalar": { "int": 8}}],[[], {"scalar": { "int": 6}}],[[], {"scalar": { "4": 5}}],[[], {"scalar": { "5": 3}}],[[], {"scalar": { "int": 0}}]],""]}}], 
+"4": [ "sc_q_mode", {"enum": [[],[],[{"SC_RND":  {"scalar": "__integer__"}},{"SC_RND_ZERO":  {"scalar": "__integer__"}},{"SC_RND_MIN_INF":  {"scalar": "__integer__"}},{"SC_RND_INF":  {"scalar": "__integer__"}},{"SC_RND_CONV":  {"scalar": "__integer__"}},{"SC_TRN":  {"scalar": "__integer__"}},{"SC_TRN_ZERO":  {"scalar": "__integer__"}}],""]}], 
+"5": [ "sc_o_mode", {"enum": [[],[],[{"SC_SAT":  {"scalar": "__integer__"}},{"SC_SAT_ZERO":  {"scalar": "__integer__"}},{"SC_SAT_SYM":  {"scalar": "__integer__"}},{"SC_WRAP":  {"scalar": "__integer__"}},{"SC_WRAP_SM":  {"scalar": "__integer__"}}],""]}]
+}}

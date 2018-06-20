@@ -1,0 +1,177 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../test1_correlator.cc in debug mode
+   Compiling ../../../ClusterFinder.cc in debug mode
+   Compiling ../../../ClusterTrackLinker.cc in debug mode
+   Generating csim.exe
+inputs I10	2	2
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs I0	0	0
+inputs II0	0	0
+inputs II9	20	100
+inputs II0	0	0
+inputs II0	0	0
+inputs II0	0	0
+inputs II0	0	0
+inputs II0	0	0
+inputs II0	0	0
+inputs II0	0	0
+inputs II0	0	0
+Max_track2958
+track_eta0.2
+track_phi0.005
+clus_eta34
+clus_phi174
+track_peak_e0
+track_peak_p0
+eta0Phi0
+clus_trial0
+track_peak_e20
+track_peak_p100
+eta1Phi0
+clus_trial4
+outputs I_from_func0	5	0	5
+outputs I_from_func9	20	100	0
+outputs I_from_func0	0	0	0
+outputs I_from_func0	0	0	0
+outputs I_from_func0	0	0	0
+outputs I_from_func0	0	0	0
+outputs I_from_func0	0	0	0
+outputs I_from_func0	0	0	0
+outputs I_from_func0	0	0	0
+outputs I_from_func0	0	0	0
+outputs II_from_func10	2	2
+outputs II_from_func0	0	5
+outputs II_from_func0	0	10
+outputs II_from_func0	0	15
+outputs II_from_func0	5	0
+outputs II_from_func0	5	5
+outputs II_from_func0	5	10
+outputs II_from_func0	5	15
+outputs II_from_func0	10	0
+outputs II_from_func0	10	5
+outputs II_from_func0	10	10
+outputs II_from_func0	10	15
+outputs II_from_func0	15	0
+outputs II_from_func0	15	5
+outputs II_from_func0	15	10
+outputs II_from_func0	15	15
+outputs II_from_func0	20	0
+outputs II_from_func0	20	5
+outputs II_from_func0	20	10
+outputs II_from_func0	20	15
+outputs II_from_func0	25	0
+outputs II_from_func0	25	5
+outputs II_from_func0	25	10
+outputs II_from_func0	25	15
+outputs II_from_func0	30	0
+outputs II_from_func0	30	5
+outputs II_from_func0	30	10
+outputs II_from_func0	30	15
+outputs II_from_func0	35	0
+outputs II_from_func0	35	5
+outputs II_from_func0	35	10
+outputs II_from_func0	35	15
+outputs II_from_func0	40	0
+outputs II_from_func0	40	5
+outputs II_from_func0	40	10
+outputs II_from_func0	40	15
+outputs II_from_func0	45	0
+outputs II_from_func0	45	5
+outputs II_from_func0	45	10
+outputs II_from_func0	45	15
+outputs II_from_func0	50	0
+outputs II_from_func0	50	5
+outputs II_from_func0	50	10
+outputs II_from_func0	50	15
+outputs II_from_func0	55	0
+outputs II_from_func0	55	5
+outputs II_from_func0	55	10
+outputs II_from_func0	55	15
+outputs II_from_func0	60	0
+outputs II_from_func0	60	5
+outputs II_from_func0	60	10
+outputs II_from_func0	60	15
+outputs II_from_func0	65	0
+outputs II_from_func0	65	5
+outputs II_from_func0	65	10
+outputs II_from_func0	65	15
+outputs II_from_func0	70	0
+outputs II_from_func0	70	5
+outputs II_from_func0	70	10
+outputs II_from_func0	70	15
+outputs II_from_func0	75	0
+outputs II_from_func0	75	5
+outputs II_from_func0	75	10
+outputs II_from_func0	75	15
+outputs II_from_func0	80	0
+outputs II_from_func0	80	5
+outputs II_from_func0	80	10
+outputs II_from_func0	80	15
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

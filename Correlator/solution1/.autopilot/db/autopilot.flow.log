@@ -1,0 +1,606 @@
+INFO: [HLS 200-0] Workspace /data/skamat/Github/VivadoHLS/Correlator/solution1 opened at Wed Jun 20 11:09:31 CEST 2018
+INFO: [HLS 200-100] Execute     config_clock -quiet -name default -period 4.16 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 4.16ns.
+INFO: [HLS 200-100] Command     config_clock returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     open_platform DefaultPlatform 
+INFO: [HLS 200-100] Command     open_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     import_lib /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/virtex7/virtex7 
+INFO: [HLS 200-100] Execute       source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx.lib 
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/xilinx_interface.lib 
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/plb46.lib 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/fsl.lib 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/axi4.lib 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/maxi.lib 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/saxilite.lib 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.03 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/dsp48.lib 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/ip/xfft.lib 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/ip/xfir.lib 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/ip/dds_compiler.lib 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.07 sec.
+INFO: [HLS 200-100] Execute       source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx_old.lib 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute       source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx_vivado.lib 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx.hlp 
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/target_info.tcl 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/maxi.hlp 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/saxilite.hlp 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.03 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/dsp48.hlp 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.03 sec.
+INFO: [HLS 200-100] Execute       source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/virtex7/dsp48e1.hlp 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute       get_default_platform 
+INFO: [HLS 200-100] Command       get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       config_chip_info -quiet -resource  {SLICE 91050 } {LUT 364200 } {FF 728400 } {DSP48E 1260} {BRAM 1590}  
+INFO: [HLS 200-100] Command       config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       config_chip_info -quiet -speed medium 
+INFO: [HLS 200-100] Command       config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx.hlp 
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/target_info.tcl 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/maxi.hlp 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/saxilite.hlp 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/dsp48.hlp 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     import_lib returned 0; 0.15 sec.
+INFO: [HLS 200-100] Execute     source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/virtex7/virtex7.gen 
+INFO: [HLS 200-100] Execute       source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/virtex.gen 
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx.gen 
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/plb46.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/fsl.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/axi4.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.05 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/nativeAXI4.gen 
+INFO: [HLS 200-100] Execute             source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/saxilite.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute             source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/maxi.gen 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.04 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.04 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.03 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/ip/dds_compiler.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.03 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/ip/util.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/ip/xfft.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.08 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/ip/xfir.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.3 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/dsp48.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0.31 sec.
+INFO: [HLS 200-100] Command     ap_source returned 0; 0.32 sec.
+INFO: [HLS 200-100] Execute     set_part xc7vx690tffg1927-2 
+INFO: [HLS 200-100] Execute       add_library xilinx/virtex7/virtex7:xc7vx690t:ffg1927:-2 
+INFO: [HLS 200-100] Execute         get_default_platform 
+INFO: [HLS 200-100] Command         get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         license_isbetapart xc7vx690t 
+INFO: [HLS 200-100] Command         license_isbetapart returned 1; 0.1 sec.
+INFO: [HLS 200-100] Execute         get_default_platform 
+INFO: [HLS 200-100] Command         get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         config_chip_info -quiet -resource  {SLICE 108300} {LUT 433200 } {FF 866400 } {DSP48E 3600} {BRAM 2940}  
+INFO: [HLS 200-100] Command         config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         config_chip_info -quiet -speed medium 
+INFO: [HLS 200-100] Command         config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Command       add_library returned 0; 0.16 sec.
+INFO: [HLS 200-100] Execute       add_library xilinx/virtex7/virtex7_fpv6 
+INFO: [HLS 200-100] Execute         get_default_platform 
+INFO: [HLS 200-100] Command         get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         open_platform DefaultPlatform 
+INFO: [HLS 200-100] Command         open_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         import_lib /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/virtex7/virtex7_fpv6 
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx_fpv7.lib 
+INFO: [HLS 200-100] Execute             source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx_hp.lib 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx_fpv.hlp 
+INFO: [HLS 200-100] Execute             source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx.hlp 
+INFO: [HLS 200-100] Execute               source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/target_info.tcl 
+INFO: [HLS 200-100] Command               ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute               source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+INFO: [HLS 200-100] Execute                 source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/maxi.hlp 
+INFO: [HLS 200-100] Command                 ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute                 source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/saxilite.hlp 
+INFO: [HLS 200-100] Command                 ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command               ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute               source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/dsp48.hlp 
+INFO: [HLS 200-100] Command               ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/virtex7/virtex7_hp.hlp 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Command         import_lib returned 0; 0.06 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.02 sec.
+INFO: [HLS 200-100] Command       add_library returned 0; 0.08 sec.
+INFO: [HLS 200-10] Setting target device to 'xc7vx690tffg1927-2'
+INFO: [HLS 200-100] Execute       get_default_platform 
+INFO: [HLS 200-100] Command       get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Command     set_part returned 0; 0.34 sec.
+INFO: [HLS 200-100] Execute     get_default_platform 
+INFO: [HLS 200-100] Command     get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     config_chip_info -quiet -resource  {SLICE 108300} {LUT 433200 } {FF 866400 } {DSP48E 3600} {BRAM 2940}  
+INFO: [HLS 200-100] Command     config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Execute     config_chip_info -quiet -speed medium 
+INFO: [HLS 200-100] Command     config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Command   open_solution returned 0; 0.92 sec.
+INFO: [HLS 200-100] Execute   set_part xc7vx690tffg1927-2 
+INFO: [HLS 200-100] Execute     add_library xilinx/virtex7/virtex7:xc7vx690t:ffg1927:-2 
+INFO: [HLS 200-100] Execute       get_default_platform 
+INFO: [HLS 200-100] Command       get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       license_isbetapart xc7vx690t 
+INFO: [HLS 200-100] Command       license_isbetapart returned 1; 0 sec.
+INFO: [HLS 200-100] Execute       get_default_platform 
+INFO: [HLS 200-100] Command       get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       config_chip_info -quiet -resource  {SLICE 108300} {LUT 433200 } {FF 866400 } {DSP48E 3600} {BRAM 2940}  
+INFO: [HLS 200-100] Command       config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       config_chip_info -quiet -speed medium 
+INFO: [HLS 200-100] Command       config_chip_info returned 0; 0 sec.
+INFO: [HLS 200-100] Command     add_library returned 0; 0.06 sec.
+INFO: [HLS 200-100] Execute     add_library xilinx/virtex7/virtex7_fpv6 
+INFO: [HLS 200-100] Execute       get_default_platform 
+INFO: [HLS 200-100] Command       get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       open_platform DefaultPlatform 
+INFO: [HLS 200-100] Command       open_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       import_lib /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/virtex7/virtex7_fpv6 
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx_fpv7.lib 
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx_hp.lib 
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx_fpv.hlp 
+INFO: [HLS 200-100] Execute           source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx.hlp 
+INFO: [HLS 200-100] Execute             source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/target_info.tcl 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+INFO: [HLS 200-100] Execute               source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/maxi.hlp 
+INFO: [HLS 200-100] Command               ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute               source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/interface/saxilite.hlp 
+INFO: [HLS 200-100] Command               ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute             source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/dsp48.hlp 
+INFO: [HLS 200-100] Command             ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command           ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/virtex7/virtex7_hp.hlp 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       import_lib returned 0; 0.02 sec.
+INFO: [HLS 200-100] Execute       source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/virtex7/virtex7_fpv6.gen 
+INFO: [HLS 200-100] Execute         source /data/tools/Vivado_HLS/2017.2/common/technology/xilinx/common/xilinx_fpv6.gen 
+INFO: [HLS 200-100] Command         ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-100] Command     add_library returned 0; 0.02 sec.
+INFO: [HLS 200-100] Execute     get_default_platform 
+INFO: [HLS 200-100] Command     get_default_platform returned 0; 0 sec.
+INFO: [HLS 200-100] Command   set_part returned 0; 0.11 sec.
+INFO: [HLS 200-100] Execute   create_clock -period 4.16 -name default 
+INFO: [HLS 200-100] Execute     config_clock -quiet -name default -period 4.16 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 4.16ns.
+INFO: [HLS 200-100] Command     config_clock returned 0; 0 sec.
+INFO: [HLS 200-100] Command   create_clock returned 0; 0 sec.
+INFO: [HLS 200-100] Execute   csynth_design 
+INFO: [HLS 200-100] Execute     elaborate -effort=medium -skip_syncheck=0 -keep_printf=0 -lm=0 -skip_cdt=0 -skip_transform=0 -ng=0 -g=0 -opt_fp=0 
+WARNING: [HLS 200-40] Skipped source file 'ClusterTrackLinker.hh'. Source files must have extensions .c, .C, .cc, .cpp, .c++, .cp, or .cxx.
+INFO: [HLS 200-10] Analyzing design file 'Correlator/ClusterTrackLinker.cc' ... 
+INFO: [HLS 200-0] Compiling one TU...
+INFO: [HLS 200-100] Execute       is_m_axi_addr64 
+INFO: [HLS 200-100] Command       is_m_axi_addr64 returned 0; 0 sec.
+INFO: [HLS 200-0] Handling Correlator/ClusterTrackLinker.cc as C++
+INFO: [HLS 200-0] Syntax Checking before pre-processing...
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain "/data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc" -hls    -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__   -I "/data/tools/Vivado_HLS/2017.2/lnx64/tools/systemc/include" -I "/data/tools/Vivado_HLS/2017.2/include" -I "/data/tools/Vivado_HLS/2017.2/include/ap_sysc" -fexceptions -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot" -include etc/autopilot_ssdm_op.h "Correlator/ClusterTrackLinker.cc"  -o "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pp.00.o" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc -hls -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -I /data/tools/Vivado_HLS/2017.2/lnx64/tools/systemc/include -I /data/tools/Vivado_HLS/2017.2/include -I /data/tools/Vivado_HLS/2017.2/include/ap_sysc -fexceptions -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot -include etc/autopilot_ssdm_op.h Correlator/ClusterTrackLinker.cc -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pp.00.o
+INFO: [HLS 200-100] Command       clang returned 0; 1.18 sec.
+INFO: [HLS 200-100] Execute       is_encrypted /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pp.00.o 
+INFO: [HLS 200-100] Command       is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-0] Source preprocessing
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain "/data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc" -hls -fno-exceptions  -D__llvm__  -CC -E "Correlator/ClusterTrackLinker.cc"     -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot" -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h  -o "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pp.0.cc" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc -hls -fno-exceptions -D__llvm__ -CC -E Correlator/ClusterTrackLinker.cc -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pp.0.cc
+INFO: [HLS 200-100] Command       clang returned 0; 0.19 sec.
+INFO: [HLS 200-0] GCC PP time: 0 seconds per iteration
+INFO: [HLS 200-100] Execute       list_core -type functional_unit 
+INFO: [HLS 200-100] Command       list_core returned 0; 0 sec.
+INFO: [HLS 200-0] CDT Preprocessing...
+INFO: [HLS 200-0] Marker-Pragma convertor: /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pp.0.cc /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pp.0.cc.ap-line.cc /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pp.0.cc.ap-line.cc.CXX 1
+INFO: [HLS 200-0] Converting Markers to Pragmas...
+INFO: [HLS 200-100] Execute       cdt  "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pp.0.cc.ap-line.cc"  -m "getClusterTrackLinker" -o "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pp.0.cc.ap-cdt.cc" --pp --directive /data/skamat/Github/VivadoHLS/Correlator/solution1/solution1.directive --source /data/skamat/Github/VivadoHLS/Correlator/ClusterTrackLinker.cc --error /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db --funcunit "AddSub AddSub_DSP AddSubnS DAddSub_fulldsp DAddSub_nodsp DDiv DExp_fulldsp DExp_meddsp DExp_nodsp DLog_fulldsp DLog_meddsp DLog_nodsp DMul_fulldsp DMul_maxdsp DMul_meddsp DMul_nodsp DRSqrt DRecip DSqrt DivnS FAddSub_fulldsp FAddSub_nodsp FDiv FExp_fulldsp FExp_meddsp FExp_nodsp FLog_fulldsp FLog_meddsp FLog_nodsp FMul_fulldsp FMul_maxdsp FMul_meddsp FMul_nodsp FRSqrt_fulldsp FRSqrt_nodsp FRecip_fulldsp FRecip_nodsp FSqrt HAddSub_fulldsp HAddSub_meddsp HAddSub_nodsp HDiv HMul_fulldsp HMul_maxdsp HMul_nodsp HSqrt Mul Mul2S Mul3S Mul4S Mul5S Mul6S Mul_LUT MulnS MuxnS" --ve --vetcl /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db --ca --es --gf --pd --p2d /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db --sd --scff /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/.systemc_flag --ad 
+INFO: [HLS 200-0] Error:Syntax error in source:for (__decltype(__n + 0) __niter = __n;
+Error:Missing ; in source:t
+Error:Syntax error in source:)
+ *__first = __value;
+Error:Syntax error in source:for (__decltype(__n + 0) __niter = __n;
+Error:Missing ; in source:t
+Error:Syntax error in source:)
+ *__first = __tmp;
+INFO: [HLS 200-100] Command       cdt returned 0; 7.73 sec.
+INFO: [HLS 200-0] Marker-Pragma convertor: /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pp.0.cc.ap-cdt.cc /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pragma.0.cc /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pragma.0.cc.ap-line.CXX 0
+INFO: [HLS 200-0] Converting Pragmas to Markers...
+INFO: [HLS 200-100] Execute       source /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/pragma.status.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-0] Pragma Handling...
+INFO: [HLS 200-0] Source preprocessing
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain "/data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc" -hls -fno-exceptions  -D__llvm__  -CC -E "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pragma.1.cc"     -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot" -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h  -o "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pragma.2.cc" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc -hls -fno-exceptions -D__llvm__ -CC -E /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pragma.1.cc -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pragma.2.cc
+INFO: [HLS 200-100] Command       clang returned 0; 0.09 sec.
+INFO: [HLS 200-0] Processing labels
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain /data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc -hls -hls-analyze-label -hls-analyze-pragma -fno-exceptions  -D__llvm__  -w  "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pragma.2.cc"    -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot" -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -g -o "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.g.bc" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc -hls -hls-analyze-label -hls-analyze-pragma -fno-exceptions -D__llvm__ -w /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.pragma.2.cc -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -g -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.g.bc
+INFO: [HLS 200-100] Command       clang returned 0; 0.66 sec.
+WARNING: [HLS 200-40] Skipped source file 'ClusterFinder.hh'. Source files must have extensions .c, .C, .cc, .cpp, .c++, .cp, or .cxx.
+INFO: [HLS 200-10] Analyzing design file 'Correlator/ClusterFinder.cc' ... 
+INFO: [HLS 200-0] Compiling one TU...
+INFO: [HLS 200-100] Execute       is_m_axi_addr64 
+INFO: [HLS 200-100] Command       is_m_axi_addr64 returned 0; 0 sec.
+INFO: [HLS 200-0] Handling Correlator/ClusterFinder.cc as C++
+INFO: [HLS 200-0] Syntax Checking before pre-processing...
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain "/data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc" -hls    -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__   -I "/data/tools/Vivado_HLS/2017.2/lnx64/tools/systemc/include" -I "/data/tools/Vivado_HLS/2017.2/include" -I "/data/tools/Vivado_HLS/2017.2/include/ap_sysc" -fexceptions -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot" -include etc/autopilot_ssdm_op.h "Correlator/ClusterFinder.cc"  -o "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pp.00.o" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc -hls -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -I /data/tools/Vivado_HLS/2017.2/lnx64/tools/systemc/include -I /data/tools/Vivado_HLS/2017.2/include -I /data/tools/Vivado_HLS/2017.2/include/ap_sysc -fexceptions -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot -include etc/autopilot_ssdm_op.h Correlator/ClusterFinder.cc -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pp.00.o
+INFO: [HLS 200-100] Command       clang returned 0; 0.06 sec.
+INFO: [HLS 200-100] Execute       is_encrypted /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pp.00.o 
+INFO: [HLS 200-100] Command       is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-0] Source preprocessing
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain "/data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc" -hls -fno-exceptions  -D__llvm__  -CC -E "Correlator/ClusterFinder.cc"     -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot" -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h  -o "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pp.0.cc" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc -hls -fno-exceptions -D__llvm__ -CC -E Correlator/ClusterFinder.cc -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pp.0.cc
+INFO: [HLS 200-100] Command       clang returned 0; 0.04 sec.
+INFO: [HLS 200-0] GCC PP time: 0 seconds per iteration
+INFO: [HLS 200-100] Execute       list_core -type functional_unit 
+INFO: [HLS 200-100] Command       list_core returned 0; 0 sec.
+INFO: [HLS 200-0] CDT Preprocessing...
+INFO: [HLS 200-0] Marker-Pragma convertor: /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pp.0.cc /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pp.0.cc.ap-line.cc /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pp.0.cc.ap-line.cc.CXX 1
+INFO: [HLS 200-0] Converting Markers to Pragmas...
+INFO: [HLS 200-100] Execute       cdt  "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pp.0.cc.ap-line.cc"  -m "getClusterTrackLinker" -o "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pp.0.cc.ap-cdt.cc" --pp --directive /data/skamat/Github/VivadoHLS/Correlator/solution1/solution1.directive --source /data/skamat/Github/VivadoHLS/Correlator/ClusterFinder.cc --error /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db --funcunit "AddSub AddSub_DSP AddSubnS DAddSub_fulldsp DAddSub_nodsp DDiv DExp_fulldsp DExp_meddsp DExp_nodsp DLog_fulldsp DLog_meddsp DLog_nodsp DMul_fulldsp DMul_maxdsp DMul_meddsp DMul_nodsp DRSqrt DRecip DSqrt DivnS FAddSub_fulldsp FAddSub_nodsp FDiv FExp_fulldsp FExp_meddsp FExp_nodsp FLog_fulldsp FLog_meddsp FLog_nodsp FMul_fulldsp FMul_maxdsp FMul_meddsp FMul_nodsp FRSqrt_fulldsp FRSqrt_nodsp FRecip_fulldsp FRecip_nodsp FSqrt HAddSub_fulldsp HAddSub_meddsp HAddSub_nodsp HDiv HMul_fulldsp HMul_maxdsp HMul_nodsp HSqrt Mul Mul2S Mul3S Mul4S Mul5S Mul6S Mul_LUT MulnS MuxnS" --ve --vetcl /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db --ca --es --gf --pd --p2d /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db --sd --scff /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/.systemc_flag --ad 
+INFO: [HLS 200-100] Command       cdt returned 0; 0.93 sec.
+INFO: [HLS 200-0] Marker-Pragma convertor: /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pp.0.cc.ap-cdt.cc /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pragma.0.cc /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pragma.0.cc.ap-line.CXX 0
+INFO: [HLS 200-0] Converting Pragmas to Markers...
+INFO: [HLS 200-100] Execute       source /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/pragma.status.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-0] Pragma Handling...
+INFO: [HLS 200-0] Source preprocessing
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain "/data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc" -hls -fno-exceptions  -D__llvm__  -CC -E "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pragma.1.cc"     -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit  -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot" -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h  -o "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pragma.2.cc" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc -hls -fno-exceptions -D__llvm__ -CC -E /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pragma.1.cc -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -fno-threadsafe-statics -fno-use-cxa-atexit -D__CLANG_3_1__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pragma.2.cc
+INFO: [HLS 200-100] Command       clang returned 0; 0.05 sec.
+INFO: [HLS 200-0] Processing labels
+INFO: [HLS 200-100] Execute       clang  -fno-limit-debug-info -gcc-toolchain /data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc -hls -hls-analyze-label -hls-analyze-pragma -fno-exceptions  -D__llvm__  -w  "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pragma.2.cc"    -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -fno-threadsafe-statics  -fno-use-cxa-atexit -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot" -I "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -g -o "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.g.bc" 
+INFO: [HLS 200-0] exec clang -fno-limit-debug-info -gcc-toolchain /data/tools/Vivado_HLS/2017.2/lnx64/tools/gcc -hls -hls-analyze-label -hls-analyze-pragma -fno-exceptions -D__llvm__ -w /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pragma.2.cc -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -fno-threadsafe-statics -fno-use-cxa-atexit -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot -I /data/tools/Vivado_HLS/2017.2/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -g -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.g.bc
+INFO: [HLS 200-100] Command       clang returned 0; 0.06 sec.
+INFO: [HLS 200-100] Execute       source /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ve_warning.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-10] Validating synthesis directives ...
+INFO: [HLS 200-100] Execute       source /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/pragma.status.tcl 
+INFO: [HLS 200-100] Command       ap_source returned 0; 0 sec.
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:34 ; elapsed = 00:00:14 . Memory (MB): peak = 343.480 ; gain = 12.797 ; free physical = 55685 ; free virtual = 79344
+INFO: [HLS 200-0] Linking Release ...
+INFO: [HLS 200-100] Execute       llvm-ld /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.bc /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.bc -disable-opt -L/data/tools/Vivado_HLS/2017.2/lnx64/lib -lm_basic -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o 
+INFO: [HLS 200-100] Command       llvm-ld returned 0; 0.2 sec.
+INFO: [HLS 200-100] Execute       disassemble /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o 
+INFO: [HLS 200-100] Execute         is_encrypted /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.bc 
+INFO: [HLS 200-100] Command         is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-100] Command       disassemble returned 0; 0.06 sec.
+INFO: [HLS 200-0] Disassemble time: 0 seconds per iteration
+INFO: [HLS 200-0] Linking Debug ...
+INFO: [HLS 200-100] Execute       llvm-ld /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterTrackLinker.g.bc /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.g.bc -disable-opt -L/data/tools/Vivado_HLS/2017.2/lnx64/lib -lm_basic -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g 
+INFO: [HLS 200-100] Command       llvm-ld returned 0; 0.08 sec.
+INFO: [HLS 200-100] Execute       disassemble /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g 
+INFO: [HLS 200-100] Execute         is_encrypted /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.bc 
+INFO: [HLS 200-100] Command         is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-100] Command       disassemble returned 0; 0.06 sec.
+INFO: [HLS 200-0] Disassemble time: 0 seconds per iteration
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:34 ; elapsed = 00:00:14 . Memory (MB): peak = 343.480 ; gain = 12.797 ; free physical = 55672 ; free virtual = 79342
+INFO: [HLS 200-100] Execute       opt_and_import_c a -opt_level=2 -skip_syncheck=0 -ng=0 -keep_printf=0 
+INFO: [HLS 200-100] Execute         cleanup_all_models 
+INFO: [HLS 200-100] Command         cleanup_all_models returned 0; 0 sec.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-100] Execute         transform -promote-dbg-pointer /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.pp.bc -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.pp.0.bc -f 
+INFO: [HLS 200-100] Command         transform returned 0; 0.03 sec.
+INFO: [HLS 200-100] Execute         llvm-ld /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.pp.0.bc -disable-opt -L/data/tools/Vivado_HLS/2017.2/lnx64/lib -lfloatconversion -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.0 
+INFO: [HLS 200-100] Command         llvm-ld returned 0; 4.11 sec.
+INFO: [HLS 200-0] Running Standard Transforms...
+INFO: [HLS 200-100] Execute         transform -hls -share-std-xform -demangle-name -inline-byval-memcpy -always-inline -promote-dbg-pointer -interface-preproc -scalarrepl -mem2reg -keep-read-access -instcombine -dce -promote-dbg-pointer -bitop-raise -loop-simplify -indvarspre -indvars -loop-simplify -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -simplifycfg -mem2reg -globalopt -global-constprop -deadargelim -instcombine -simplifycfg -prune-eh -simplifycfg -scalarrepl -instcombine -reassociate -licm -simplifycfg -loop-simplify -indvars -instcombine -simplifycfg -mem2reg -loop-simplify -indvars -instcombine -gvn -gvn -instcombine -adce -break-crit-edges -simplifycfg -loop-delete -global-array-opt -dce -dse -adce -find-syn-modules -top getClusterTrackLinker -deadargelim -mem2reg -instcombine -dce -presyn-prepare -auto-rom-infer -interface-preproc -syn-check -check-rec-only -find-region -simplifycfg -func-extr -function-inline -globaldce -mem2reg -instcombine -dce -gvn -globaldce -adce -adse -constprop -instcombine -bit-constprop -instcombine -dce -simplifycfg -bitop-raise -simplifycfg -dce -loop-delete -reassociate -globalopt -global-privatize -mem2reg -dce -global-constprop -pointer-simplify -constprop -dce -func-inst -deadargelim -auto-shift-reg-idiom -promote-dbg-pointer -norm-name /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.0.bc -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.1.bc -f -phase std-opt 
+INFO: [XFORM 203-603] Inlining function 'ap_fixed_base<79, 55, false, (ap_q_mode)5, (ap_o_mode)3, 0>::operator<<' into 'hls::cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/hls/hls_round.h:441).
+INFO: [XFORM 203-603] Inlining function 'ap_fixed_base<1, 32, false, (ap_q_mode)5, (ap_o_mode)0, 0>::overflow_adjust' into 'ap_fixed_base<1, 32, false, (ap_q_mode)5, (ap_o_mode)0, 0>::ap_fixed_base<79, 55, false, (ap_q_mode)5, (ap_o_mode)3, 0>' ().
+INFO: [HLS 200-100] Command         transform returned 0; 4.11 sec.
+INFO: [HLS 200-100] Execute         disassemble /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.1 /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.1 
+INFO: [HLS 200-100] Execute           is_encrypted /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.1.bc 
+INFO: [HLS 200-100] Command           is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-100] Command         disassemble returned 0; 2.04 sec.
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:43 ; elapsed = 00:00:25 . Memory (MB): peak = 717.633 ; gain = 386.949 ; free physical = 55264 ; free virtual = 79055
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-0] Checking Synthesizability 1/2..
+INFO: [HLS 200-100] Execute         transform -hls -syn-check -check-rec-only -disaggr -scalarrepl -norm-name -dce -mem2reg -instcombine -function-uniquify -directive-preproc -mem2reg -dse -dce -auto-rom-infer -dce -array-normalize -instcombine -dce -warn-fifo-pointer -array-seg-normalize -instcombine -dce -array-flatten -instcombine -dce -array-burst -dce -deadargelim -promote-global-argument -simplifycfg -mem2reg -globaldce -resolve-double-ptr -dce -deadargelim -dce -instcombine -function-inline -globaldce -dce -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -dse -adse -instcombine -ptrLegalization -simplifycfg -dce -instcombine -pointer-simplify -ptrArgReplace -dce -instcombine -disaggr -scalarrepl -norm-name -dce -mem2reg -instcombine -ptrLegalization -simplifycfg -deadargelim -instcombine -dce -inst-simplify -function-uniquify -directive-preproc -mem2reg -dse -dce -globaldce /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.1.bc -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.2.prechk.bc -f 
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'hls::cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/hls/hls_round.h:438) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'hls::cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/hls/hls_round.h:441) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'hls::cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/hls/hls_round.h:473) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::cast_IEEE754<int, (ap_q_mode)6, float>' into 'hls::cast_IEEE754<int, float>' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/hls/hls_round.h:523) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/lib_floatconversion.cpp:43) automatically.
+INFO: [HLS 200-100] Command         transform returned 0; 1.22 sec.
+INFO: [HLS 200-0] Checking Synthesizability 2/2..
+INFO: [HLS 200-100] Execute         transform -syn-check /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.2.prechk.bc -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.2.bc -f -phase syn-check 
+INFO: [HLS 200-100] Command         transform returned 0; 1.09 sec.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:45 ; elapsed = 00:00:27 . Memory (MB): peak = 919.477 ; gain = 588.793 ; free physical = 55090 ; free virtual = 78913
+INFO: [HLS 200-0] Compiler optimizing ...
+INFO: [HLS 200-0] Share syncheck's 1.bc for syn flow: copy /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.g.1.bc to /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.1.bc
+INFO: [HLS 200-0] Presyn 1...
+INFO: [HLS 200-100] Execute         transform -hls -tmp /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db -interface-port-rename -type-info -function-uniquify -directive-preproc -mem2reg -dse -dce -disaggr -scalarrepl -norm-name -deadargelim -mem2reg -instcombine -dce -auto-rom-infer -dce -function-uniquify -resource-proc -simplifycfg -mem2reg -globaldce -resolve-double-ptr -dce -deadargelim -dce -instcombine -clib-intrinsic-prepare -dce -func-buffer -dce -array-normalize -func-legal -instcombine -gvn -constprop -dce -ptrArgReplace -mem2reg -instcombine -dce -array-seg-normalize -deadargelim -instcombine -dce -pointer-simplify -dce -port-alignment -dce -interface-preproc -data-pack -instcombine -dce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -loop-simplify -indvars -instcombine -gvn -loop-simplify -mem2reg -dce -simplifycfg -find-region -instcombine -auto-loop-pipeline -inst-simplify -interface-preproc -cfgopt -instcombine -indvars -auto-loop-unroll -loop-simplify -loop-bound -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -clean-region -attach-range -gvn -inst-simplify -constprop -simplifycfg -dce -pointer-simplify -dce -globalopt -constprop -dce -array-promote -constprop -instcombine -dce -ptrArgReplace -mem2reg -instcombine -simplifycfg -dce -auto-par -instcombine -dce -array-transform-check -array-reshape -instcombine -simplifycfg -dce -ptrArgReplace -deadargelim -mem2reg -instcombine -simplifycfg -dce -indvars -loop-simplify -loop-bound -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -duplicate-dataflow-processes -globaldce -instcombine -array-partition -instcombine -simplifycfg -dce -ptrArgReplace -global-constprop -deadargelim -mem2reg -func-legal -instcombine -dce -global-constprop -deadargelim -mem2reg -instcombine -simplifycfg -dce -globalopt -constprop -dce -array-promote -constprop -instcombine -dce -ptrArgReplace -mem2reg -instcombine -simplifycfg -dce -mem-intrinsic-preproc -dce -global-privatize -mem2reg -globaldce -promote-global-argument -ptrArgReplace -mem2reg -instcombine -dce -globalopt -mergereturn -simplify-global-access -mem2reg -dce -pointer-simplify -dce -functionattrs -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -inst-simplify -dce -norm-name -function-inline -globaldce -func-inst -constprop -instcombine -simplifycfg -dce -func-legal -dce -loop-bound -arraycheck -bitwidthmin -on-by-dataflow -loop-delete -instcombine -simplifycfg -globaldce -dce -gvn -deadargelim -dce -loop-simplify -clean-region -simplifycfg -propagate-stable-arguments -loop-stream -instcombine -simplifycfg -dce -globaldce -stream-intrinsic-preproc -dce -check-ap-stream -loop-simplify -eliminate-keepreads -extract-dataflow-in-loop -loop-simplify -dce -gvn -deadargelim -dse -check-dataflow-syntax -legalize-stream-variable -legalize-global -extract-subproc -dce -dead-channel-elimination -canonicalize-gep -globaldce -dce -gvn -deadargelim -annotate-dataflow-channels -scalar-propagation -deadargelim -globaldce -mem2reg -check-dataflow-channels -function-stream -dce -globaldce -prop-fifo-spec -internal-stream-gen -canonicalize-gep -globaldce -dce -gvn -deadargelim -mergereturn -indvars -loop-simplify -instcombine -array-stream -array-seg-normalize -array-partition -func-legal -instcombine -simplifycfg -dce -bundle-memfifo-ops -deadargelim -function-uniquify -directive-preproc -mem2reg -dse -dce -group-axi-access -licm -simplifycfg -dce -loop-delete -norm-name /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.1.bc -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.1.tmp.bc -f 
+INFO: [XFORM 203-502] Unrolling all loops for pipelining in function 'getClusterTrackLinker' (Correlator/ClusterTrackLinker.cc:10).
+INFO: [XFORM 203-501] Unrolling loop 'Loop-1' (Correlator/ClusterTrackLinker.cc:45) in function 'getClusterTrackLinker' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-1.1' (Correlator/ClusterTrackLinker.cc:47) in function 'getClusterTrackLinker' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-2' (Correlator/ClusterTrackLinker.cc:79) in function 'getClusterTrackLinker' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-2.1' (Correlator/ClusterTrackLinker.cc:99) in function 'getClusterTrackLinker' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-2.1.1' (Correlator/ClusterTrackLinker.cc:100) in function 'getClusterTrackLinker' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-2.2' (Correlator/ClusterTrackLinker.cc:132) in function 'getClusterTrackLinker' completely.
+INFO: [XFORM 203-501] Unrolling loop 'Loop-2.2.1' (Correlator/ClusterTrackLinker.cc:134) in function 'getClusterTrackLinker' completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'trackPT.V' (Correlator/ClusterTrackLinker.cc:13) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'trackEta.V' (Correlator/ClusterTrackLinker.cc:14) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'trackPhi.V' (Correlator/ClusterTrackLinker.cc:15) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'linkedTrackPT.V' (Correlator/ClusterTrackLinker.cc:16) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'linkedTrackEta.V' (Correlator/ClusterTrackLinker.cc:17) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'linkedTrackPhi.V' (Correlator/ClusterTrackLinker.cc:18) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'linkedTrackQuality.V' (Correlator/ClusterTrackLinker.cc:19) in dimension 1 completely.
+WARNING: [XFORM 203-104] Completely partitioning array 'neutralClusterET.V' (Correlator/ClusterTrackLinker.cc:20) accessed through non-constant indices on dimension 1 (Correlator/ClusterTrackLinker.cc:169:6), which may result in long runtime and suboptimal QoR due to large multiplexers. Please consider wrapping the array access into a function or using a register file core instead.
+INFO: [XFORM 203-101] Partitioning array 'neutralClusterET.V' (Correlator/ClusterTrackLinker.cc:20) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'neutralClusterEta.V' (Correlator/ClusterTrackLinker.cc:21) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'neutralClusterPhi.V' (Correlator/ClusterTrackLinker.cc:22) in dimension 1 completely.
+WARNING: [XFORM 203-104] Completely partitioning array 'clusterEta.V' (Correlator/ClusterTrackLinker.cc:41) accessed through non-constant indices on dimension 1 (Correlator/ClusterTrackLinker.cc:145:24), which may result in long runtime and suboptimal QoR due to large multiplexers. Please consider wrapping the array access into a function or using a register file core instead.
+INFO: [XFORM 203-101] Partitioning array 'clusterEta.V' (Correlator/ClusterTrackLinker.cc:41) in dimension 1 completely.
+WARNING: [XFORM 203-104] Completely partitioning array 'clusterPhi.V' (Correlator/ClusterTrackLinker.cc:42) accessed through non-constant indices on dimension 1 (Correlator/ClusterTrackLinker.cc:147:24), which may result in long runtime and suboptimal QoR due to large multiplexers. Please consider wrapping the array access into a function or using a register file core instead.
+INFO: [XFORM 203-101] Partitioning array 'clusterPhi.V' (Correlator/ClusterTrackLinker.cc:42) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'track_peak_eta' (Correlator/ClusterTrackLinker.cc:67) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'track_peak_phi' (Correlator/ClusterTrackLinker.cc:68) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.0' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.1' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.2' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.3' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.4' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.5' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.6' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.7' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.8' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.9' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.10' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.11' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.12' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.13' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.14' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.15' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'clusterET.V.16' (Correlator/ClusterTrackLinker.cc:10) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.0' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.1' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.2' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.3' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.4' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.5' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.6' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.7' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.8' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.9' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.10' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.11' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.12' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.13' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.14' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.15' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakEta.V.16' (Correlator/ClusterTrackLinker.cc:11) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.0' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.1' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.2' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.3' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.4' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.5' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.6' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.7' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.8' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.9' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.10' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.11' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.12' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.13' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.14' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.15' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'peakPhi.V.16' (Correlator/ClusterTrackLinker.cc:12) in dimension 1 completely.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'hls::cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/hls/hls_round.h:438) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'hls::cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/hls/hls_round.h:441) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'hls::cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/hls/hls_round.h:473) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::cast_IEEE754<int, (ap_q_mode)6, float>' into 'hls::cast_IEEE754<int, float>' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/hls/hls_round.h:523) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/lib_floatconversion.cpp:43) automatically.
+INFO: [HLS 200-100] Command         transform returned 0; 900.35 sec.
+INFO: [HLS 200-0] Presyn 2...
+INFO: [HLS 200-100] Execute         transform -hls -keep-callgraph -scalarrepl -mem2reg -port-alignment -attach-range -dce -pipe-mux-gen -indvars -loop-bound -inst-simplify -instcombine -dce -merge-array-access -mem2reg -dce -clean-region -mergereturn -if-conv -instcombine -dce -constprop -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -scalarrepl -mem2reg -global-constprop -deadargelim -deadargelim -instcombine -dce -simplifycfg -ptrArgReplace -mem2reg -function-inline -globaldce -mem2reg -instcombine -dce -expr-balance -instcombine -dce -bitwidthmin -interface-preproc -directive-preproc -inst-rectify -instcombine -dce -functionattrs -constprop -instcombine -bit-constprop -simplify-global-access -globalopt -globaldce -inst-simplify -instcombine -elimdeaddata -dce -loop-delete -simplifycfg -loop-simplify -auto-burst -norm-name /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.1.tmp.bc -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.2.bc -f -phase presyn 
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock to (Correlator/ClusterTrackLinker.cc:163:8) in function 'getClusterTrackLinker'... converting 4 basic blocks.
+INFO: [HLS 200-100] Command         transform returned 0; 421.78 sec.
+INFO: [HLS 200-100] Execute         disassemble /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.2 /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.2 
+INFO: [HLS 200-100] Execute           is_encrypted /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.2.bc 
+INFO: [HLS 200-100] Command           is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-100] Command         disassemble returned 0; 1.82 sec.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:22:48 ; elapsed = 00:22:33 . Memory (MB): peak = 1493.613 ; gain = 1162.930 ; free physical = 51572 ; free virtual = 78325
+INFO: [HLS 200-0] Building ssdm...
+INFO: [HLS 200-100] Execute         transform -hls -function-uniquify -auto-function-inline -globaldce -ptrArgReplace -mem2reg -instcombine -dce -reset-lda -loop-simplify -indvars -licm -loop-dep -loop-bound -licm -loop-simplify -flattenloopnest -array-flatten -gvn -instcombine -dce -array-map -dce -func-legal -gvn -adce -instcombine -cfgopt -simplifycfg -loop-simplify -array-burst -promote-global-argument -dce -axi4-lower -array-seg-normalize -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -gvn -gvn -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -dse -adse -adce -licm -inst-simplify -dce -globaldce -instcombine -array-stream -eliminate-keepreads -instcombine -dce -deadargelim -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -mem2reg -disaggr -norm-name -mem2reg -instcombine -dse -adse -adce -ptrLegalization -dce -auto-rom-infer -array-flatten -dce -instcombine -check-doubleptr -loop-rot -constprop -cfgopt -simplifycfg -loop-simplify -indvars -pointer-simplify -dce -loop-bound -loop-simplify -loop-preproc -constprop -global-constprop -gvn -mem2reg -instcombine -dce -loop-bound -loop-merge -dce -bitwidthmin -deadargelim -dce -canonicalize-dataflow -dce -scalar-propagation -deadargelim -globaldce -mem2reg -interface-preproc -interface-gen -deadargelim -directive-preproc -inst-simplify -dce -gvn -mem2reg -instcombine -dce -adse -loop-bound -instcombine -cfgopt -simplifycfg -loop-simplify -clean-region -io-protocol -find-region -mem2reg -bitop-raise -inst-simplify -inst-rectify -instcombine -adce -deadargelim -loop-simplify -phi-opt -bitop-raise -cfgopt -simplifycfg -strip-dead-prototypes -interface-lower -bitop-lower -intrinsic-lower -auto-function-inline -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -inst-simplify -simplifycfg -loop-simplify -mergereturn -inst-simplify -inst-rectify -dce -bitop-lower -loop-rewind -pointer-simplify -dce -cfgopt -read-loop-dep -dce -bitwidth -loop-dep -norm-name -legalize -validate-dataflow -cdfg-build /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.2.bc -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.3.bc -f -phase build-ssdm 
+WARNING: [XFORM 203-631] Renaming function '__hls_fptosi_float_i32' (/wrk/2017.2/nightly/2017_06_15_1909853/src/products/hls/hls_lib/src/lib_floatconversion.cpp:43:54) into __hls_fptosi_float_i.
+INFO: [HLS 200-100] Command         transform returned 0; 390.5 sec.
+INFO: [HLS 200-100] Execute         disassemble /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.3 /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.3 
+INFO: [HLS 200-100] Execute           is_encrypted /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/a.o.3.bc 
+INFO: [HLS 200-100] Command           is_encrypted returned 0; 0 sec.
+INFO: [HLS 200-100] Command         disassemble returned 0; 1.31 sec.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:29:19 ; elapsed = 00:29:05 . Memory (MB): peak = 2373.121 ; gain = 2042.438 ; free physical = 49490 ; free virtual = 76942
+INFO: [HLS 200-0] Finish building internal data model.
+INFO: [HLS 200-100] Command       opt_and_import_c returned 0; 1730.19 sec.
+INFO: [HLS 200-100] Command     elaborate returned 0; 1742.65 sec.
+INFO: [HLS 200-100] Execute     autosyn 
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-0] Synthesizing C/C++ design ...
+INFO: [HLS 200-10] Synthesizing 'getClusterTrackLinker' ...
+INFO: [HLS 200-100] Execute       ap_set_top_model getClusterTrackLinker 
+WARNING: [SYN 201-103] Legalizing function name '__hls_fptosi_float_i' to 'p_hls_fptosi_float_i'.
+INFO: [HLS 200-100] Command       ap_set_top_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       get_model_list getClusterTrackLinker -filter all-wo-channel -topdown 
+INFO: [HLS 200-100] Command       get_model_list returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       preproc_iomode -model getClusterTrackLinker 
+INFO: [HLS 200-100] Command       preproc_iomode returned 0; 0.01 sec.
+INFO: [HLS 200-100] Execute       preproc_iomode -model __hls_fptosi_float_i 
+INFO: [HLS 200-100] Command       preproc_iomode returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       get_model_list getClusterTrackLinker -filter all-wo-channel 
+INFO: [HLS 200-100] Command       get_model_list returned 0; 0 sec.
+INFO: [HLS 200-0] Model list for configure: __hls_fptosi_float_i getClusterTrackLinker
+INFO: [HLS 200-0] Configuring Module : __hls_fptosi_float_i ...
+INFO: [HLS 200-100] Execute       set_default_model __hls_fptosi_float_i 
+INFO: [HLS 200-100] Command       set_default_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       apply_spec_resource_limit __hls_fptosi_float_i 
+INFO: [HLS 200-100] Command       apply_spec_resource_limit returned 0; 0 sec.
+INFO: [HLS 200-0] Configuring Module : getClusterTrackLinker ...
+INFO: [HLS 200-100] Execute       set_default_model getClusterTrackLinker 
+INFO: [HLS 200-100] Command       set_default_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       apply_spec_resource_limit getClusterTrackLinker 
+INFO: [HLS 200-100] Command       apply_spec_resource_limit returned 0; 0 sec.
+INFO: [HLS 200-0] Model list for preprocess: __hls_fptosi_float_i getClusterTrackLinker
+INFO: [HLS 200-0] Preprocessing Module: __hls_fptosi_float_i ...
+INFO: [HLS 200-100] Execute       set_default_model __hls_fptosi_float_i 
+INFO: [HLS 200-100] Command       set_default_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       cdfg_preprocess -model __hls_fptosi_float_i 
+INFO: [HLS 200-100] Command       cdfg_preprocess returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       rtl_gen_preprocess __hls_fptosi_float_i 
+INFO: [HLS 200-100] Command       rtl_gen_preprocess returned 0; 0 sec.
+INFO: [HLS 200-0] Preprocessing Module: getClusterTrackLinker ...
+INFO: [HLS 200-100] Execute       set_default_model getClusterTrackLinker 
+INFO: [HLS 200-100] Command       set_default_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       cdfg_preprocess -model getClusterTrackLinker 
+INFO: [HLS 200-100] Command       cdfg_preprocess returned 0; 29.55 sec.
+INFO: [HLS 200-100] Execute       rtl_gen_preprocess getClusterTrackLinker 
+INFO: [HLS 200-100] Command       rtl_gen_preprocess returned 0; 0 sec.
+INFO: [HLS 200-0] Model list for synthesis: __hls_fptosi_float_i getClusterTrackLinker
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'p_hls_fptosi_float_i' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-100] Execute       set_default_model __hls_fptosi_float_i 
+INFO: [HLS 200-100] Command       set_default_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       schedule -model __hls_fptosi_float_i 
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining function '__hls_fptosi_float_i'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-100] Command       schedule returned 0; 0.05 sec.
+INFO: [HLS 200-111]  Elapsed time: 1774.28 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-100] Execute       report -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/p_hls_fptosi_float_i.verbose.sched.rpt -verbose -f 
+INFO: [HLS 200-100] Command       report returned 0; 0.05 sec.
+INFO: [HLS 200-100] Execute       db_write -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/p_hls_fptosi_float_i.sched.adb -f 
+INFO: [HLS 200-100] Command       db_write returned 0; 0.04 sec.
+INFO: [HLS 200-0] Finish scheduling __hls_fptosi_float_i.
+INFO: [HLS 200-100] Execute       set_default_model __hls_fptosi_float_i 
+INFO: [HLS 200-100] Command       set_default_model returned 0; 0 sec.
+INFO: [HLS 200-100] Execute       bind -model __hls_fptosi_float_i 
+INFO: [BIND 205-110] clear=
+INFO: [BIND 205-110] debug=
+INFO: [BIND 205-110] drf=
+INFO: [BIND 205-110] effort=
+INFO: [BIND 205-110] fast_refine=
+INFO: [BIND 205-110] fu_weight=[ 0.0 -- 1.0 ]
+INFO: [BIND 205-110] global_opt=
+INFO: [BIND 205-110] gsearch=
+INFO: [BIND 205-110] help=
+INFO: [BIND 205-110] help-hidden=
+INFO: [BIND 205-110] min_mem_port=
+INFO: [BIND 205-110] min_op=
+INFO: [BIND 205-110] minreg=
+INFO: [BIND 205-110] ml=
+INFO: [BIND 205-110] model=__hls_fptosi_float_i
+INFO: [BIND 205-110] no_false_path=
+INFO: [BIND 205-110] no_min_op=
+INFO: [BIND 205-110] normalize=
+INFO: [BIND 205-110] quiet=
+INFO: [BIND 205-110] refine=
+INFO: [BIND 205-110] reg_weight=[ 0.0 -- 1.0 ]
+INFO: [BIND 205-110] search=
+INFO: [BIND 205-110] tight_delay=
+INFO: [BIND 205-110] verbose=
+INFO: [BIND 205-110] wFF=
+INFO: [BIND 205-110] wFU=
+INFO: [BIND 205-110] wMUX=
+INFO: [BIND 205-110] wNET=
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-100] Command       bind returned 0; 0 sec.
+INFO: [HLS 200-111]  Elapsed time: 0.1 seconds; current allocated memory: 0.301 MB.
+INFO: [HLS 200-100] Execute       report -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/p_hls_fptosi_float_i.verbose.bind.rpt -verbose -f 
+INFO: [HLS 200-100] Command       report returned 0; 0.06 sec.
+INFO: [HLS 200-100] Execute       db_write -o /data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/p_hls_fptosi_float_i.bind.adb -f 
+INFO: [HLS 200-100] Command       db_write returned 0; 0.05 sec.
+INFO: [HLS 200-0] Finish binding __hls_fptosi_float_i.

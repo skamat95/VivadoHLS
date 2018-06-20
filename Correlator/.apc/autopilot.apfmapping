@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="ClusterFinder.cc" path="/data/skamat/Github/VivadoHLS/Correlator/ClusterFinder.cc"/>
+    <originFiles name="ClusterFinder.hh" path="/data/skamat/Github/VivadoHLS/Correlator/ClusterFinder.hh"/>
+    <originFiles name="ClusterTrackLinker.cc" path="/data/skamat/Github/VivadoHLS/Correlator/ClusterTrackLinker.cc"/>
+    <originFiles name="ClusterTrackLinker.hh" path="/data/skamat/Github/VivadoHLS/Correlator/ClusterTrackLinker.hh"/>
+  </source>
+  <testbench>
+    <originFiles name="test1_correlator.cc" path="/data/skamat/Github/VivadoHLS/Correlator/test1_correlator.cc"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>
