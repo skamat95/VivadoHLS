@@ -5,10 +5,10 @@
 ############################################################
 open_project Correlator
 set_top getClusterTrackLinker
-add_files Correlator/ClusterFinder.cc
-add_files Correlator/ClusterFinder.hh
-add_files Correlator/ClusterTrackLinker.cc
 add_files Correlator/ClusterTrackLinker.hh
+add_files Correlator/ClusterTrackLinker.cc
+add_files Correlator/ClusterFinder.hh
+add_files Correlator/ClusterFinder.cc
 add_files -tb Correlator/test1_correlator.cc
 open_solution "solution1"
 set_part {xc7vx690tffg1927-2}

@@ -8,11 +8,10 @@
 #pragma empty_line
 #pragma empty_line
 #pragma empty_line
-#pragma empty_line
-#pragma line 1 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h" 1
+#pragma line 1 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h" 1
 /* autopilot_ssdm_op.h*/
 /*
-#-  (c) Copyright 2011-2017 Xilinx, Inc. All rights reserved.
+#-  (c) Copyright 2011-2016 Xilinx, Inc. All rights reserved.
 #-
 #-  This file contains confidential and proprietary information
 #-  of Xilinx, Inc. and is protected under U.S. and
@@ -62,10 +61,12 @@
  *
  * $Id$
  */
-#pragma line 145 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+#pragma line 145 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h"
 /*#define AP_SPEC_ATTR __attribute__ ((pure))*/
-//adu: patched
-#pragma line 156 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+#pragma empty_line
+#pragma empty_line
+#pragma empty_line
+#pragma empty_line
 extern "C" {
 #pragma empty_line
     /****** SSDM Intrinsics: OPERATIONS ***/
@@ -195,19 +196,19 @@ extern "C" {
 #pragma empty_line
 #pragma empty_line
 }
-#pragma line 413 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+#pragma line 407 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h"
 /*#define _ssdm_op_WaitUntil(X) while (!(X)) _ssdm_op_Wait(1);
 #define _ssdm_op_Delayed(X) X */
-#pragma line 427 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
-// 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
-#pragma line 7 "<command line>" 2
+#pragma line 421 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+// XSIP watermark, do not delete 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
+#pragma line 6 "<command line>" 2
 #pragma line 1 "<built-in>" 2
 #pragma line 1 "Correlator/ClusterFinder.cc" 2
 #pragma line 1 "Correlator/ClusterFinder.hh" 1
 #pragma empty_line
 #pragma empty_line
 #pragma empty_line
-#pragma line 1 "/data/tools/Vivado_HLS/2017.2/lnx64/tools/clang/bin/../lib/clang/3.1/include/stdint.h" 1 3
+#pragma line 1 "/data/tools/Vivado_HLS/2016.4/lnx64/tools/clang/bin/../lib/clang/3.1/include/stdint.h" 1 3
 /*===---- stdint.h - Standard header for sized integer types --------------===*\
  *
  * Copyright (c) 2009 Chris Lattner
@@ -831,7 +832,7 @@ typedef unsigned long int uintmax_t;
 #pragma line 285 "/usr/include/stdint.h" 3 4
 /* The ISO C99 standard specifies that in C++ implementations these
    should only be defined if explicitly requested.  */
-#pragma line 34 "/data/tools/Vivado_HLS/2017.2/lnx64/tools/clang/bin/../lib/clang/3.1/include/stdint.h" 2 3
+#pragma line 34 "/data/tools/Vivado_HLS/2016.4/lnx64/tools/clang/bin/../lib/clang/3.1/include/stdint.h" 2 3
 #pragma line 5 "Correlator/ClusterFinder.hh" 2
 #pragma empty_line
 const uint16_t NCaloLayer1Cards = 18;

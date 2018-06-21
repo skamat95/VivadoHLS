@@ -1,4 +1,4 @@
-<project xmlns="com.autoesl.autopilot.project" top="getClusterTrackLinker" name="Correlator">
+<project xmlns="com.autoesl.autopilot.project" name="Correlator" top="getClusterTrackLinker">
     <includePaths/>
     <libraryPaths/>
     <Simulation>
@@ -6,10 +6,10 @@
     </Simulation>
     <files xmlns="">
         <file name="../test1_correlator.cc" sc="0" tb="1" cflags=" "/>
-        <file name="Correlator/ClusterTrackLinker.hh" sc="0" tb="false" cflags=""/>
-        <file name="Correlator/ClusterTrackLinker.cc" sc="0" tb="false" cflags=""/>
-        <file name="Correlator/ClusterFinder.hh" sc="0" tb="false" cflags=""/>
         <file name="Correlator/ClusterFinder.cc" sc="0" tb="false" cflags=""/>
+        <file name="Correlator/ClusterFinder.hh" sc="0" tb="false" cflags=""/>
+        <file name="Correlator/ClusterTrackLinker.cc" sc="0" tb="false" cflags=""/>
+        <file name="Correlator/ClusterTrackLinker.hh" sc="0" tb="false" cflags=""/>
     </files>
     <solutions xmlns="">
         <solution name="solution1" status="active"/>

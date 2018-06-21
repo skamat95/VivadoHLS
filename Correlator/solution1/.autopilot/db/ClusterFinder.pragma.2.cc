@@ -8,11 +8,10 @@
 
 
 
-
-# 1 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h" 1
+# 1 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h" 1
 /* autopilot_ssdm_op.h*/
 /*
-#-  (c) Copyright 2011-2017 Xilinx, Inc. All rights reserved.
+#-  (c) Copyright 2011-2016 Xilinx, Inc. All rights reserved.
 #-
 #-  This file contains confidential and proprietary information
 #-  of Xilinx, Inc. and is protected under U.S. and
@@ -62,10 +61,12 @@
  *
  * $Id$
  */
-# 145 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+# 145 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h"
 /*#define AP_SPEC_ATTR __attribute__ ((pure))*/
-//adu: patched
-# 156 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+
+
+
+
 extern "C" {
 
     /****** SSDM Intrinsics: OPERATIONS ***/
@@ -195,12 +196,12 @@ extern "C" {
 
 
 }
-# 413 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+# 407 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h"
 /*#define _ssdm_op_WaitUntil(X) while (!(X)) _ssdm_op_Wait(1);
 #define _ssdm_op_Delayed(X) X */
-# 427 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
-// 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
-# 7 "<command line>" 2
+# 421 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+// XSIP watermark, do not delete 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
+# 6 "<command line>" 2
 # 1 "<built-in>" 2
 # 1 "/data/skamat/Github/VivadoHLS/Correlator/solution1/.autopilot/db/ClusterFinder.pragma.1.cc" 2
 # 1 "Correlator/ClusterFinder.cc"
@@ -213,11 +214,10 @@ extern "C" {
 
 
 
-
-# 1 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h" 1
+# 1 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h" 1
 /* autopilot_ssdm_op.h*/
 /*
-#-  (c) Copyright 2011-2017 Xilinx, Inc. All rights reserved.
+#-  (c) Copyright 2011-2016 Xilinx, Inc. All rights reserved.
 #-
 #-  This file contains confidential and proprietary information
 #-  of Xilinx, Inc. and is protected under U.S. and
@@ -267,10 +267,12 @@ extern "C" {
  *
  * $Id$
  */
-# 145 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+# 145 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h"
 /*#define AP_SPEC_ATTR __attribute__ ((pure))*/
-//adu: patched
-# 156 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+
+
+
+
 extern "C" {
 
     /****** SSDM Intrinsics: OPERATIONS ***/
@@ -400,19 +402,19 @@ extern "C" {
 
 
 }
-# 413 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+# 407 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h"
 /*#define _ssdm_op_WaitUntil(X) while (!(X)) _ssdm_op_Wait(1);
 #define _ssdm_op_Delayed(X) X */
-# 427 "/data/tools/Vivado_HLS/2017.2/common/technology/autopilot/etc/autopilot_ssdm_op.h"
-// 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
-# 7 "<command line>" 2
+# 421 "/data/tools/Vivado_HLS/2016.4/common/technology/autopilot/etc/autopilot_ssdm_op.h"
+// XSIP watermark, do not delete 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
+# 6 "<command line>" 2
 # 1 "<built-in>" 2
 # 1 "Correlator/ClusterFinder.cc" 2
 # 1 "Correlator/ClusterFinder.hh" 1
 
 
 
-# 1 "/data/tools/Vivado_HLS/2017.2/lnx64/tools/clang/bin/../lib/clang/3.1/include/stdint.h" 1 3
+# 1 "/data/tools/Vivado_HLS/2016.4/lnx64/tools/clang/bin/../lib/clang/3.1/include/stdint.h" 1 3
 /*===---- stdint.h - Standard header for sized integer types --------------===*\
  *
  * Copyright (c) 2009 Chris Lattner
@@ -1041,7 +1043,7 @@ typedef unsigned long int uintmax_t;
 # 285 "/usr/include/stdint.h" 3 4
 /* The ISO C99 standard specifies that in C++ implementations these
    should only be defined if explicitly requested.  */
-# 34 "/data/tools/Vivado_HLS/2017.2/lnx64/tools/clang/bin/../lib/clang/3.1/include/stdint.h" 2 3
+# 34 "/data/tools/Vivado_HLS/2016.4/lnx64/tools/clang/bin/../lib/clang/3.1/include/stdint.h" 2 3
 # 5 "Correlator/ClusterFinder.hh" 2
 
 const uint16_t NCaloLayer1Cards = 18;

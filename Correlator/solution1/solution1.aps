@@ -6,8 +6,9 @@
         <schedule model="getClusterTrackLinker"/>
     </config>
     <UIConfigurations>
-        <UIAutosynConf hideTrivialOp="true" isBasedOnBoard="false" isSolutionDirty="true" isStopAskAgain="false" showDetailDesignViewer="false">
+        <UIAutosynConf hideTrivialOp="true" isBasedOnBoard="false" isSolutionDirty="false" isStopAskAgain="false" showDetailDesignViewer="false">
             <Platform>xilinx/virtex7/virtex7</Platform>
+            <Platform>xilinx/virtex7/virtex7_fpv6</Platform>
             <customLibs/>
         </UIAutosynConf>
         <UIIPPackagerConf AskAgain="true" DescriptionButton="false" LibraryButton="false" RTLLanguage="verilog" UseNetList="none" VendorButton="false" VersionButton="false" evaluateRTL="false" setup="false">
@@ -61,7 +62,7 @@
     </targetInfo>
     <libraryList>
         <library name="DefaultPlatform" value="xilinx/virtex7/virtex7"/>
-        <library value="xilinx/virtex7/virtex7_fpv6" name="DefaultPlatform"/>
+        <library name="DefaultPlatform" value="xilinx/virtex7/virtex7_fpv6"/>
     </libraryList>
     <clockList>
         <clock default="false" name="default" period="4.16"/>
