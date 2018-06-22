@@ -1,133 +1,147 @@
 <AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
 <sourceFile name="">
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getPeakBinOf5" label="">
 <pragma name="PIPELINE">
 <option name="II" value="6"/>
 </pragma>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getPeakBinOf5" label="">
 <pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="clusterET"/>
+<option name="variable" positionalBoolean="4" value="et"/>
 <option name="complete" positionalBoolean="type" value=""/>
 <option name="dim" value="0"/>
 </pragma>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInTower" label="">
+<pragma name="PIPELINE">
+<option name="II" value="6"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="getClustersInTower" label="">
+<pragma name="ARRAY_PARTITION">
+<option name="variable" positionalBoolean="4" value="crystals"/>
+<option name="complete" positionalBoolean="type" value=""/>
+<option name="dim" value="0"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="getClustersInTower" label="">
+<pragma name="ARRAY_PARTITION">
+<option name="variable" positionalBoolean="4" value="phiStripSum"/>
+<option name="complete" positionalBoolean="type" value=""/>
+<option name="dim" value="0"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="getClustersInTower" label="">
+<pragma name="UNROLL"/>
+</directive>
+<directive functionLabel="" functionName="getClustersInTower" label="">
+<pragma name="UNROLL"/>
+</directive>
+<directive functionLabel="" functionName="getClustersInTower" label="">
+<pragma name="ARRAY_PARTITION">
+<option name="variable" positionalBoolean="4" value="etaStripSum"/>
+<option name="complete" positionalBoolean="type" value=""/>
+<option name="dim" value="0"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="getClustersInTower" label="">
+<pragma name="UNROLL"/>
+</directive>
+<directive functionLabel="" functionName="getClustersInTower" label="">
+<pragma name="UNROLL"/>
+</directive>
+<directive functionLabel="" functionName="getClustersInTower" label="">
+<pragma name="UNROLL"/>
+</directive>
+<directive functionLabel="" functionName="getClustersInTower" label="">
+<pragma name="UNROLL"/>
+</directive>
+<directive functionLabel="" functionName="getClustersInTower" label="">
+<pragma name="UNROLL"/>
+</directive>
+<directive functionLabel="" functionName="mergeClusters" label="">
+<pragma name="PIPELINE">
+<option name="II" value="6"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="getClustersInCard" label="">
+<pragma name="PIPELINE">
+<option name="II" value="6"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="getClustersInCard" label="">
+<pragma name="ARRAY_PARTITION">
+<option name="variable" positionalBoolean="4" value="crystals"/>
+<option name="complete" positionalBoolean="type" value=""/>
+<option name="dim" value="0"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="ARRAY_PARTITION">
 <option name="variable" positionalBoolean="4" value="peakEta"/>
 <option name="complete" positionalBoolean="type" value=""/>
 <option name="dim" value="0"/>
 </pragma>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="ARRAY_PARTITION">
 <option name="variable" positionalBoolean="4" value="peakPhi"/>
 <option name="complete" positionalBoolean="type" value=""/>
 <option name="dim" value="0"/>
 </pragma>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="trackPT"/>
+<option name="variable" positionalBoolean="4" value="towerET"/>
 <option name="complete" positionalBoolean="type" value=""/>
 <option name="dim" value="0"/>
 </pragma>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="trackEta"/>
+<option name="variable" positionalBoolean="4" value="clusterET"/>
 <option name="complete" positionalBoolean="type" value=""/>
 <option name="dim" value="0"/>
 </pragma>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="trackPhi"/>
+<option name="variable" positionalBoolean="4" value="preMergePeakEta"/>
 <option name="complete" positionalBoolean="type" value=""/>
 <option name="dim" value="0"/>
 </pragma>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="linkedTrackPT"/>
+<option name="variable" positionalBoolean="4" value="preMergePeakPhi"/>
 <option name="complete" positionalBoolean="type" value=""/>
 <option name="dim" value="0"/>
 </pragma>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="linkedTrackEta"/>
+<option name="variable" positionalBoolean="4" value="preMergeTowerET"/>
 <option name="complete" positionalBoolean="type" value=""/>
 <option name="dim" value="0"/>
 </pragma>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="linkedTrackPhi"/>
+<option name="variable" positionalBoolean="4" value="preMergeClusterET"/>
 <option name="complete" positionalBoolean="type" value=""/>
 <option name="dim" value="0"/>
 </pragma>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
-<pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="neutralClusterET"/>
-<option name="complete" positionalBoolean="type" value=""/>
-<option name="dim" value="0"/>
-</pragma>
-</directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
-<pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="neutralClusterEta"/>
-<option name="complete" positionalBoolean="type" value=""/>
-<option name="dim" value="0"/>
-</pragma>
-</directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
-<pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="neutralClusterPhi"/>
-<option name="complete" positionalBoolean="type" value=""/>
-<option name="dim" value="0"/>
-</pragma>
-</directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
-<pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="clusterEta"/>
-<option name="complete" positionalBoolean="type" value=""/>
-<option name="dim" value="0"/>
-</pragma>
-</directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
-<pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="clusterPhi"/>
-<option name="complete" positionalBoolean="type" value=""/>
-<option name="dim" value="0"/>
-</pragma>
-</directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="UNROLL"/>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="UNROLL"/>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
-<pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="track_peak_eta"/>
-<option name="dim" value="0"/>
-</pragma>
-</directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
-<pragma name="ARRAY_PARTITION">
-<option name="variable" positionalBoolean="4" value="track_peak_phi"/>
-<option name="dim" value="0"/>
-</pragma>
-</directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="UNROLL"/>
 </directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
-<pragma name="UNROLL"/>
-</directive>
-<directive functionLabel="" functionName="getClusterTrackLinker" label="">
+<directive functionLabel="" functionName="getClustersInCard" label="">
 <pragma name="UNROLL"/>
 </directive>
 </sourceFile>
