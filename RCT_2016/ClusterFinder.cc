@@ -1705,25 +1705,6 @@ bool getClustersInCard(uint16_t crystals[NCaloLayer1Eta][NCaloLayer1Phi][NCrysta
   }
   
 
-  SortedCluster_ET1[25+0] = sortedclusteret[0];
-  SortedCluster_ET1[25+1] = sortedclusteret[1];
-  SortedCluster_ET1[25+2] = sortedclusteret[2];
-  SortedCluster_ET1[25+3] = sortedclusteret[3];
-  SortedCluster_ET1[25+4] = sortedclusteret[4];
-
-
-  SortedPeak_Eta1[25+0] = sortedpeaketa[0];
-  SortedPeak_Eta1[25+1] = sortedpeaketa[1];
-  SortedPeak_Eta1[25+2] = sortedpeaketa[2];
-  SortedPeak_Eta1[25+3] = sortedpeaketa[3];
-  SortedPeak_Eta1[25+4] = sortedpeaketa[4];
-
-
-  SortedPeak_Phi1[25+0] = sortedpeakphi[0];
-  SortedPeak_Phi1[25+1] = sortedpeakphi[1];
-  SortedPeak_Phi1[25+2] = sortedpeakphi[2];
-  SortedPeak_Phi1[25+3] = sortedpeakphi[3];
-  SortedPeak_Phi1[25+4] = sortedpeakphi[4];
 
 
   uint16_t peakEta3[32];
