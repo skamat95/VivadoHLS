@@ -95,7 +95,8 @@ bool getClusterTrackLinker(uint16_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 	  uint16_t clus_eta = track_peak_eta[track] / NCaloLayer1Phi;
 	  uint16_t clus_phi = track_peak_phi[track] % NCaloLayer1Phi;
 
-	  ap_fixed<10,2> diff[3][3];
+	  uint16_t diff[3][3];
+	  //ap_fixed<10,2> diff[3][3];
 	  for(int a = 0; a < 3; a++){
 		  for (int b = 0; b<3; b++){
 			  diff[a][b] = 0;
@@ -158,8 +159,8 @@ bool getClusterTrackLinker(uint16_t clusterET[NCaloLayer1Eta][NCaloLayer1Phi],
 					common = diffPhi - uncommon;
 				}
 
-				//uint16_t temp = (common>>1) + common;
-				//diff[i][j] = ap_ufixed<10,2>(temp + uncommon);
+				uint16_t temp = (common>>1) + common;
+				diff[i][j] = temp + uncommon;
 				//diff[i][j] = ap_ufixed<8,6>(1.4*common + uncommon);
 				if(diff[i][j] < least_dist) {
 					least_dist =  diff[i][j];

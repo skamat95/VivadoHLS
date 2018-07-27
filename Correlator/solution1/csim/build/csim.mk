@@ -19,7 +19,7 @@ __SIM_DDS__ = 1
 
 ObjDir = obj
 
-HLS_SOURCES = ../../../test1_correlator.cc ../../../ClusterFinder.cc ../../../ClusterTrackLinker.cc
+HLS_SOURCES = ../../../test1_correlator.cc ../../../ClusterTrackLinker.cc ../../../ClusterFinder.cc
 
 TARGET := csim.exe
 
@@ -74,14 +74,14 @@ $(ObjDir)/test1_correlator.o: ../../../test1_correlator.cc $(ObjDir)/.dir
 
 -include $(ObjDir)/test1_correlator.d
 
-$(ObjDir)/ClusterFinder.o: ../../../ClusterFinder.cc $(ObjDir)/.dir
-	$(Echo) "   Compiling ../../../ClusterFinder.cc in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
-
--include $(ObjDir)/ClusterFinder.d
-
 $(ObjDir)/ClusterTrackLinker.o: ../../../ClusterTrackLinker.cc $(ObjDir)/.dir
 	$(Echo) "   Compiling ../../../ClusterTrackLinker.cc in $(BuildMode) mode" $(AVE_DIR_DLOG)
 	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
 
 -include $(ObjDir)/ClusterTrackLinker.d
+
+$(ObjDir)/ClusterFinder.o: ../../../ClusterFinder.cc $(ObjDir)/.dir
+	$(Echo) "   Compiling ../../../ClusterFinder.cc in $(BuildMode) mode" $(AVE_DIR_DLOG)
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+
+-include $(ObjDir)/ClusterFinder.d
